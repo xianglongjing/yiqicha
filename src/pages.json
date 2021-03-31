@@ -1,0 +1,613 @@
+{
+  "easycom": {
+    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+  },
+  "pages": [
+//    {
+//      "path": "pages/index/init",
+//      "style": {
+//        "navigationBarTitleText": "欢迎使用",
+//        "titleNView": false,
+//        "app-plus": {
+//          "bounce": "none"
+//        }
+//      }
+//    },
+//    {
+//      "path": "pages/index/guide",
+//      "style": {
+//        "navigationBarTitleText": "欢迎使用",
+//        "titleNView": false,
+//        "app-plus": {
+//          "bounce": "none"
+//        }
+//      }
+//    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "医企网",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/index/citychange",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "城市切换",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/join",
+      "style": {
+        "navigationBarTitleText": "快速入驻",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/404",
+      "style": {
+        "navigationBarTitleText": "医企网",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/chairman",
+      "style": {
+        "navigationBarTitleText": "董事长致辞",
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/culture",
+      "style": {
+        "navigationBarTitleText": "企业文化",
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/search",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/serve/serve",
+      "style": {
+        "navigationBarTitleText": "服务",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/news/news",
+      "style": {
+        "navigationBarTitleText": "资讯",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/news/newsDetail",
+      "style": {
+        "navigationBarTitleText": "资讯详情",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/login",
+      "style": {
+        "navigationBarTitleText":"",
+        "navigationBarBackgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/mine/register",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationBarBackgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/mine/forgetPassword",
+      "style": {
+        "navigationBarTitleText": "重置密码"
+      }
+    },
+    {
+      "path": "pages/mine/collect",
+      "style": {
+        "navigationBarTitleText": "我的收藏"
+      }
+    },
+    {
+      "path": "pages/mine/coupon",
+      "style": {
+        "navigationBarTitleText": "优惠券"
+      }
+    },
+    {
+      "path": "pages/mine/follow",
+      "style": {
+        "navigationBarTitleText": "我的关注"
+      }
+    },
+    {
+      "path": "pages/mine/history",
+      "style": {
+        "navigationBarTitleText": "浏览"
+      }
+    },
+    {
+      "path": "pages/common/notices",
+      "style": {
+        "navigationBarTitleText": "我的消息"
+      }
+    },
+    {
+      "path": "pages/common/upload",
+      "style": {
+        "navigationBarTitleText": "我的资料"
+      }
+    },
+    {
+      "path": "pages/common/uploadDetail",
+      "style": {
+        "navigationBarTitleText": "我的资料"
+      }
+    },
+    {
+      "path": "pages/common/uploadHandle",
+      "style": {
+        "navigationBarTitleText": "资料上传"
+      }
+    },
+    {
+      "path": "pages/common/service",
+      "style": {
+        "navigationBarTitleText": "联系客服"
+      }
+    },
+    {
+      "path": "pages/common/feedback",
+      "style": {
+        "navigationBarTitleText": "意见反馈",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/common/about",
+      "style": {
+        "navigationBarTitleText": "关于我们",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/common/setting",
+      "style": {
+        "navigationBarTitleText": "设置"
+      }
+    },
+    {
+      "path": "pages/common/personal",
+      "style": {
+        "navigationBarTitleText": "个人信息"
+      }
+    },
+    {
+      "path": "pages/common/company",
+      "style": {
+        "navigationBarTitleText": "企业信息"
+      }
+    },
+    {
+      "path": "pages/common/contact",
+      "style": {
+        "navigationBarTitleText": "联系我们",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/common/privacy",
+      "style": {
+        "navigationBarTitleText": "隐私政策"
+      }
+    },
+    {
+      "path": "pages/common/protocols",
+      "style": {
+        "navigationBarTitleText": "服务协议"
+      }
+    },
+    {
+      "path": "pages/shops/goodsSecondList",
+      "style": {
+        "navigationBarTitleText": "服务列表"
+      }
+    },
+    {
+      "path": "pages/shops/shopHome",
+      "style": {
+        "navigationBarTitleText": "商家主页",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/shops/goodsThirdList",
+      "style": {
+        "navigationBarTitleText": "服务"
+      }
+    },
+    {
+      "path": "pages/shops/goodDetail",
+      "style": {
+        "navigationBarTitleText": "服务详情",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/myOrders",
+      "style": {
+        "navigationBarTitleText": "我的订单",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/order",
+      "style": {
+        "navigationBarTitleText": "收银台",
+        "navigationBarBackgroundColor": "#FD6905",
+        "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/cash",
+      "style": {
+        "navigationBarTitleText": "收银台",
+        "navigationBarBackgroundColor": "#FD6905",
+        "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/orderClose",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationBarBackgroundColor": "#FF7C00",
+        "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/addressEdit",
+      "style": {
+        "navigationBarTitleText": "编辑地址",
+        "navigationBarBackgroundColor": "#FF7C00",
+        "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/mine/comments",
+      "style": {
+        "navigationBarTitleText": "我的评价",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/shops/assessDetail",
+      "style": {
+        "navigationBarTitleText": "评价详情",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/placeOrder",
+      "style": {
+        "navigationBarTitleText": "预约下单",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/addressAdd",
+      "style": {
+        "navigationBarTitleText": "添加地址",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/addressList",
+      "style": {
+        "navigationBarTitleText": "选择地址",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/orderSubmit",
+      "style": {
+        "navigationBarTitleText": "下单成功",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/orderDetail",
+      "style": {
+        "navigationBarTitleText": "订单详情",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/evaluation",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/orders/evaluationed",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/serve/fast",
+      "style": {
+        "navigationBarTitleText": "快速服务"
+      }
+    },
+    {
+      "path": "pages/index/enterprise",
+      "style": {
+        "navigationBarTitleText": "实体企业"
+      }
+    },
+    {
+      "path": "pages/index/qlw",
+      "style": {
+        "navigationBarTitleText": "钱来旺"
+      }
+    },
+    {
+      "path": "pages/index/wkDetail",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/merchant/shopManage",
+      "style": {
+        "navigationBarTitleText": "服务商管理"
+      }
+    },
+    {
+      "path": "pages/merchant/goodsManage",
+      "style": {
+        "navigationBarTitleText": "服务管理",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/merchant/addGoods",
+      "style": {
+        "navigationBarTitleText": "添加服务"
+      }
+    },
+    {
+      "path": "pages/merchant/editGoods",
+      "style": {
+        "navigationBarTitleText": "编辑服务"
+      }
+    },
+    {
+      "path": "pages/merchant/ordersManage",
+      "style": {
+        "navigationBarTitleText": "订单管理",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#f8f8f8"
+      }
+    },
+    {
+      "path": "pages/merchant/demandsManage",
+      "style": {
+        "navigationBarTitleText": "需求管理",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#f8f8f8"
+      }
+    },
+    {
+      "path": "pages/realname/activate",
+      "style": {
+        "navigationBarTitleText": "激活医企店铺",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#f8f8f8"
+      }
+    },
+    {
+      "path": "pages/realname/realname",
+      "style": {
+        "navigationBarTitleText": "实名认证",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#f8f8f8"
+      }
+    },
+    {
+      "path": "pages/realname/cardpush",
+      "style": {
+        "navigationBarTitleText": "证件上传",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#f8f8f8"
+      }
+    },
+    {
+      "path": "pages/realname/corporate",
+      "style": {
+        "navigationBarTitleText": "企业认证",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#f8f8f8"
+      }
+    },
+    {
+      "path": "pages/merchant/mAddressDetail",
+      "style": {
+        "navigationBarTitleText": "服务商地址"
+      }
+    },
+    {
+      "path": "pages/merchant/mAddressList",
+      "style": {
+        "navigationBarTitleText": "服务商地址"
+      }
+    },
+    {
+      "path": "pages/merchant/phonesList",
+      "style": {
+        "navigationBarTitleText": "服务商电话"
+      }
+    },
+    {
+      "path": "pages/merchant/addDynamics",
+      "style": {
+        "navigationBarTitleText": "发布动态"
+      }
+    },
+    {
+      "path": "pages/index/cities",
+      "style": {
+        "navigationBarTitleText": "选择城市",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/index/ensure",
+      "style": {
+        "navigationBarTitleText": "医企宝",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/index/scan",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "医企网",
+    "navigationBarBackgroundColor": "#FD5123",
+    "backgroundColor": "#919191"
+  },
+  "tabBar": {
+    "selectedColor": "#FD5123",
+    "color": "#cccccc",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home-active.png"
+      },
+      {
+        "text": "服务",
+        "pagePath": "pages/serve/serve",
+        "iconPath": "static/icons/serve.png",
+        "selectedIconPath": "static/icons/serve-active.png"
+      },
+//      {
+//        "text": "社区",
+//        "pagePath": "pages/serve/fast",
+//        "iconPath": "static/icons/shequ.png",
+//        "selectedIconPath": "static/icons/shequ-active.png"
+//      },
+      {
+        "text": "资讯",
+        "pagePath": "pages/news/news",
+        "iconPath": "static/icons/news.png",
+        "selectedIconPath": "static/icons/news-active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/icons/mine.png",
+        "selectedIconPath": "static/icons/mine-active.png"
+      }
+    ]
+  },
+  "condition": {
+    "current": 0,
+    "list": [
+      {
+        "name": "bright",
+        "path": "pages/merchant/mAddressList"
+      },
+      {
+        "name": "tony",
+        "path": "pages/shops/goodDetail"
+      }
+    ]
+  }
+}
