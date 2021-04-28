@@ -164,7 +164,7 @@
             }
         },
         "uni-app" : {
-            "compilerVersion" : "3.1.4",
+            "compilerVersion" : "3.1.11",
             "control" : "uni-v3",
             "nvueCompiler" : "uni-app",
             "renderer" : "auto",

@@ -1,37 +1,47 @@
 <template>
     <view class="page">
-        <view class="main">
-            <view class="title u-margin-bottom-20">热门服务</view>
-            <view class="flex">
-                <view class="item" @click="go('ll/llai')">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/laolai.png"></u-image>
-                <text>查老赖</text>
+        <view class="services-all">
+            <view class="services-title">热门服务</view>
+            <view class="services-items">
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/laolai.png"></image>
+                    </view>
+                <view class="item-title">查老赖</view>
                 </view>
-                <view class="item" @click="go('index/phone')">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/dianhua.png"></u-image>
-                    <text>找电话</text>
+                <view class="services-item" @click="go('index/phone')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/dianhua.png"></image>
+                    </view>
+                    <view class="item-title">找电话</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/laoban.png"></u-image>
-                    <text>身边老板</text>
+                <view class="services-item" @click="kaifa">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/laoban.png"></image>
+                    </view>
+                    <view class="item-title">身边老板</view>
                 </view>
-                <view class="item" @click="go('index/nearshop')">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/gongsi.png"></u-image>
-                    <text>附近公司</text>
+                <view class="services-item" @click="go('index/nearshop')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/gongsi.png"></image>
+                    </view>
+                    <view class="item-title">附近公司</view>
                 </view>
-                <view class="item" @click="go('index/global')">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/quanqiu.png"></u-image>
-                    <text>全球企业</text>
+                <view class="services-item" @click="go('index/global')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/quanqiu.png"></image>
+                    </view>
+                    <view class="item-title">全球企业</view>
                 </view>
-                <view class="item" @click="go('index/shangbiao')">
+                <view class="services-item" @click="go('index/shangbiao')">
                     <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/shangbiao.png"></u-image>
                     <text>查商标</text>
                 </view>
-                <view class="item" @click="go('index/danger')">
+                <view class="services-item" @click="go('index/danger')">
                     <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/fengxian.png"></u-image>
                     <text>查风险</text>
                 </view>
-                <view class="item" @click="go('index/beian')">
+                <view class="services-item" @click="go('index/beian')">
                     <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/beian.png"></u-image>
                     <text>查备案</text>
                 </view>
@@ -167,27 +177,36 @@
     }
 </style>
 <style lang="scss" scoped>
-    .main{
-        margin:20rpx 0;
-        background: white;
+    .services-all{
+        margin-bottom:20rpx;
+        background: #ffffff;
 
-        .title{
+        .services-title{
             padding:20rpx 20rpx;
-            font-weight: 610;
+            font-weight: bold;
+            font-size: 30rpx;
         }
-        .flex{
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            .item{
-                flex-direction: column;
-                display: flex;
-                align-items: center;
-                flex: 1 0 21%; /* explanation below */
-                margin:10rpx 14rpx;
+        .services-items{
+
+            .services-item{
+                display: inline-block;
+                text-align: center;
+                width: 25%;
+                margin:10rpx 0rpx;
                 height:140rpx;
-                text{
+                .item-img{
+                    margin: 0 auto;
+                    width: 90rpx;
+                    height: 90rpx;
+                    img,image{
+                        display: inline-block;
+                        width: 90rpx;
+                        height: 90rpx;
+                    }
+                }
+                .item-title{
                     padding:10rpx 0rpx;
+                    font-size: 24rpx;
                 }
             }
         }
