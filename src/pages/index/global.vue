@@ -14,7 +14,6 @@
                 ></u-search>
             </view>
         </view>
-        <u-empty class="u-margin-30" text="暂无相关内容" mode="search" :show="emptyShow"></u-empty>
         <view v-if="query==''">
             <view class="enter">
                 <view class="title">及时查询入口</view>
@@ -86,6 +85,8 @@
                 </view>
             </view>
         </view>
+
+        <u-empty class="u-margin-30" text="暂无相关内容" mode="search" :show="emptyShow"></u-empty>
     </view>
 </template>
 
@@ -132,6 +133,9 @@
                     this.emptyShow = false
                 }else{
                     this.emptyShow = true
+                }
+                if(query==''){
+                    this.emptyShow = false
                 }
             },
             Detail(id){

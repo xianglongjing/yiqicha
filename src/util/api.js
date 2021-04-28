@@ -1,5 +1,5 @@
-// const baseUrl = 'http://192.168.8.39:8084/'
-const baseUrl = 'http://yiqicha.com.cn/'
+const baseUrl = 'http://192.168.8.39:8081/'
+// const baseUrl = 'http://yiqicha.com.cn/'
 export const myRequest = (options) => {
   return new Promise((resolve, reject) => {
     uni.request({

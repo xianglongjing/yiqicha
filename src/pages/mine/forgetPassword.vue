@@ -91,7 +91,7 @@
               validator: (rule, value, callback) => {
                 // 上面有说，返回true表示校验通过，返回false表示不通过
                 // this.$u.test.mobile()就是返回true或者false的
-                return this.$u.test.code(value, 6);
+                return this.$u.test.code(value, 4);
               },
               message: '验证码格式错误'
             }
@@ -194,7 +194,7 @@
           }
         })
         uni.navigateTo({
-          url: '/pages/mine/login?phone=' + this.phone
+          url: '/pages/mine/login?phone'
         })
         uni.showToast({
           title: '重置成功,请登录！',

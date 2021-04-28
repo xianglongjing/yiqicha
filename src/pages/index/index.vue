@@ -39,9 +39,10 @@
                                           font-size="26"
                                           padding="2rpx 20rpx"
                                           color="#ffffff"
+                                          @click="hotNewsGo"
                                           :is-circular="false" :list="hotList"></u-notice-bar>
                         </view>
-                        <view class="hot-change" @click="kaifa">
+                        <view class="hot-change" @click="reNews">
                             <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/huanyipi.png"
                                      width="24" height="24"></u-image>
                             <text class="u-margin-left-10">换一批</text>
@@ -112,7 +113,7 @@
               active-color="#E2291D" bg-color="none" inactive-color="#666666"
       ></u-tabs>
       </view>
-      <view v-show="newcurrent===0" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="(item,index) in newsList" :key="index">
+      <view v-show="newcurrent===0" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="item in newsList" :key="item.id">
         <view class="new-l">
           <view class="new-title u-line-2">
             {{item.title}}
@@ -125,7 +126,7 @@
         </view>
         <u-image :src="'http://yiqiwang360.com/'+item.image" width="200" height="120"></u-image>
       </view>
-      <view v-show="newcurrent===1" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="(item,index) in newsList2" :key="index">
+      <view v-show="newcurrent===1" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="item in newsList2" :key="item.id">
         <view class="new-l">
           <view class="new-title">
             {{item.title}}
@@ -138,7 +139,7 @@
         </view>
         <u-image :src="'http://yiqiwang360.com/'+item.image" width="200" height="120"></u-image>
       </view>
-      <view v-show="newcurrent===2" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="(item,index) in newsList3" :key="index">
+      <view v-show="newcurrent===2" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="item in newsList3" :key="item.id">
         <view class="new-l">
           <view class="new-title">
             {{item.title}}
@@ -164,11 +165,12 @@
       // 导航菜单
       currentMenuIndex: '',
         hotList: [
-          '寒雨连江夜入吴',
-          '平明送客楚山孤',
-          '洛阳亲友如相问',
-          '一片冰心在玉壶'
+          // '寒雨连江夜入吴',
+          // '平明送客楚山孤',
+          // '洛阳亲友如相问',
+          // '一片冰心在玉壶'
       ],
+        newsListAll:{},
       menuList: [{
         name: '查企业'
       }, {
@@ -204,6 +206,7 @@
     this.getNewList();
     this.getNewList1();
     this.getNewList2();
+    this.hot()
   },
   onShow () {
   },
@@ -253,6 +256,10 @@
         duration: 2000
       });
       },
+      hotNewsGo(e){
+        console.log(e)
+          this.goto('index/newsDetail?id='+this.newsListAll[e]['id'])
+      },
     menuChange(index) {
       this.current = index;
       // this.pageNum = 1
@@ -260,6 +267,36 @@
       // this.newsList2 = []
       // this.newsList3 = []
     },
+      async reNews () {
+          const { data: res } = await this.$request({
+              method: 'GET',
+              url: 'applets/hotsearch',
+              data: {
+                  type:'home'
+              }
+          })
+          let title={}
+          this.hotList = ''
+          this.newsListAll = res
+          for(let i=0;i<res.length;i++){
+              let thisTitle = [res[i]['title']]
+              this.hotList=[...this.hotList,...thisTitle]
+          }
+      },
+      async hot () {
+          const { data: res } = await this.$request({
+              method: 'GET',
+              url: 'applets/home'
+          })
+          // console.log(res.hotsearch.title)
+          // this.title = res.hotsearch.title
+          let title={}
+          this.newsListAll = res.hotsearch
+          for(let i=0;i<res.hotsearch.length;i++){
+              let thisTitle = [res.hotsearch[i]['title']]
+              this.hotList=[...this.hotList,...thisTitle]
+          }
+      },
     newChange(index) {
       // this.loadStatus = 'loading'
       this.newcurrent = index;

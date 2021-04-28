@@ -10,7 +10,9 @@
                     src="http://images.yiqiwang360.com/yiqicha/fengxian.png"
                     style="width: 100%;height: 100%;"></image>
             <view class="zi">
-                <view class="title">风险信息 一网打尽</view>
+                <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/tg/tg.png"
+                         height="100"
+                         width="450"></u-image>
             </view>
             <view class="sou">
                 <u-search
@@ -109,7 +111,7 @@
             color:white;
             position: absolute;
             top:50rpx;
-            left:30rpx;
+            left:135rpx;
             .title{
                margin-left:170rpx;
                 font-size: 45rpx;

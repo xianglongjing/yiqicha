@@ -7,7 +7,10 @@
             <view class="zi">
 <!--                <uni-nav-bar :status-bar="true" left-icon="back" :fixed="true" :border="false" :shadow="false" @clickLeft="goBack">-->
 <!--                </uni-nav-bar> -->
-                <view class="title">快速识别身边的老赖</view>
+<!--                <view class="title">快速识别身边的老赖</view>-->
+                <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/tg/tg1.png"
+                         height="100"
+                         width="450"></u-image>
             </view>
             <view class="sou">
                 <u-search
@@ -150,7 +153,7 @@
             color:white;
             position: absolute;
             top:50rpx;
-            left:30rpx;
+            left:130rpx;
             .title{
                 margin-left:160rpx;
                 font-size: 45rpx;

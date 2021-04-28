@@ -114,6 +114,30 @@
       }
     },
     {
+      "path": "pages/common/about",
+      "style": {
+        "navigationBarTitleText": "关于我们",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/common/agree",
+      "style": {
+        "navigationBarTitleText": "用户协议",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/common/yinsi",
+      "style": {
+        "navigationBarTitleText": "隐私权政策",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/mine/feedback",
       "style": {
         "navigationBarTitleText": "意见反馈",

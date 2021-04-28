@@ -5,7 +5,10 @@
                     src="http://images.yiqiwang360.com/yiqicha/chashangbiao.png"
                     style="width: 100%;height: 100%;"></image>
             <view class="zi">
-                <view class="title">商标免费查询</view>
+<!--                <view class="title">商标免费查询</view>-->
+                <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/tg/tg.png"
+                         height="100"
+                         width="450"></u-image>
                 <view>先查询再注册 有效提高成功率</view>
             </view>
             <view class="sou">
