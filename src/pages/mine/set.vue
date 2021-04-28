@@ -3,7 +3,7 @@
         <u-gap height="1" bg-color="#f7f7f7"></u-gap>
         <u-cell-group :border="false">
 <!--            <u-cell-item title="资料设置" :arrow="true" @click="goto('my/settingUser',true)"></u-cell-item>-->
-            <u-cell-item title="账号设置" :arrow="true" @click="goto('my/settingAccount',true)"></u-cell-item>
+            <u-cell-item title="账号设置" :arrow="true" @click="goto('common/wordset',true)"></u-cell-item>
         </u-cell-group>
 
         <u-gap height="20" bg-color="#f7f7f7"></u-gap>

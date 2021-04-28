@@ -1,17 +1,18 @@
 <template>
-    <view class="page">
+    <view class="page u-border-top">
+        <u-gap height="20" bg-color="#f7f7f7"></u-gap>
         <view class="white">
-            <u-form :model="form" ref="uForm">
-            <view class="flex u-border-bottom">
-                <input v-model="form.phone"/>
-                <view>
-                    <u-button shape="circle" :customStyle="code" @click="getCode">{{sendMsgText}}</u-button>
-                    <u-verification-code ref="uCode" @change="codeChange"></u-verification-code>
+            <u-form :model="form" ref="aForm">
+                <view class="flex u-border-bottom">
+                    <input v-model="storage.phone" disabled/>
+                    <view>
+                        <u-button shape="circle" :customStyle="code" @click="getCode">{{sendMsgText}}</u-button>
+                        <u-verification-code ref="uCode" @change="codeChange"></u-verification-code>
+                    </view>
                 </view>
-            </view>
-            <view>
-                <u-input v-model="form.code" placeholder="请输入验证码" placeholder-style="color:#B4B5B5"/>
-            </view>
+                <view>
+                    <u-input v-model="form.code" placeholder="请输入验证码" placeholder-style="color:#B4B5B5"/>
+                </view>
             </u-form>
         </view>
             <view class="pass u-margin-top-30">
@@ -22,7 +23,6 @@
                     </u-form-item>
                 </u-form>
             </view>
-
         <u-button shape="square" size="default" :ripple="true" :custom-style="customStyle" ripple-bg-color="#ff8c6d"
                   @click="submit">确定</u-button>
     </view>
@@ -32,8 +32,9 @@
     export default {
         data(){
             return {
+                storage: {
+                },
                 form:{
-                    phone:'19953932651',
                     code:'',
                     password:''
                 },
@@ -64,7 +65,7 @@
                             validator: (rule, value, callback) => {
                                 // 上面有说，返回true表示校验通过，返回false表示不通过
                                 // this.$u.test.mobile()就是返回true或者false的
-                                return this.$u.test.code(value, 6);
+                                return this.$u.test.code(value, 4);
                             },
                             message: '验证码格式错误'
                         }
@@ -101,13 +102,7 @@
                 this.storage.phone = uni.getStorageSync('phone')
             },
             getCode() {
-                this.$refs.aForm.validate(valid => {
-                    if (valid) {
                         this.validateCode();
-                    } else {
-                        console.log('验证失败');
-                    }
-                });
                 // this.$u.toast('请输入正确的手机号码')
                 // this.validatePhone()
                 /*if(!this.cate) return this.$u.toast('请输入正确的手机号码')
@@ -146,13 +141,13 @@
                     method: 'POST',
                     url: 'applets/forget',
                     data: {
-                        fphone: this.form.phone,
+                        fphone: uni.getStorageSync('phone'),
                         password: this.form.password,
                         code: this.form.code
                     }
                 })
                 uni.navigateTo({
-                    url: '/pages/mine/login?phone=' + this.phone
+                    url: '/pages/mine/login'
                 })
                 uni.showToast({
                     title: '重置成功,请登录！',
@@ -160,6 +155,9 @@
                 })
             },
             submit() {
+                if (this.code || this.password== '') {
+                    return this.$u.toast('请完整填写内容')
+                }
                 this.$refs.aForm.validate(valid => {
                     if (valid) {
                         this.$refs.uForm.validate(valid => {

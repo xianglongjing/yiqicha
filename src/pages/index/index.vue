@@ -57,7 +57,7 @@
       <view class="ty-zong">
       <view class="types-con" @click="go('ll/llai')">
         <u-image src="https://yiqiwang360.com/images/yiqicha/laolai.png" mode="aspectFill" height="80" width="80"></u-image>
-        <text>查老赖</text>
+        <text>查失信</text>
       </view>
       <view class="types-con" @click="go('index/phone')">
         <u-image src="https://yiqiwang360.com/images/yiqicha/dianhua.png" mode="aspectFill" height="80" width="80"></u-image>

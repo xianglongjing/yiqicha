@@ -19,19 +19,17 @@
                         bg-color="#f8f8f8"
                         input-align="left" height="80"
                         placeholder="请输入商标名称，申请号，申请人信息" shape="square"
-                        v-model="query"
                 ></u-search>
-                <view class="shops">
-                    <view style="font-style: oblique;font-weight: 620"> 热搜</view>
-                    <view class="shop">
-                        <text>一企查</text>
-                    </view>
-                    <view class="shop">
-                        <text>医企管家</text>
-                    </view>
-                    <view class="shop">
-                        <text>医企网</text>
-                    </view>
+                <view style="text-align: left;margin:40rpx 0 10rpx;">热门搜索</view>
+                <view class="hot-laolai">
+                    <scroll-view class="scroll-view_H" scroll-x="true">
+                        <view class="u-margin-top-10">
+                            <view class="lai-item" @click="detail" v-for="item in hot" :key="item.id">
+                                <view class="lai-name">{{item.name}}</view>
+                            </view>
+                        </view>
+
+                    </scroll-view>
                 </view>
             </view>
         </view>
@@ -62,14 +60,33 @@
             return {
                 search_btn:{
                     color:'white'
-                }
+                },
+                hot:{}
             }
 
+        },
+        onLoad(){
+            this.hotsearch()
         },
         methods:{
             go(){
                 uni.navigateTo({
                     url:'/pages/shangbiao/search'
+                })
+            },
+            async hotsearch () {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    url: 'applets/hotsearch',
+                    data: {
+                        type:'brand'
+                    }
+                })
+                this.hot =res
+            },
+            detail(id){
+                uni.navigateTo({
+                    url:'/pages/shangbiao/sbDetail?id='+id
                 })
             }
         }
@@ -82,6 +99,20 @@
     }
     .red{
         color:#E75D54;
+    }
+    .scroll-view_H {
+        /* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
+        white-space: nowrap;
+        width: 100%;
+    }
+    .scroll-view-item_H {
+        display: inline-block;
+        width: 35%;
+        height: 300rpx;
+        border: 1rpx solid;
+        text-align: center;
+        font-size: 36rpx;
+        margin: 2%  1% 2% 1%;
     }
     .redbg{
         /*background-size: 250rpx 200rpx;*/
@@ -108,17 +139,29 @@
             left:35rpx;
             right:35rpx;
         }
+
+        .hot-laolai{
+            white-space: nowrap;
+            width: 100%;
+            .lai-item{
+                display: inline-block;
+                border-radius: 25rpx;
+                padding: 10rpx 20rpx;
+                text-align: center;
+                margin-right: 20rpx;
+                background-color: rgba(255,255,255,0.2);
+                line-height: 30rpx;
+                .lai-name{
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
         .shops{
-            margin:40rpx 0;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
             .shop{
+                width:100%;
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
-                align-items: center;
                 text{
                     border-radius: 25rpx;
                     padding:10rpx 15rpx;

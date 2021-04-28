@@ -319,10 +319,17 @@
       }
     },
     {
+      "path": "pages/common/shopconfirmxieyi",
+      "style": {
+        "navigationBarTitleText": "企业认证协议",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
       "path": "pages/ll/llai",
       "style": {
         "navigationBarBackgroundColor": "#CF2F1D",
-        "navigationBarTitleText": "查老赖",
+        "navigationBarTitleText": "查失信",
         "navigationBarTextStyle": "white"
       }
     },

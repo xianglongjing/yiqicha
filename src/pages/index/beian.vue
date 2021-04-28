@@ -19,16 +19,17 @@
                         v-model="query"
                 ></u-search>
                 <view style="text-align: left;margin:40rpx 0 10rpx;">热门搜索</view>
-                <view class="shops">
-                    <view class="shop">
-                        <text>临沂市铭远企业管理服务有限公司</text>
-                    </view>
-                    <view class="shop u-margin-left-25">
-                        <text>医企管家</text>
-                    </view>
-                    <view class="shop">
-                        <text>http://yiqiwang360.com/</text>
-                    </view>
+                <view class="hot-laolai">
+                    <scroll-view class="scroll-view_H" scroll-x="true">
+                        <view class="u-margin-top-10">
+                            <view class="lai-item" v-for="item in hot" :key="item.id" @click="detail">
+<!--                                <view class="lai-img">-->
+<!--                                    <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>-->
+<!--                                </view>-->
+                                <view class="lai-name">{{item.name}}</view>
+                            </view>
+                        </view>
+                    </scroll-view>
                 </view>
             </view>
         </view>
@@ -63,10 +64,31 @@
             return {
                 search_btn:{
                     color:'white'
+                },
+                hot:{
+
                 }
             }
         },
+        onLoad(){
+            this.hotsearch()
+        },
         methods:{
+            async hotsearch () {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    url: 'applets/hotsearch',
+                    data: {
+                        type:'record'
+                    }
+                })
+                this.hot =res
+            },
+            // detail(id){
+            //     uni.navigateTo({
+            //         url:'/pages/shangbiao/sbDetail?id='+id
+            //     })
+            // },
             go(){
                 uni.navigateTo({
                     url:'/pages/index/bansearch'
@@ -108,21 +130,27 @@
             left:35rpx;
             right:35rpx;
         }
-        .shops{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .shop{
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                border-radius: 5rpx;
-                padding:10rpx 20rpx;
-                margin:10rpx 0 10rpx 0;
+        .hot-laolai{
+            white-space: nowrap;
+            width: 100%;
+            .lai-item{
+                display: inline-block;
+                border-radius: 25rpx;
+                padding: 10rpx 20rpx;
+                margin-right: 20rpx;
                 background-color: rgba(255,255,255,0.2);
-                text{
-                    margin-left:10rpx;
+                line-height: 30rpx;
+                .lai-img{
+                    display: inline-block;
+                    width: 60rpx;
+                    height: 60rpx;
+                    font-size: 0;
+                    vertical-align: middle;
+                }
+                .lai-name{
+                    display: inline-block;
+                    /*margin-left:20rpx;*/
+                    vertical-align: middle;
                 }
             }
         }

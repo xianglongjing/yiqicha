@@ -10,7 +10,7 @@
                         active-color="#E2291D" bg-color="none" inactive-color="#666666"
                 ></u-tabs>
             </view>
-            <view v-show="newcurrent===0" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="(item,index) in newsList" :key="index">
+            <view v-show="newcurrent===0" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="item in newsList" :key="item.id">
                 <view class="new-l">
                     <view class="new-title">
                         {{item.title}}
@@ -23,7 +23,7 @@
                 </view>
                 <u-image :src="'http://yiqiwang360.com/'+item.image" width="200" height="120"></u-image>
             </view>
-            <view v-show="newcurrent===1" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="(item,index) in newsList2" :key="index">
+            <view v-show="newcurrent===1" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="item in newsList2" :key="item.id">
                 <view class="new-l">
                     <view class="new-title">
                         {{item.title}}
@@ -36,7 +36,7 @@
                 </view>
                 <u-image :src="'http://yiqiwang360.com/'+item.image" width="200" height="120"></u-image>
             </view>
-            <view v-show="newcurrent===2" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="(item,index) in newsList3" :key="index">
+            <view v-show="newcurrent===2" class="new-con u-border-bottom" @click="newdetail(item.id)" v-for="item in newsList3" :key="item.id">
                 <view class="new-l">
                     <view class="new-title">
                         {{item.title}}

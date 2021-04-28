@@ -76,7 +76,7 @@
             align-items: center;
             .image{
                 position:absolute;
-                margin-top: 80rpx;
+                margin-top: 10rpx;
             }
             .camera{
                 position: relative;

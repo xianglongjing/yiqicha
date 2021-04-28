@@ -166,11 +166,11 @@
         methods:{
             async getNewList (id) {
                 await this.$request({
+                    url: 'applets/trademarkdetail',
                     method: 'GET',
                     data: {
                         id:id
                     },
-                    url: 'applets/trademarkdetail'
                 }).then(res=>{
                     console.log(res.data)
                     this.newsList = res.data
