@@ -83,13 +83,15 @@
                     this.newsList = res.data
                 })
             },
+            // 拨打客服电话
+            callPhone () {
+                uni.makePhoneCall({
+                    phoneNumber: '4000361717'
+                })
+            },
+
         },
-        // 拨打客服电话
-        callPhone () {
-            uni.makePhoneCall({
-                phoneNumber: '4000361717'
-            })
-        },
+
 
     }
 </script>

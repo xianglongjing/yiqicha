@@ -11,6 +11,21 @@ Vue.use(uView)
 Vue.mixin(mpShare)
 Vue.config.productionTip = false
 Vue.prototype.$request = myRequest
+//页面跳转
+Vue.prototype.goto = function(path, login = false){
+  if (login === true) {
+    if (this.storage.token === '') {
+      return uni.showToast({
+        title: '请先登录',
+        icon: 'none',
+        duration: 1500
+      })
+    }
+  }
+  uni.navigateTo({
+    url: '/pages/' + path
+  })
+};
 Vue.filter('formatDate', (date) => {
   const newDate = new Date(date * 1000)
   const year = newDate.getFullYear()

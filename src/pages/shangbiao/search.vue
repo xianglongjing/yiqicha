@@ -41,20 +41,6 @@
     </view>
         <u-empty class="u-margin-30" text="暂无相关内容" mode="search" :show="emptyShow"></u-empty>
         <view class="white">
-<!--            <uni-nav-bar :status-bar="true" left-icon="back" :fixed="true" :border="false" :shadow="false" @clickLeft="goBack">-->
-<!--&lt;!&ndash;                <view class="inline-block u-border-bottom" style="width:100%;padding:20rpx">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <u-search&ndash;&gt;-->
-<!--&lt;!&ndash;                            :action-style="search_btn"&ndash;&gt;-->
-<!--&lt;!&ndash;                            :animation="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                            @custom="goSearch"&ndash;&gt;-->
-<!--&lt;!&ndash;                            @search="goSearch"&ndash;&gt;-->
-<!--&lt;!&ndash;                            bg-color="#f8f8f8"&ndash;&gt;-->
-<!--&lt;!&ndash;                            input-align="left" style="width: 560rpx;height:30rpx; padding:30rpx 0;background: #f8f8f8"&ndash;&gt;-->
-<!--&lt;!&ndash;                            placeholder="请输入商标名称" shape="square"&ndash;&gt;-->
-<!--&lt;!&ndash;                            v-model="keyword"&ndash;&gt;-->
-<!--&lt;!&ndash;                    ></u-search>&ndash;&gt;-->
-<!--&lt;!&ndash;                </view>&ndash;&gt;-->
-<!--            </uni-nav-bar>-->
         </view>
         <view class="infor" v-for="item in goodsList" :key="item.id" @click="detail(item.id)">
             <!--            <view class="num">为你找到 <text class="red">72</text>个商标</view>-->
@@ -124,7 +110,7 @@
             async getSearchList () {
                 const { data: res } = await this.$request({
                     url: 'applets/trademark',
-                    methods: 'POST',
+                    method: 'POST',
                     data: {
                         keyword: this.keyword,
                         page: 1

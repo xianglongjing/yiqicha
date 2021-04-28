@@ -15,7 +15,7 @@
 					</u-form-item>
 				</u-form>
 				<u-form :model="form" ref="uForm">
-					<u-form-item left-icon="phone" style="color:#B4B5B5;font-size:40rpx" prop="code">
+					<u-form-item left-icon="email" style="color:#B4B5B5;font-size:40rpx" prop="code">
 						<u-input v-model="form.code" placeholder="请输入验证码" placeholder-style="padding-left:20rpx;color:#B4B5B5"/>
 						<view style="position: absolute;left:70%;top:24rpx">
 							<u-button shape="circle" :customStyle="code" @click="getCode">{{sendMsgText}}</u-button>
@@ -91,7 +91,7 @@
 							validator: (rule, value, callback) => {
 								// 上面有说，返回true表示校验通过，返回false表示不通过
 								// this.$u.test.mobile()就是返回true或者false的
-								return this.$u.test.code(value, 6);
+								return this.$u.test.code(value, 4);
 							},
 							message: '验证码格式错误'
 						}
