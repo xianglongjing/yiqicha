@@ -1,0 +1,346 @@
+<template>
+    <view class="page">
+        <uni-nav-bar :status-bar="true" left-icon="back" :fixed="true" :border="false" :shadow="false" @clickLeft="goBack">
+            <view slot="default">
+                <view class="search-box">
+                    <view class="inline-block" style="width: 500rpx">
+                        <u-search
+                                :action-style="search_btn"
+                                :animation="true"
+                                @custom="goSearch"
+                                @search="goSearch"
+                                bg-color="#f8f8f8"
+                                input-align="left"
+                                placeholder="输入老板信息，如马云“杭州”" shape="square"
+                                v-model="keyword"
+                        ></u-search>
+                    </view>
+                </view>
+            </view>
+        </uni-nav-bar>
+        <view v-if="keyword==''">
+        <view class="hot">
+            <view class="title u-margin-bottom-20 u-font-32">热门搜索</view>
+            <view class="con">
+                <view class="person">
+                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                    <text>马云</text>
+                </view>
+                <view class="person">
+                    <u-image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201705%2F28%2F20170528222839_i4vmf.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621149843&t=d6336de6daf48195379db1ccae09d2a2" width="60" height="60"></u-image>
+                    <text>董明珠</text>
+                </view>
+                <view class="person">
+                    <u-image src="https://img2.baidu.com/it/u=1004953359,2131419137&fm=11&fmt=auto&gp=0.jpg" width="60" height="60"></u-image>
+                    <text>任正非</text>
+                </view>
+                <view class="person">
+                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                    <text>雷军</text>
+                </view>
+                <view class="person">
+                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                    <text>马化腾</text>
+                </view>
+                <view class="person">
+                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                    <text>李亚鹏</text>
+                </view>
+                <view class="person">
+                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                    <text>王非</text>
+                </view>
+                <view class="person">
+                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                    <text>李彦宏</text>
+                </view>
+                <view class="person">
+                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                    <text>王健林</text>
+                </view>
+            </view>
+        </view>
+        <view class="boss">
+            <view class="u-margin-bottom-20 u-font-32">临沂热门老板</view>
+            <view class="desc">
+                <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                <view class="desc-r">
+                   <view class="name">
+                       <view class="u-font-30">张三</view>
+                       <view class="num">他有15家公司</view>
+                   </view>
+                    <view>自身风险20条 周边风险812条 预警提醒122条</view>
+                </view>
+            </view>
+            <view class="desc">
+                <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
+                <view class="desc-r">
+                    <view class="name">
+                        <view class="u-font-30">李四</view>
+                        <view class="num">他有15家公司</view>
+                    </view>
+                    <view>自身风险20条 周边风险812条 预警提醒122条</view>
+                </view>
+            </view>
+            <view class="desc">
+                <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="50" height="50"></u-image>
+                <view class="desc-r">
+                    <view class="name">
+                        <view class="u-font-30">王小五</view>
+                        <view class="num">他有15家公司</view>
+                    </view>
+                    <view>自身风险20条 周边风险812条 预警提醒122条</view>
+                </view>
+            </view>
+        </view>
+        </view>
+        <view class="company" :key="item.id" v-for="item in goodsList">
+            <view class="com-con">
+                <view class="com-top u-line-1 u-border-bottom u-padding-bottom-30">
+                    <u-image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/beian.png" width="90" height="90"></u-image>
+                    <view class="con-r">
+                        <view class="name u-margin-bottom-10">{{item.corporate.cpyname}}</view>
+                        <view class="u-margin-top-10 u-margin-bottom-10">
+                            <text class="red">在业</text>
+                        </view>
+                        <view class="shop-bo">
+                            <view class="bo-item u-border-right">
+                                <text class="title">法人代表</text>
+                                <text style="color:#E75D54">{{item.name}}</text>
+                            </view>
+                            <view class="bo-item u-border-right">
+                                <text class="title">注册资金</text>
+                                <text>{{item.corporate.rtdcapital? item.corporate.rtdcapital:'—'}}</text>
+                            </view>
+                            <view class="bo-item">
+                                <text class="title">成立时间</text>
+                                <text>{{item.corporate.ebhtdate? item.corporate.ebhtdate:'—'}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="brand">
+                    <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/lianjie.png" width="30" height="30"></u-image>
+                    <view class="u-margin-left-10">
+                        法人代表：
+                        <text class="red u-margin-left-10">{{item.name}}</text>
+                    </view>
+<!--                    <view class="shu">|</view>-->
+<!--                    <view class="u-margin-left-10">-->
+<!--                        高管：-->
+<!--                        <text class="red">{{item.name}}</text>-->
+<!--                    </view>-->
+                </view>
+            </view>
+        </view>
+        <u-loadmore
+                color="#999999"
+                font-size="24"
+                margin-bottom="50"
+                margin-top="50"
+                :status="loadStatus"
+                @loadmore="getSearchList"
+                v-if="!emptyShow"
+        ></u-loadmore>
+    </view>
+</template>
+
+<script>
+    export default {
+        data(){
+            return {
+                search_btn:{
+                    color:'#000'
+                },
+                keyword:'',
+                page:1,
+                pageNum: 1,
+                loadStatus: 'nomore',
+                goodsList:[]
+            }
+        },
+        // 到底部
+        onReachBottom () {
+            if (this.goodsList.length < this.pageNum * 10) return this.loadStatus = 'nomore'
+            this.pageNum++
+            this.getSearchList()
+        },
+        // 下拉刷新
+        onPullDownRefresh () {
+            this.pageNum = 1
+            this.goodsList = []
+            this.getSearchList(() => {
+                uni.stopPullDownRefresh()
+            })
+        },
+        methods:{
+            goSearch(){
+                this.getSearchList()
+            },
+            onPullDownRefresh() {
+                this.page = 1
+                this.goSearch()
+            },
+            async getSearchList () {
+                const { data: res } = await this.$request({
+                    method:'POST',
+                    url: 'applets/boss',
+                    data: {
+                        keyword: this.keyword,
+                        page:this.pageNum
+                    }
+                })
+                console.log(res)
+                // this.goodsList = res
+                this.goodsList = [...this.goodsList, ...res]
+                if (this.goodsList.length < res.total) {
+                    this.loadStatus = 'loadmore'
+                }
+                // this.trademark = res.trademark
+                // this.casesList = res.data.cases
+                // this.qualityList = res.data.quality
+                // this.personList = res.data.person
+                // this.discussList = res.data.discuss
+                // if (res.data.content) {
+                //     this.newsList = res.data.content
+                // } else {
+                //     this.newsList = []
+                // }
+                // //判断全部为空的吸星大法
+                let dataNum = res.length
+                console.log(dataNum)
+                if (dataNum>=1){
+                    this.emptyShow = false
+                }else{
+                    this.emptyShow = true
+                }
+            },
+            goBack(){
+                uni.navigateBack({
+                    delta: 1
+                });
+            },
+        }
+    }
+</script>
+<style>
+    page{
+        background: #f8f8f8;
+    }
+</style>
+<style lang="scss" scoped>
+.hot{
+    background: white;
+    padding:30rpx;
+    margin:20rpx auto;
+    width:95%;
+    .con{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .person{
+            width:30%;
+            padding:18rpx;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            background: #F8F6F7;
+            margin:20rpx 15rpx 0 0;
+            text{
+                width:auto;
+                margin-left: 20rpx;
+            }
+        }
+    }
+}
+    .boss{
+        background: white;
+        padding:30rpx;
+        margin:20rpx auto;
+        width:95%;
+        .desc{
+            margin:20rpx 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .desc-r{
+                margin-left:30rpx;
+                flex:1;
+                .name{
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom:10rpx;
+                    justify-content: space-between;
+                    .num{
+                        color:#A1A1A1;
+                        font-size: 25rpx;
+                    }
+                }
+            }
+        }
+    }
+.company{
+    margin:30rpx;
+    .com-con{
+        margin:20rpx 0;
+        background: white;
+        padding:20rpx;
+        .brand{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding:20rpx 0;
+            .shu{
+                color:#E1E1E1;
+                margin:0 20rpx;
+            }
+        }
+        .com-top{
+            display: flex;
+            flex-direction: row;
+            .con-r{
+                flex:1;
+                margin-left:30rpx;
+                .name{
+                    font-size: 30rpx;
+                    font-weight: 540;
+                }
+                .red{
+                    padding:8rpx;
+                    font-size: 20rpx;
+                    background: #FCEAE9;
+                }
+                .lv{
+                    border-radius: 5rpx;
+                    margin-left:10rpx;
+                    color:#23AB7B;
+                    background: #DFF8F2;
+                    padding:8rpx;
+                    font-size: 20rpx;
+                }
+                .shop-bo{
+                    margin-top:20rpx;
+                    /*display: flex;*/
+                    /*flex-direction: row;*/
+                    /*align-items: center;*/
+                    /*justify-content: center;*/
+                    flex-wrap: wrap;
+                    .title{
+                        line-height:50rpx;
+                        color:#B8B8B8;
+                    }
+                    .bo-item{
+                        font-size: 25rpx;
+                        .title{
+                            margin-right:40rpx;
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+
+}
+</style>

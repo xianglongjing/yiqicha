@@ -1,54 +1,42 @@
 <template>
 	<view class="page">
-		<view class="login_logo">
-			<image src="https://yiqiwang360.com/images/app/logo.png" mode="aspectFit"></image>
-		</view>
 		<view class="content">
-			<view class="cu-bar">
-				<view class="action sub-title" style="margin-left: -13rpx">
-					<text class="title text-black">登录</text>
-					<text class="bg-red" style="width:2.5rem;left:0.1em;height:0.4em;bottom:0.2em"></text>
+			<view>
+				<view style="margin-left: -13rpx">
+					<text class="title text-black ">欢迎来到一企查</text>
+					<view class="u-margin-top-30" style="color:#B4B5B5;font-size:33rpx;font-weight:650">登录</view>
 					<!-- last-child选择器-->
 				</view>
 			</view>
-			<view class="login-box u-margin-top-30">
+			<view class="login-box u-margin-top-50 u-margin-left-30">
 				<u-form :model="form" ref="uForm">
-					<u-form-item label="帐 号" style="white-space: nowrap">
-						<u-input v-model="form.phone" placeholder="输入你的帐号" />
+					<u-form-item left-icon="phone" style="color:#B4B5B5;font-size:40rpx">
+						<u-input v-model="form.phone" placeholder="请输入您的手机号" placeholder-style="padding-left:20rpx;color:#B4B5B5"/>
 					</u-form-item>
-					<u-form-item label="密 码" style="white-space: nowrap">
-						<u-input v-model="form.password" password="true" type="password" label="密码" :password-icon="passwordIcon"
-						 placeholder="输入你的密码"/>
+					<u-form-item left-icon="lock" style="color:#B4B5B5;font-size:40rpx">
+						<u-input v-model="form.password"  placeholder-style="padding-left:20rpx;color:#B4B5B5" password="true" type="password" label="密码" :password-icon="passwordIcon"
+						 placeholder="请输入您的密码"/>
 					</u-form-item>
 				</u-form>
-				<view class="u-margin-top-60">
+				<view class="u-margin-top-20">
 					<u-row gutter="16" justify="space-between">
 						<u-col class="login-btn">
-							<u-button shape="circle" size="default" :ripple="true" :custom-style="customStyle" ripple-bg-color="#ff8c6d"
+							<u-button shape="square" size="default" :ripple="true" :custom-style="customStyle" ripple-bg-color="#ff8c6d"
 							 @click="login">登录</u-button>
 						</u-col>
 					</u-row>
-					<view>
-						<view class="register u-margin-top-50">
-							<span @click="goto('mine/register')"> 注册账号</span>
-							<span class="cuIcon-right"></span>
-							<span class="margin-left margin-right">|</span>
-							<span @click="goForget">忘记密码？</span>
-						</view>
+					<view class="register">
+						<view @click="goto('mine/register')">点击注册</view>
+						<view @click="goForget" class="forget">忘记密码？</view>
+<!--						<view class="register u-margin-top-50">-->
+<!--							<span @click="goto('mine/register')"> 注册账号</span>-->
+<!--							<span class="cuIcon-right"></span>-->
+<!--							<span class="margin-left margin-right">|</span>-->
+<!--							<span @click="goForget">忘记密码？</span>-->
+<!--						</view>-->
 					</view>
 				</view>
 			</view>
-		</view>
-		<view class="login-tool">
-			<u-divider>使用微信登录</u-divider>
-			<view class="login-wx">
-				<image src="https://yiqiwang360.com/images/app/weixin.png" mode="aspectFit" class="u-margin-top-50" @click="wxLogin"></image>
-			</view>
-		</view>
-		<view class="hint">
-			注册即代表您同意
-			<text class="link" @click="goto('common/protocols')">医企网 《用户协议》、</text>
-			<text class="link" @click="goto('common/privacy')">《隐私政策》，</text>并授权使用您的账号信息（如昵称、头像、联系地址）以便您统一管理
 		</view>
 		<view class="buttom">
 			<view class="loginType"></view>
@@ -68,7 +56,7 @@
 				customStyle: {
 					color: '#ffffff',
 					backgroundColor: '#FF2E0F',
-					width: '85%'
+					width: '98%'
 				},
 				regBtnStyle: {
 					marginTop: '20px', // 注意驼峰命名，并且值必须用引号包括，因为这是对象
@@ -96,29 +84,29 @@
 			}
 		},
 		methods: {
-			async wxLogin() {
-				uni.login({
-					provider: 'weixin',
-					success: function (loginRes) {
-						console.log(loginRes)
-				}
-				})
-				const {
-					data: res
-				} = await this.$request({
-					method: 'POST',
-					url: 'login',
-					data: {
-						code:this.code
-					}
-				})
-				// console.log(res)
-				this.$u.toast('登录成功！')
-				// 将登录成功之后的token,uid保存到客户端的storage中
-				uni.setStorageSync('token', res.data.token)
-				uni.setStorageSync('uid', res.data.uid)
-				uni.setStorageSync('code', res.data.code)
-			},
+			// async wxLogin() {
+			// 	uni.login({
+			// 		provider: 'weixin',
+			// 		success: function (loginRes) {
+			// 			console.log(loginRes)
+			// 	}
+			// 	})
+			// 	const {
+			// 		data: res
+			// 	} = await this.$request({
+			// 		method: 'POST',
+			// 		url: 'login',
+			// 		data: {
+			// 			code:this.code
+			// 		}
+			// 	})
+			// 	// console.log(res)
+			// 	this.$u.toast('登录成功！')
+			// 	// 将登录成功之后的token,uid保存到客户端的storage中
+			// 	uni.setStorageSync('phone', res.data.phone)
+			// 	uni.setStorageSync('password', res.data.password)
+			// 	// uni.setStorageSync('code', res.data.code)
+			// },
 			// wxLogin(){
 			// 	let that=this
 			// 	uni.login({
@@ -141,29 +129,27 @@
 			// },
 
 			async login() {
-				if (this.form.phone === '' || this.form.password === '') return this.$u.toast('请输入手机号码和密码')
-				const {
-					data: res
-				} = await this.$request({
+				if (this.form.phone === '' || this.form.password === '') return this.$u.toast('请输入手机号码或密码')
+				// if (this.form.password === '') return this.$u.toast('请输入密码')
+				const res = await this.$request({
 					method: 'POST',
-					url: 'login',
+					url: 'applets/login',
 					data: {
-						loginame: this.form.phone,
+						phone: this.form.phone,
 						password: this.form.password
 					}
 				})
-				// console.log(res)
-				this.$u.toast('登录成功！')
 				// 将登录成功之后的token,uid保存到客户端的storage中
+				uni.setStorageSync('phone', res.data.phone)
 				uni.setStorageSync('token', res.data.token)
-				uni.setStorageSync('uid', res.data.uid)
-				uni.setStorageSync('info', res.data.infor)
+				uni.setStorageSync('id', res.data.id)
+				uni.setStorageSync('info', res.data)
 				uni.switchTab({
 					url: '/pages/mine/mine',
 					success: function(e) {
-						var page = getCurrentPages().pop();
+						/*var page = getCurrentPages().pop();
 						if (page == undefined || page == null) return
-						page.onLoad()
+						page.onLoad()*/
 					}
 				})
 			},
@@ -186,11 +172,15 @@
 	}
 </script>
 
-<style lang="scss" scoped>
-	.page {
-		background: #ffffff;
-		font-size: 28rpx;
 
+<style lang="scss" scoped>
+	page{
+		background: url("http://images.yiqiwang360.com/yiqicha/zhuce.jpg");
+		background-size: cover;
+	}
+	.page {
+		font-size: 28rpx;
+        padding:100rpx 0;
 		.login-tool {
 			width: 600rpx;
 			margin: 100rpx auto 0;
@@ -199,12 +189,11 @@
 
 		.content {
 			width: 600rpx;
-			margin: 40rpx auto 0;
-
+			margin: 100rpx auto 0;
 			.title {
 				text-align: center;
-				font-size: 50rpx;
-				font-weight: 500;
+				font-size: 47rpx;
+				font-weight: 650;
 				letter-spacing: 8rpx;
 			}
 
@@ -278,17 +267,19 @@
 		}
 		.login-wx {
 			text-align: center;
-
 			image {
 				width: 70rpx;
 				height: 70rpx;
 			}
-
 		}
-
 		.register {
-			color: #C7573F;
+			display: flex;
+			flex-direction: row;
+			padding:50rpx 30rpx;
+			justify-content: space-between;
+			.forget{
+				color:#B4B5B5;
+			}
 		}
-
 	}
 </style>

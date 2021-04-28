@@ -3,73 +3,210 @@
     "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
   },
   "pages": [
-//    {
-//      "path": "pages/index/init",
-//      "style": {
-//        "navigationBarTitleText": "欢迎使用",
-//        "titleNView": false,
-//        "app-plus": {
-//          "bounce": "none"
-//        }
-//      }
-//    },
-//    {
-//      "path": "pages/index/guide",
-//      "style": {
-//        "navigationBarTitleText": "欢迎使用",
-//        "titleNView": false,
-//        "app-plus": {
-//          "bounce": "none"
-//        }
-//      }
-//    },
+
+
     {
       "path": "pages/index/index",
       "style": {
         "navigationBarTextStyle": "black",
         "navigationStyle": "custom",
-        "navigationBarTitleText": "医企网",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#ffffff"
+        "navigationBarTitleText": "一企查",
+        "enablePullDownRefresh": true
       }
     },
     {
-      "path": "pages/index/citychange",
+      "path": "pages/common/account",
       "style": {
-        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "账号管理",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/common/wordset",
+      "style": {
+        "navigationBarTitleText": "密码设置",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/boss",
+      "style": {
         "navigationStyle": "custom",
-        "navigationBarTitleText": "城市切换",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }
     },
     {
-      "path": "pages/index/join",
+      "path": "pages/index/shangbiao",
       "style": {
-        "navigationBarTitleText": "快速入驻",
+        "navigationBarTitleText": "查商标",
+        "backgroundColor": "#FD5123",
+        "navigationBarBackgroundColor": "#CF2F1D",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/index/square",
+      "style": {
+        "navigationBarTitleText": "资讯广场",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/index/nearshop",
+      "style": {
+        "navigationBarTitleText": "附近的公司",
+        "enablePullDownRefresh": true,
+        "navigationBarTextStyle":"black",
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/global",
+      "style": {
+        "navigationBarTitleText": "全球企业",
+        "enablePullDownRefresh": true,
+        "navigationBarTextStyle":"black",
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/newsDetail",
+      "style": {
+        "navigationBarTitleText": "新闻详情",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }
     },
     {
-      "path": "pages/index/404",
+      "path": "pages/mine/personal",
       "style": {
-        "navigationBarTitleText": "医企网",
+        "navigationBarTitleText": "个人资料",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }
     },
     {
-      "path": "pages/index/chairman",
+      "path": "pages/mine/myorder",
       "style": {
-        "navigationBarTitleText": "董事长致辞",
+        "navigationBarTitleText": "我的订单",
+        "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }
     },
     {
-      "path": "pages/index/culture",
+      "path": "pages/mine/collect",
       "style": {
-        "navigationBarTitleText": "企业文化",
+        "navigationBarTitleText": "我的收藏",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/code",
+      "style": {
+        "navigationBarTitleText": "我的兑换码",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/feedback",
+      "style": {
+        "navigationBarTitleText": "意见反馈",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/control",
+      "style": {
+        "navigationBarTitleText": "我的监控",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/confirm/confirm",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "认证管理",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/confirm/form",
+      "style": {
+        "navigationBarTitleText": "填写企业认证信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/follow",
+      "style": {
+        "navigationBarTitleText": "我的关注",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/call",
+      "style": {
+        "navigationBarTitleText": "联系我们",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/toufollow",
+      "style": {
+        "navigationBarTitleText": "我关注的头条",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/set",
+      "style": {
+        "navigationBarTitleText": "设置",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/mygroup",
+      "style": {
+        "navigationBarTitleText": "我的分组",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/login",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/register",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/mine/forgetPassword",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }
     },
@@ -82,27 +219,888 @@
       }
     },
     {
-      "path": "pages/serve/serve",
+      "path": "pages/index/danger",
       "style": {
-        "navigationBarTitleText": "服务",
-        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "查风险",
+        "enablePullDownRefresh": true,
+        "navigationBarTextStyle":"white",
+        "navigationBarBackgroundColor": "#CF2F1D",
+        "backgroundColor": "#D12815"
+      }
+    },
+    {
+      "path": "pages/danger/search",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#D12815"
+      }
+    },
+    {
+      "path": "pages/danger/freeze",
+      "style": {
+        "navigationBarTitleText": "股权冻结",
+        "navigationBarTextStyle":"black",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#D12815"
+      }
+    },
+    {
+      "path": "pages/danger/shopDetail",
+      "style": {
+        "navigationBarTitleText": "一企查风险",
+        "navigationBarTextStyle":"black",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/danger/notice",
+      "style": {
+        "navigationBarTitleText": "开庭公告",
+        "navigationBarTextStyle":"black",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/danger/manDetail",
+      "style": {
+        "navigationBarTitleText": "一企查风险",
+        "navigationBarTextStyle":"black",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#D12815"
+      }
+    },
+    {
+      "path": "pages/index/trends",
+      "style": {
+        "navigationBarTitleText": "企业动态",
+        "enablePullDownRefresh": true,
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/beian",
+      "style": {
+        "navigationBarBackgroundColor": "#CF2F1D",
+        "navigationBarTitleText": "查备案",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/index/bansearch",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/ll/llai",
+      "style": {
+        "navigationBarBackgroundColor": "#CF2F1D",
+        "navigationBarTitleText": "查老赖",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/ll/shixin",
+      "style": {
+        "navigationBarTitleText": "失信详情",
         "navigationBarTextStyle": "black"
       }
     },
     {
-      "path": "pages/news/news",
+      "path": "pages/ll/shixinshop",
       "style": {
-        "navigationBarTitleText": "资讯",
-        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "失信详情",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/ll/search",
+      "style": {
         "navigationBarTextStyle": "black",
-        "enablePullDownRefresh": true,
+        "app-plus": {
+          "titleNView": {
+            "titleAlign": "center",
+            "autoBackButton": false,
+            "searchInput": {
+              "borderRadius": "6px", //输入框圆角
+              "backgroundColor": "#f8f8f8",
+              "placeholderColor": "#999999",
+              "align": "left",
+              "autoFocus": true,
+              "disabled": false,
+              "placeholder": "人名/公司名/身份证号码/组织机构代码"
+            },
+            "buttons": [
+              {
+                "type": "none",
+                "float": "right",
+                "width": "10px"
+              },
+              {
+                "type": "none",
+                "float": "right",
+                "color": "#333333",
+                "text": "搜索",
+                "fontSize": "12px",
+                "width": "40px"
+              },{
+                "type": "none",
+                "float": "right",
+                "width": "10px"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/ll/llshop",
+      "style": {
+        "navigationBarTitleText": "失信记录列表",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/ll/llDetail",
+      "style": {
+        "navigationBarTitleText": "失信记录列表",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/ll/searchDetail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/index/nearboss",
+      "style": {
+        "navigationBarTitleText": "身边的老板",
+        "navigationBarTextStyle": "black",
         "backgroundColor": "#ffffff"
       }
     },
     {
-      "path": "pages/news/newsDetail",
+      "path": "pages/index/tservice",
       "style": {
-        "navigationBarTitleText": "资讯详情",
+        "navigationBarTitleText": "全部服务",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+      "path": "pages/shangbiao/search",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/shangbiao/sbcon",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/shangbiao/sbDetail",
+      "style": {
+        "enablePullDownRefresh": true,
+        "navigationBarTitleText": "商标详情",
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/chashop",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/main",
+      "style": {
+        "navigationBarTitleText": "主要人员",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/yearreport",
+      "style": {
+        "navigationBarTitleText": "企业年报",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/announce",
+      "style": {
+        "navigationBarTitleText": "企业公示",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/kaiting",
+      "style": {
+        "navigationBarTitleText": "开庭公告",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/kaitingDetail",
+      "style": {
+        "navigationBarTitleText": "开庭公告详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/waitouzi",
+      "style": {
+        "navigationBarTitleText": "对外投资",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/changelog",
+      "style": {
+        "navigationBarTitleText": "变更记录",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/lawgongg",
+      "style": {
+        "navigationBarTitleText": "法院公告",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/gudonginfo",
+      "style": {
+        "navigationBarTitleText": "股东信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/xingzchufa",
+      "style": {
+        "navigationBarTitleText": "行政处罚",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/xingzhengchufDetail",
+      "style": {
+        "navigationBarTitleText": "行政处罚详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhaopininfo",
+      "style": {
+        "navigationBarTitleText": "招聘信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhaopinDetail",
+      "style": {
+        "navigationBarTitleText": "招聘信息详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shuiwupingji",
+      "style": {
+        "navigationBarTitleText": "税务评级",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zizhizhengshu",
+      "style": {
+        "navigationBarTitleText": "资质证书",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zizhizhengshuDe",
+      "style": {
+        "navigationBarTitleText": "资质证书详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhuanliinfo",
+      "style": {
+        "navigationBarTitleText": "专利信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhuanliinfoDe",
+      "style": {
+        "navigationBarTitleText": "专利详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhuzuoquan",
+      "style": {
+        "navigationBarTitleText": "著作权",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhuzuoquanDe",
+      "style": {
+        "navigationBarTitleText": "软件著作权详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/xingzhengxuke",
+      "style": {
+        "navigationBarTitleText": "行政许可",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/xingzhengxukeDe",
+      "style": {
+        "navigationBarTitleText": "行政许可详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/sifaxiezhu",
+      "style": {
+        "navigationBarTitleText": "司法协助",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/sifaxiezhuDe",
+      "style": {
+        "navigationBarTitleText": "司法协助详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/guquanchuzhi",
+      "style": {
+        "navigationBarTitleText": "股权出质",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/guquanchuzhiDe",
+      "style": {
+        "navigationBarTitleText": "股权出质详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/gongshicuigao",
+      "style": {
+        "navigationBarTitleText": "公示催告",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/gongshicuigaoDe",
+      "style": {
+        "navigationBarTitleText": "公示催告详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/chaglobal",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/lawsus",
+      "style": {
+        "navigationBarTitleText": "法律诉讼",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/lawsusDetail",
+      "style": {
+        "navigationBarTitleText": "法律诉讼详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/beiman",
+      "style": {
+        "navigationBarTitleText": "被执行人",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/beimanDetail",
+      "style": {
+        "navigationBarTitleText": "被执行人详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/lianxinxi",
+      "style": {
+        "navigationBarTitleText": "立案信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/lianDetail",
+      "style": {
+        "navigationBarTitleText": "立案信息详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/songdagongg",
+      "style": {
+        "navigationBarTitleText": "送达公告",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/songdaDetail",
+      "style": {
+        "navigationBarTitleText": "送达公告详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/xianzhixiaofeiling",
+      "style": {
+        "navigationBarTitleText": "限制消费令",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhongbenanjian",
+      "style": {
+        "navigationBarTitleText": "终本案件",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shixininfo",
+      "style": {
+        "navigationBarTitleText": "失信信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/guquanzhiya",
+      "style": {
+        "navigationBarTitleText": "股权质押",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shuishouweifa",
+      "style": {
+        "navigationBarTitleText": "税收违法",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/qianshuigonggao",
+      "style": {
+        "navigationBarTitleText": "欠税公告",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/sifapaimai",
+      "style": {
+        "navigationBarTitleText": "司法拍卖",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/xunjiapinggu",
+      "style": {
+        "navigationBarTitleText": "询价评估",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/qingsuanxinxi",
+      "style": {
+        "navigationBarTitleText": "清算信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhishichanquanchuzhi",
+      "style": {
+        "navigationBarTitleText": "知识产权出质",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/tudizhiya",
+      "style": {
+        "navigationBarTitleText": "土地质押",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/jianyizhuxiao",
+      "style": {
+        "navigationBarTitleText": "简易注销",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/pochanchongzheng",
+      "style": {
+        "navigationBarTitleText": "破产重整",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/rongzilicheng",
+      "style": {
+        "navigationBarTitleText": "融资历程",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/touzishijian",
+      "style": {
+        "navigationBarTitleText": "投资事件",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/hexintuandui",
+      "style": {
+        "navigationBarTitleText": "核心团队",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/qiyeyewu",
+      "style": {
+        "navigationBarTitleText": "企业业务",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/jingpinxinxi",
+      "style": {
+        "navigationBarTitleText": "竞品信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/touzijigou",
+      "style": {
+        "navigationBarTitleText": "投资机构",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/simujijin",
+      "style": {
+        "navigationBarTitleText": "私募基金",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/newsyuqing",
+      "style": {
+        "navigationBarTitleText": "新闻舆情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/chouchajiancha",
+      "style": {
+        "navigationBarTitleText": "抽查检查",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shuangsuijichoucha",
+      "style": {
+        "navigationBarTitleText": "双随机抽查",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhaotoubiao",
+      "style": {
+        "navigationBarTitleText": "zhaotoubiao",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/chanpinxinxi",
+      "style": {
+        "navigationBarTitleText": "产品信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/wxgongzhonghao",
+      "style": {
+        "navigationBarTitleText": "微信公众号",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/weibo",
+      "style": {
+        "navigationBarTitleText": "微博",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/gonggaoyanbao",
+      "style": {
+        "navigationBarTitleText": "公告研报",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/dikuaigongshi",
+      "style": {
+        "navigationBarTitleText": "地块公示",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/tudizhuanrang",
+      "style": {
+        "navigationBarTitleText": "土地转让",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/jckouxinyong",
+      "style": {
+        "navigationBarTitleText": "进出口信用",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhaiquanxinxi",
+      "style": {
+        "navigationBarTitleText": "债券信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/goudixinxi",
+      "style": {
+        "navigationBarTitleText": "购地信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/dianxinxuke",
+      "style": {
+        "navigationBarTitleText": "电信许可",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/gongyingshang",
+      "style": {
+        "navigationBarTitleText": "供应商",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/kehu",
+      "style": {
+        "navigationBarTitleText": "客户",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shangyetexu",
+      "style": {
+        "navigationBarTitleText": "商业特许经营",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shangbiaoxinxi",
+      "style": {
+        "navigationBarTitleText": "商标信息",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/wangzhanbeian",
+      "style": {
+        "navigationBarTitleText": "网站备案",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/lishigudong",
+      "style": {
+        "navigationBarTitleText": "历史股东",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/dongchandiya",
+      "style": {
+        "navigationBarTitleText": "动产抵押",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shixinbeizhixingren",
+      "style": {
+        "navigationBarTitleText": "失信被执行人",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/yanzhongweifa",
+      "style": {
+        "navigationBarTitleText": "严重违法",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/jingyingyichang",
+      "style": {
+        "navigationBarTitleText": "经营异常",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/globalDetail",
+      "style": {
+        "navigationBarTitleText": "企业详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/souboss",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/shopDetail",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/index/phone",
+      "style": {
+        "navigationBarTitleText": "查电话",
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTextStyle": "black"
       }
@@ -110,454 +1108,20 @@
     {
       "path": "pages/mine/mine",
       "style": {
+        "navigationBarTitleText": "我的",
         "navigationStyle": "custom",
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#FD5123"
-      }
-    },
-    {
-      "path": "pages/mine/login",
-      "style": {
-        "navigationBarTitleText":"",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/mine/register",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/mine/forgetPassword",
-      "style": {
-        "navigationBarTitleText": "重置密码"
-      }
-    },
-    {
-      "path": "pages/mine/collect",
-      "style": {
-        "navigationBarTitleText": "我的收藏"
-      }
-    },
-    {
-      "path": "pages/mine/coupon",
-      "style": {
-        "navigationBarTitleText": "优惠券"
-      }
-    },
-    {
-      "path": "pages/mine/follow",
-      "style": {
-        "navigationBarTitleText": "我的关注"
-      }
-    },
-    {
-      "path": "pages/mine/history",
-      "style": {
-        "navigationBarTitleText": "浏览"
-      }
-    },
-    {
-      "path": "pages/common/notices",
-      "style": {
-        "navigationBarTitleText": "我的消息"
-      }
-    },
-    {
-      "path": "pages/common/upload",
-      "style": {
-        "navigationBarTitleText": "我的资料"
-      }
-    },
-    {
-      "path": "pages/common/uploadDetail",
-      "style": {
-        "navigationBarTitleText": "我的资料"
-      }
-    },
-    {
-      "path": "pages/common/uploadHandle",
-      "style": {
-        "navigationBarTitleText": "资料上传"
-      }
-    },
-    {
-      "path": "pages/common/service",
-      "style": {
-        "navigationBarTitleText": "联系客服"
-      }
-    },
-    {
-      "path": "pages/common/feedback",
-      "style": {
-        "navigationBarTitleText": "意见反馈",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black"
-      }
-    },
-    {
-      "path": "pages/common/about",
-      "style": {
-        "navigationBarTitleText": "关于我们",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black"
-      }
-    },
-    {
-      "path": "pages/common/setting",
-      "style": {
-        "navigationBarTitleText": "设置"
-      }
-    },
-    {
-      "path": "pages/common/personal",
-      "style": {
-        "navigationBarTitleText": "个人信息"
-      }
-    },
-    {
-      "path": "pages/common/company",
-      "style": {
-        "navigationBarTitleText": "企业信息"
-      }
-    },
-    {
-      "path": "pages/common/contact",
-      "style": {
-        "navigationBarTitleText": "联系我们",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black"
-      }
-    },
-    {
-      "path": "pages/common/privacy",
-      "style": {
-        "navigationBarTitleText": "隐私政策"
-      }
-    },
-    {
-      "path": "pages/common/protocols",
-      "style": {
-        "navigationBarTitleText": "服务协议"
-      }
-    },
-    {
-      "path": "pages/shops/goodsSecondList",
-      "style": {
-        "navigationBarTitleText": "服务列表"
-      }
-    },
-    {
-      "path": "pages/shops/shopHome",
-      "style": {
-        "navigationBarTitleText": "商家主页",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black"
-      }
-    },
-    {
-      "path": "pages/shops/goodsThirdList",
-      "style": {
-        "navigationBarTitleText": "服务"
-      }
-    },
-    {
-      "path": "pages/shops/goodDetail",
-      "style": {
-        "navigationBarTitleText": "服务详情",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "navigationStyle": "custom",
-        "enablePullDownRefresh": false,
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/myOrders",
-      "style": {
-        "navigationBarTitleText": "我的订单",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/order",
-      "style": {
-        "navigationBarTitleText": "收银台",
-        "navigationBarBackgroundColor": "#FD6905",
-        "navigationBarTextStyle": "white",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/cash",
-      "style": {
-        "navigationBarTitleText": "收银台",
-        "navigationBarBackgroundColor": "#FD6905",
-        "navigationBarTextStyle": "white",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/orderClose",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#FF7C00",
-        "navigationBarTextStyle": "white",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/addressEdit",
-      "style": {
-        "navigationBarTitleText": "编辑地址",
-        "navigationBarBackgroundColor": "#FF7C00",
-        "navigationBarTextStyle": "white",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/mine/comments",
-      "style": {
-        "navigationBarTitleText": "我的评价",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/shops/assessDetail",
-      "style": {
-        "navigationBarTitleText": "评价详情",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/placeOrder",
-      "style": {
-        "navigationBarTitleText": "预约下单",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/addressAdd",
-      "style": {
-        "navigationBarTitleText": "添加地址",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/addressList",
-      "style": {
-        "navigationBarTitleText": "选择地址",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/orderSubmit",
-      "style": {
-        "navigationBarTitleText": "下单成功",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/orderDetail",
-      "style": {
-        "navigationBarTitleText": "订单详情",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/evaluation",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/orders/evaluationed",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/serve/fast",
-      "style": {
-        "navigationBarTitleText": "快速服务"
-      }
-    },
-    {
-      "path": "pages/index/enterprise",
-      "style": {
-        "navigationBarTitleText": "实体企业"
-      }
-    },
-    {
-      "path": "pages/index/qlw",
-      "style": {
-        "navigationBarTitleText": "钱来旺"
-      }
-    },
-    {
-      "path": "pages/index/wkDetail",
-      "style": {
-        "navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/merchant/shopManage",
-      "style": {
-        "navigationBarTitleText": "服务商管理"
-      }
-    },
-    {
-      "path": "pages/merchant/goodsManage",
-      "style": {
-        "navigationBarTitleText": "服务管理",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#FD5123"
-      }
-    },
-    {
-      "path": "pages/merchant/addGoods",
-      "style": {
-        "navigationBarTitleText": "添加服务"
-      }
-    },
-    {
-      "path": "pages/merchant/editGoods",
-      "style": {
-        "navigationBarTitleText": "编辑服务"
-      }
-    },
-    {
-      "path": "pages/merchant/ordersManage",
-      "style": {
-        "navigationBarTitleText": "订单管理",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#f8f8f8"
-      }
-    },
-    {
-      "path": "pages/merchant/demandsManage",
-      "style": {
-        "navigationBarTitleText": "需求管理",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#f8f8f8"
-      }
-    },
-    {
-      "path": "pages/realname/activate",
-      "style": {
-        "navigationBarTitleText": "激活医企店铺",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#f8f8f8"
-      }
-    },
-    {
-      "path": "pages/realname/realname",
-      "style": {
-        "navigationBarTitleText": "实名认证",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#f8f8f8"
-      }
-    },
-    {
-      "path": "pages/realname/cardpush",
-      "style": {
-        "navigationBarTitleText": "证件上传",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#f8f8f8"
-      }
-    },
-    {
-      "path": "pages/realname/corporate",
-      "style": {
-        "navigationBarTitleText": "企业认证",
-        "enablePullDownRefresh": true,
-        "backgroundColor": "#f8f8f8"
-      }
-    },
-    {
-      "path": "pages/merchant/mAddressDetail",
-      "style": {
-        "navigationBarTitleText": "服务商地址"
-      }
-    },
-    {
-      "path": "pages/merchant/mAddressList",
-      "style": {
-        "navigationBarTitleText": "服务商地址"
-      }
-    },
-    {
-      "path": "pages/merchant/phonesList",
-      "style": {
-        "navigationBarTitleText": "服务商电话"
-      }
-    },
-    {
-      "path": "pages/merchant/addDynamics",
-      "style": {
-        "navigationBarTitleText": "发布动态"
-      }
-    },
-    {
-      "path": "pages/index/cities",
-      "style": {
-        "navigationBarTitleText": "选择城市",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black"
-      }
-    },
-    {
-      "path": "pages/index/ensure",
-      "style": {
-        "navigationBarTitleText": "医企宝",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black"
-      }
-    },
-    {
-      "path": "pages/index/scan",
-      "style": {
-        "navigationBarTitleText": "",
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTextStyle": "black"
       }
     }
+
   ],
   "globalStyle": {
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "医企网",
-    "navigationBarBackgroundColor": "#FD5123",
-    "backgroundColor": "#919191"
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "一企查",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff",
+    "maxWidth": "750"
   },
   "tabBar": {
     "selectedColor": "#FD5123",
@@ -569,31 +1133,25 @@
         "text": "首页",
         "pagePath": "pages/index/index",
         "iconPath": "static/icons/home.png",
-        "selectedIconPath": "static/icons/home-active.png"
+        "selectedIconPath": "static/icons/shouye.png"
       },
       {
-        "text": "服务",
-        "pagePath": "pages/serve/serve",
-        "iconPath": "static/icons/serve.png",
-        "selectedIconPath": "static/icons/serve-active.png"
+        "text": "查老板",
+        "pagePath": "pages/index/souboss",
+        "iconPath": "static/icons/chalaoban.png",
+        "selectedIconPath": "static/icons/laoban2.png"
       },
-//      {
-//        "text": "社区",
-//        "pagePath": "pages/serve/fast",
-//        "iconPath": "static/icons/shequ.png",
-//        "selectedIconPath": "static/icons/shequ-active.png"
-//      },
       {
-        "text": "资讯",
-        "pagePath": "pages/news/news",
-        "iconPath": "static/icons/news.png",
-        "selectedIconPath": "static/icons/news-active.png"
+        "text": "广场",
+        "pagePath": "pages/index/square",
+        "iconPath": "static/icons/guangchang.png",
+        "selectedIconPath": "static/icons/yingyong.png"
       },
       {
         "text": "我的",
         "pagePath": "pages/mine/mine",
-        "iconPath": "static/icons/mine.png",
-        "selectedIconPath": "static/icons/mine-active.png"
+        "iconPath": "static/icons/wodeh.png",
+        "selectedIconPath": "static/icons/wode.png"
       }
     ]
   },

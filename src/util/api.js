@@ -1,5 +1,5 @@
-const baseUrl = 'https://v6.yiqiwang360.com/api/'
-// const baseUrl = 'http://192.168.8.88:81/api/'
+// const baseUrl = 'http://192.168.8.39:8084/'
+const baseUrl = 'http://yiqicha.com.cn/'
 export const myRequest = (options) => {
   return new Promise((resolve, reject) => {
     uni.request({
@@ -8,11 +8,11 @@ export const myRequest = (options) => {
       data: options.data || {},
       header: options.method === 'POST' ? { 'content-type': 'application/x-www-form-urlencoded' } : {},
       success: (res) => {
-        if (res.data.meta.status === 401) {
+        if (res.data.code === 401) {
           uni.redirectTo({
             url: '/pages/mine/login'
           })
-        } else if (res.data.meta.status === 1001) {
+        } else if (res.data.code === 1001) {
           uni.reLaunch({
             url: '/pages/mine/login'
           })
@@ -22,16 +22,14 @@ export const myRequest = (options) => {
             icon: 'none',
             duration: 2500
           })
-        } else if (res.data.meta.status !== 200) {
+        } else if (res.data.code !== 200) {
           return uni.showToast({
-            title: res.data.meta.msg,
+            title: res.data.msg,
             icon: 'none',
-
-
             duration: 2000
           })
         }
-        resolve(res)
+        resolve(res.data)
       },
       fail: (err) => {
         uni.showToast({

@@ -9,173 +9,135 @@
             @click="go('common/personal')"
           />
         </view>
+        <view style="color:white;margin:10rpx 20rpx;font-size: 28rpx">
+          <u-icon name="edit-pen" size="30"></u-icon>
+          <text class="u-margin-left-10">编辑</text>
+        </view>
         <view class="info-cont" v-if="storage.token !== ''" @click="go('common/personal')">
-          <view class="username">{{storage.info.nackname || '点击设置昵称'}}</view>
-          <view class="phone">{{storage.info.phone}}</view>
+          <view class="username">{{storage.phone || '点击设置昵称'}}</view>
+          <view class="phone">临沂市铭远企业管理服务有限公司</view>
         </view>
         <view class="info-cont" v-else @click="goLogin">
           <view class="username">登录/注册</view>
           <view class="phone">享受更优服务</view>
         </view>
       </view>
-      <view class="head-btn">
-        <view class="head-btn-item" @click="go('mine/collect')">
-          <view class="num">{{storage.info.collectNum || 0}}</view>
-          <view class="title">我的收藏</view>
-        </view>
-        <view class="head-btn-item" @click="go('mine/follow')">
-          <view class="num">{{storage.info.concernNum || 0}}</view>
-          <view class="title">我的关注</view>
-        </view>
-        <view class="head-btn-item" @click="go('mine/history')">
-          <view class="num">{{storage.info.browseNum || 0}}</view>
-          <view class="title">我的足迹</view>
-        </view>
-        <view class="head-btn-item" @click="go('mine/coupon')">
-          <view class="num">0</view>
-          <view class="title">优惠券</view>
-        </view>
-      </view>
     </view>
-    <!-- 我的服务 -->
-    <view class="tool-btn">
-      <view class="title">
-        我的服务
-        <view class="view-all" @click="goMyOrders(9)">
-          查看全部
-          <u-icon name="arrow-right" color="#999999" size="28"></u-icon>
-        </view>
-      </view>
-      <u-line color="#f3f3f3" />
-      <view class="tool-btn-items">
-        <view class="btn-item" @click="goMyOrders('0,1')">
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/wode_daishenhe.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">待接单</view>
-        </view>
-        <view class="btn-item" @click="goMyOrders('3,7,8')">
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/wode_fuwuzhong.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">服务中</view>
-        </view>
-        <view class="btn-item" @click="goMyOrders(4)">
-          <u-badge type="error" :count="commentsNum" size="mini" :offset="[-5, 35]"></u-badge>
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/wode_daipingjia.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">待评价</view>
-        </view>
-        <view class="btn-item" @click="goMyOrders('5,6')">
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/wode_yiwancheng.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">已完成</view>
-        </view>
-      </view>
-    </view>
-    <!-- 商家服务 -->
-    <view class="tool-btn" v-if="storage.info.type === 3">
-      <view class="title">
-        商家服务
-        <!-- <view class="view-all" @click="goMyOrders(9)">
-          查看全部
-          <u-icon name="arrow-right" color="#999999" size="28"></u-icon>
-        </view>-->
-      </view>
-      <u-line color="#f3f3f3" />
-      <view class="tool-btn-items">
-        <view class="btn-item" @click="go('merchant/shopManage')">
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/dianpu.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">商家管理</view>
-        </view>
-        <view class="btn-item" @click="go('merchant/goodsManage')">
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/shanpin.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">服务管理</view>
-        </view>
-        <view class="btn-item" @click="go('merchant/ordersManage')">
-          <u-badge type="error" :count="ordersNum" size="mini" :offset="[-5, 35]"></u-badge>
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/dingdan.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">订单管理</view>
-        </view>
-        <view class="btn-item" @click="go('merchant/demandsManage')">
-          <u-badge type="error" :count="demandsNum" size="mini" :offset="[-5, 35]"></u-badge>
-          <view class="btn-icon">
-            <image src="~@/static/icons/mine/xuqiu.png" mode="heightFix" />
-          </view>
-          <view class="btn-name">需求管理</view>
-        </view>
-      </view>
-    </view>
-    <view class="tool-btn">
-      <view class="title">常用功能</view>
-      <u-line color="#f3f3f3" />
-      <u-grid :col="4" :border="false">
-        <u-grid-item>
-          <view class="btn-item" @click="go('common/notices')">
-            <view class="btn-icon">
-              <image src="~@/static/icons/mine/wode_xiaoxi.png" mode="aspectFit" />
-            </view>
-            <view class="btn-name">我的消息</view>
-          </view>
-        </u-grid-item>
-        <u-grid-item>
-          <view class="btn-item" @click="go('common/upload')">
-            <view class="btn-icon">
-              <image src="~@/static/icons/mine/wode_ziliao.png" mode="aspectFit" />
-            </view>
-            <view class="btn-name">我的资料</view>
-          </view>
-        </u-grid-item>
-        <u-grid-item>
-          <view class="btn-item" @click="callPhone">
-            <view class="btn-icon">
-              <image src="~@/static/icons/mine/wode_kefu.png" mode="aspectFit" />
-            </view>
-            <view class="btn-name">联系客服</view>
-          </view>
-        </u-grid-item>
+    <view class="member">
+      <view class="flex">
+        <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/wode/wode (14).png" width="45" height="45"></u-image>
+        <view class="u-margin-left-20">
+          <view class="title">开通一企查VIP</view>
 
-        <u-grid-item>
-          <view class="btn-item" @click="goto('common/about')">
-            <view class="btn-icon">
-              <image src="~@/static/icons/mine/wode_guanyu.png" mode="aspectFit" />
-            </view>
-            <view class="btn-name">关于我们</view>
-          </view>
-        </u-grid-item>
-        <u-grid-item>
-          <view class="btn-item" @click="goto('common/feedback')">
-            <view class="btn-icon">
-              <image src="~@/static/icons/mine/wode_yijian.png" mode="aspectFit" />
-            </view>
-            <view class="btn-name">意见反馈</view>
-          </view>
-        </u-grid-item>
-        <u-grid-item>
-          <view class="btn-item" @click="go('common/setting')">
-            <view class="btn-icon">
-              <image src="~@/static/icons/mine/wode_shezhi.png" mode="aspectFit" />
-            </view>
-            <view class="btn-name">设置</view>
-          </view>
-        </u-grid-item>
-      </u-grid>
+          <text class="u-font-25">众多VIP专享特权</text>
+        </view>
+      </view>
+      <u-button :customStyle="kai" shape="circle" @click="kaifa">立即开通</u-button>
     </view>
-    <view class="banner">
-      <image
-        class="full"
-        src="https://api.yiqiwang360.com/images/app/banner/img_banner.png"
-        mode="widthFix"
-      />
+    <view class="head-btn">
+    <view class="head-btn-item" @click="go('confirm/confirm')">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (9).png" width="45" height="45"></u-image>
+      <view class="title">认证管理</view>
     </view>
+    <view class="head-btn-item" @click="kaifa">
+      <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/wode/wode (1).png" width="45" height="45"></u-image>
+      <view class="title">我的动态</view>
+    </view>
+    <view class="head-btn-item" @click="go('mine/myorder')">
+      <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/wode/wode (17).png" width="45" height="45"></u-image>
+      <view class="title">我的订单</view>
+    </view>
+    <view class="head-btn-item" @click="go('mine/collect')">
+      <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/wode/wode (12).png" width="45" height="45"></u-image>
+      <view class="title">我的收藏</view>
+    </view>
+  </view>
+    <!-- 我的服务 -->
+<view class="first">
+  <view class="item u-border-bottom" @click="go('mine/control')">
+    <view class="item-l">
+    <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (8).png" width="40" height="40"></u-image>
+    <text>我的监控</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item u-border-bottom" @click="go('mine/follow')">
+    <view class="item-l">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (7).png" width="40" height="40"></u-image>
+      <text>我的关注</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item u-border-bottom" @click="go('index/nearshop')">
+    <view class="item-l">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (5).png" width="40" height="40"></u-image>
+      <text>附近公司</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item u-border-bottom">
+    <view class="item-l">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (10).png" width="40" height="40"></u-image>
+      <text>扫一扫</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item" @click="go('mine/toufollow')">
+    <view class="item-l">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (13).png" width="40" height="40"></u-image>
+      <text>头条关注</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item u-margin-top-20" @click="go('mine/code')">
+    <view class="item-l">
+      <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/wode/wode (2).png" width="40"
+               height="40"></u-image>
+      <text>我的兑换码</text>
+    </view>
+    <view style="color:#878787">尊享卡、VIP兑换入口
+      <text class="right cuIcon-right"></text>
+    </view>
+  </view>
+  <view class="item u-margin-top-20 u-border-bottom">
+    <view class="item-l" @click="kaifa">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (4).png" width="40" height="40"></u-image>
+      <text>分享APP</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item u-border-bottom" @click="go('mine/feedback')">
+    <view class="item-l">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (3).png" width="40" height="40"></u-image>
+      <text>意见反馈</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item u-border-bottom" @click="go('mine/call')">
+    <view class="item-l">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (16).png" width="40" height="40"></u-image>
+      <text>联系我们</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+  <view class="item u-border-bottom">
+    <view class="item-l" @click="news">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (6).png" width="40"
+               height="40"></u-image>
+      <text>版本更新</text>
+    </view>
+    <view style="color:#878787">当前版本信息：12.12.0
+      <text class="right cuIcon-right"></text>
+    </view>
+  </view>
+  <view class="item u-border-bottom" @click="go('mine/set')">
+    <view class="item-l">
+      <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (11).png" width="40" height="40"></u-image>
+      <text>设置</text>
+    </view>
+    <text class="right cuIcon-right"></text>
+  </view>
+</view>
     <!-- 修改昵称对话框
     <u-modal
       v-model="editNickNameShow"
@@ -210,8 +172,14 @@ export default {
     return {
       storage: {
         token: '',
-        uid: 0,
+        phone: '',
         info: {}
+      },
+      kai:{
+        background:'#C9251C',
+        color:'white',
+        width:'170rpx',
+        height:'50rpx'
       },
       // // 修改昵称对话框隐藏或显示
       // editNickNameShow: false,
@@ -226,21 +194,37 @@ export default {
     }
   },
   onLoad () {
-    this.getStorage()
+    console.log(uni.getStorageSync('id'))
+    // this.getStorage()
   },
   onShow () {
     this.getStorage()
-    this.getBasicInfo()
+    // this.getBasicInfo()
   },
   onPullDownRefresh () {
-    this.getBasicInfo(() => { uni.stopPullDownRefresh() })
+    // this.getBasicInfo(() => { uni.stopPullDownRefresh() })
   },
+
   methods: {
     // 获取本地存储
     getStorage () {
+      this.storage.phone = uni.getStorageSync('phone')
       this.storage.token = uni.getStorageSync('token')
-      this.storage.uid = uni.getStorageSync('uid')
       this.storage.info = uni.getStorageSync('info')
+    },
+    async kaifa () {
+      uni.showToast({
+        title: '开发中',
+        icon:'none',
+        duration: 2000
+      });
+    },
+    async news () {
+      uni.showToast({
+        title: '已是最新版本',
+        icon:'none',
+        duration: 2000
+      });
     },
     // 跳转登录
     goLogin () {
@@ -269,7 +253,7 @@ export default {
     //   this.newNickName = ''
     // },
     // 获取基本信息
-    async getBasicInfo (callBack) {
+/*    async getBasicInfo (callBack) {
       if (this.storage.token === '') return
       const { data: res } = await this.$request({
         method: 'POST',
@@ -285,7 +269,7 @@ export default {
       this.ordersNum = res.infor.spOrderNum
       this.demandsNum = res.infor.spNeedsNum
       callBack && callBack()
-    },
+    },*/
     // 点击跳转
     go (path) {
       if (this.storage.token === '') {
@@ -371,13 +355,12 @@ page {
 .page {
   .userinfo {
     position: relative;
-    background: url("http://api.yiqiwang360.com/image/mine/my_bg.png"),
+    background: url("https://yiqiwang360.com/images/yiqicha/beijing.png"),
       linear-gradient(90deg, #ff2b0f, #fd5b29);
     background-size: cover;
     background-repeat: no-repeat;
-
-    max-height: 520rpx;
-    padding: 100rpx 40rpx 0;
+    height:380rpx;
+    padding: 60rpx 40rpx 20rpx;
     box-shadow: 0 3px 5px 0 #ededed;
 
     .user-top {
@@ -409,33 +392,36 @@ page {
 
       .phone {
         padding-top: 12rpx;
-        font-size: 30rpx;
+        font-size: 27rpx;
       }
     }
 
-    .head-btn {
+
+  }
+  .head-btn {
+    display: flex;
+    text-align: center;
+    padding: 70rpx 0 20rpx;
+    background: white;
+
+    .head-btn-item {
       display: flex;
-      color: #ffffff;
-      text-align: center;
-      padding-top: 20rpx;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20rpx 0;
+      flex: 1;
+      .num {
+        font-size: 36rpx;
+        font-weight: 600;
+      }
 
-      .head-btn-item {
-        padding: 20rpx 0;
-        flex: 1;
-
-        .num {
-          font-size: 36rpx;
-          font-weight: 600;
-        }
-
-        .title {
-          padding-top: 6rpx;
-          font-size: 28rpx;
-        }
+      .title {
+        padding-top: 6rpx;
+        font-size: 28rpx;
       }
     }
   }
-
   .tool-btn {
     margin: 20rpx 0;
     background: #ffffff;
@@ -502,4 +488,46 @@ page {
     }
   }
 }
+  .member{
+    width:92%;
+    padding:0 20rpx;
+    height:120rpx;
+    border-radius: 20rpx;
+    background:linear-gradient(90deg, #ffffff, #D1D1D1);
+    position:absolute;
+    top:300rpx;
+    left:4%;
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: space-between;
+    .flex{
+      flex:1;
+      .title{
+        font-size: 30rpx;
+        font-weight: 700;
+      }
+    }
+  }
+  .first{
+    margin:30rpx 0;
+
+    .item{
+      background: white;
+      padding:30rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .right{
+        color:#878787;
+      }
+    }
+
+    .item-l{
+      display: flex;
+      text{
+        margin-left:20rpx;
+      }
+    }
+  }
 </style>
