@@ -2,12 +2,14 @@
   <view>
     <u-gap height="20" bg-color="#f8f8f8"></u-gap>
     <u-cell-group>
-      <u-cell-item title="企业名称" :value="company.corporateName" @click="setCompanyName"></u-cell-item>
+      <u-cell-item title="生日" :value="company.birthday" @click="setCompanyName"></u-cell-item>
       <u-cell-item title="所在行业" :value="company.industry" @click="showIndustry"></u-cell-item>
       <u-cell-item title="企业所在地" :value="company.address" @click="showAddress"></u-cell-item>
       <u-cell-item title="企业规模" :value="company.insize" @click="showInsize"></u-cell-item>
       <u-cell-item title="所在职位" :value="company.position" @click="showPosition"></u-cell-item>
     </u-cell-group>
+    <!-- 企业所在地 -->
+    <u-picker v-model="addressShow" mode="region" @confirm="submitAddress"></u-picker>
     <!-- 修改企业名称对话框 -->
     <u-modal
       v-model="editCompanyShow"
@@ -37,8 +39,6 @@
       title="请选择所在行业"
       @confirm="confirmIndustry"
     ></u-select>
-    <!-- 企业所在地 -->
-    <u-picker v-model="addressShow" mode="region" @confirm="submitAddress"></u-picker>
     <!-- 企业规模 -->
     <u-select
       v-model="insizeShow"
@@ -105,8 +105,7 @@ export default {
     // 获取本地存储
     getStorage () {
       this.storage.token = uni.getStorageSync('token')
-      this.storage.uid = uni.getStorageSync('uid')
-      this.storage.info = uni.getStorageSync('info')
+      this.storage.info = uni.getStorageSync('phone')
     },
     // 获取基本信息
     async getCompany () {
@@ -144,13 +143,6 @@ export default {
     },
     cancelCompanyName () {
       this.newValue = ''
-    },
-    // 行业
-    async getIndustry () {
-      const { data: res } = await this.$request({
-        url: 'goods/navlist'
-      })
-      this.industryList = res.data.list
     },
     showIndustry () {
       this.industryShow = true

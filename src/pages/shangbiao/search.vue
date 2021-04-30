@@ -7,27 +7,27 @@
                     :action-style="search_btn"
                     :animation="true"
                     @custom="goSearch"
-                    @search="goSearch"
-                    bg-color="#f8f8f8"
+                    @search="goSearch" @clear="clear"
+                    bg-color="#f8f8f8" clearabled
                     input-align="left" style="width: 560rpx;height:30rpx; padding:30rpx 0;background: #f8f8f8"
                     placeholder="请输入商标名称" shape="square"
                     v-model="keyword"
             ></u-search>
         </view>
         </uni-nav-bar>
-            <view v-if="keyword==''">
-            <view class="sou u-margin-top-50">
-                <text>最近搜索</text>
-                <view>
-                    <u-icon name="trash" size="30"></u-icon> 清空
-                </view>
-            </view>
-            <view class="tips">
-                <text>医企管家</text>
-                <text>医企网</text>
-                <text>一企查</text>
-            </view>
-            </view>
+<!--            <view v-if="keyword==''">-->
+<!--            <view class="sou u-margin-top-50">-->
+<!--                <text>最近搜索</text>-->
+<!--                <view>-->
+<!--                    <u-icon name="trash" size="30"></u-icon> 清空-->
+<!--                </view>-->
+<!--            </view>-->
+<!--            <view class="tips">-->
+<!--                <text>医企管家</text>-->
+<!--                <text>医企网</text>-->
+<!--                <text>一企查</text>-->
+<!--            </view>-->
+<!--            </view>-->
         </view>
         <view class="white u-margin-top-30 u-padding-bottom-50" v-if="keyword==''">
         <view class="sou u-margin-top-50">
@@ -39,22 +39,21 @@
             <text>一企查</text>
         </view>
     </view>
-        <u-empty class="u-margin-30" text="暂无相关内容" mode="search" :show="emptyShow"></u-empty>
-        <view class="white">
-        </view>
-        <view class="infor" v-for="item in goodsList" :key="item.id" @click="detail(item.id)">
+        <u-empty src="http://images.yiqiwang360.com/yiqicha/wujilu.png" class="u-margin-30" :show="emptyShow">
+        </u-empty>
+        <view class="infor" v-if="keyword&&!emptyShow" v-for="item in goodsList" :key="item.id" @click="detail(item.id)">
             <!--            <view class="num">为你找到 <text class="red">72</text>个商标</view>-->
             <view class="con">
-                <view>铭远集团</view>
-                <view class="center">
+               <u-image width="50" height="50" src="https://api.yiqiwang360.com/images/app/app_logo2.png"></u-image>
+                 <view class="center">
                     <view class="name">铭远集团</view>
                     <view>
                         <text class="gray">申请/注册号：</text>
-                        <text>123456789</text>
+                        <text>{{item.apply}}</text>
                     </view>
                     <view>
                         <text class="gray">申请时间：</text>
-                        <text>2020-02-12</text>
+                        <text>{{item.licationdate}}</text>
                     </view>
                     <view>
                         <text class="gray">国际分类：</text>
@@ -62,15 +61,15 @@
                     </view>
                     <view>
                         <text class="gray">申请人名称：</text>
-                        <text>123456789</text>
+                        <text>{{item.name}}</text>
                     </view>
                     <view>
                         <text class="gray">代理/办理机构：</text>
-                        <text>123456789</text>
+                        <text>{{item.proxy ? item.proxy : '-'}}</text>
                     </view>
                 </view>
                 <view class="last">
-                    <text class="red">商标已注册</text>
+                    <text class="red">{{item.status}}</text>
                     <view class="u-margin-top-60">
                         <u-icon name="arrow-right" size="40" color="#A9A9A9"></u-icon>
                     </view>
@@ -107,6 +106,17 @@
                     delta: 1
                 });
             },
+            clear(){
+                this.emptyShow = false
+                uni.removeStorage({
+                    key: 'keyword',
+                    success() {
+                        console.log('删除成功')
+                    }
+                })
+                this.pageNum = 0
+                // this.getSearchList()
+            },
             async getSearchList () {
                 const { data: res } = await this.$request({
                     url: 'applets/trademark',
@@ -120,8 +130,8 @@
                 console.log(res.id)
                 // }
                 // //判断全部为空的吸星大法
-                // let dataNum = res.length
-                // console.log(dataNum)
+                let dataNum = res.length
+                console.log(dataNum)
                 // if (dataNum>=1){
                 //     this.emptyShow = true
                 // }else{

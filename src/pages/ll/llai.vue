@@ -28,7 +28,7 @@
                     <scroll-view class="scroll-view_H" scroll-x="true">
                         <view class="u-margin-top-10">
                             <view class="lai-item" @click="llshop" v-for="item in enterprise" :key="item.id">
-<!--                                <view class="lai-img">-->
+<!--                                <view classlai-img">-->
 <!--                                    <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>-->
 <!--                                </view>-->
                                 <view class="lai-name">{{item.cpyname}}</view>
@@ -36,10 +36,10 @@
                         </view>
                         <view class="u-margin-top-20">
                             <view class="lai-item" @click="llDetail" v-for="item in personal" :key="item.id">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                                </view>
-                                <text class="lai-name">{{item.name}}</text>
+<!--                                <view class="lai-img">-->
+<!--&lt;!&ndash;                                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>&ndash;&gt;-->
+<!--                                </view>-->
+                                <text class="lai-name">{{item.dishonest}}</text>
                             </view>
                         </view>
 
@@ -67,6 +67,7 @@
         data(){
             return {
                 enterprise:{},
+                personal:{},
                 search_btn:{
                     color:'white'
                 },
@@ -88,7 +89,7 @@
             },
             goSearch(){
               uni.navigateTo({
-                  url:'/pages/ll/search'
+                  url:'/pages/ll/searchDetail'
               })
             },
             llDetail(){
@@ -96,9 +97,9 @@
                     url:'/pages/ll/llDetail'
                 })
             },
-            llshop(){
+            llshop(uscc){
                 uni.navigateTo({
-                    url:'/pages/ll/llshop'
+                    url: '/pages/ll/llshop?uscc=' + this.uscc
                 })
             }
         }
@@ -146,6 +147,7 @@
                 border-radius: 5rpx;
                 padding: 10rpx 20rpx;
                 margin-right: 20rpx;
+                text-align: center;
                 background-color: rgba(255,255,255,0.2);
                 line-height: 30rpx;
                 .lai-img{
@@ -156,8 +158,9 @@
                     vertical-align: middle;
                 }
                 .lai-name{
+                    text-align: center;
                     display: inline-block;
-                    margin-left:20rpx;
+                    /*margin-left:20rpx;*/
                     vertical-align: middle;
                 }
             }

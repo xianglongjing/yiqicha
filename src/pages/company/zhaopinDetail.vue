@@ -2,8 +2,8 @@
     <view class="page u-border-top">
         <view class="position">
             <view class="flex">
-                <text class="name">开发公厕和故事</text>
-                <text class="date">2021-04-23</text>
+                <text class="name">{{info.name ? info.name : '-'}}</text>
+                <text class="date">{{info.date}}</text>
             </view>
             <view class="flex u-margin-top-20">
                 <text class="red type">面议</text>
@@ -12,10 +12,10 @@
         </view>
         <view class="shop">
             <view>
-                <view class="name">河南省科技公司</view>
+                <view class="name">{{info.name ? info.name : '-'}}</view>
                 <view class="u-margin-top-20">
-                    <text>性质：民营</text>
-                    <text>规模：20人以下</text>
+                    <text>性质：{{info.nature ? info.nature : '-'}}</text>
+<!--                    <text class="u-margin-left-20">规模：{{info.nwork ? info.nwork : '-'}}</text>-->
                 </view>
             </view>
             <u-icon name="arrow-right" size="60" color="#777777"></u-icon>
@@ -28,43 +28,43 @@
             </view>
             <view class="con">
                 <view class="item">
-                    <text><text class="gray">工作性质：</text>全职</text>
+                    <text><text class="gray">工作性质：</text>{{info.nwork ? info.nwork : '-'}}</text>
+                </view>
+<!--                <view class="item">-->
+<!--&lt;!&ndash;                    <text><text class="gray">工作地区：</text>河南/郑州</text>&ndash;&gt;-->
+<!--                </view>-->
+<!--                <view class="item">-->
+<!--&lt;!&ndash;                    <text><text class="gray">工作经验：</text>222</text>&ndash;&gt;-->
+<!--                </view>-->
+                <view class="item">
+                    <text><text class="gray">学历要求：</text>{{info.education ? info.nwork : '-'}}</text>
                 </view>
                 <view class="item">
-                    <text><text class="gray">工作地区：</text>河南/郑州</text>
+                    <text><text class="gray">招聘人数：</text>{{info.recruits ? info.recruits : '-'}}</text>
                 </view>
                 <view class="item">
-                    <text><text class="gray">工作经验：</text>222</text>
+                    <text><text class="gray">到岗时间：</text>{{info.dtime ? info.dtime : '-'}}</text>
                 </view>
                 <view class="item">
-                    <text><text class="gray">学历要求：</text>河南/郑州</text>
+                    <text><text class="gray">年龄要求：</text>{{info.age ? info.age : '-'}}</text>
                 </view>
                 <view class="item">
-                    <text><text class="gray">招聘人数：</text>3</text>
-                </view>
-                <view class="item">
-                    <text><text class="gray">到岗时间：</text>2周</text>
-                </view>
-                <view class="item">
-                    <text><text class="gray">年龄要求：</text>河南/郑州</text>
-                </view>
-                <view class="item">
-                    <text><text class="gray">性别要求：</text>不限</text>
+                    <text><text class="gray">性别要求：</text>{{info.gender ? info.gender : '-'}}</text>
                 </view>
                 <view class="item">
                     <text><text class="gray">教育程度：</text>河南</text>
                 </view>
                 <view class="item">
-                    <text><text class="gray">婚姻状况：</text>河南/郑州</text>
+                    <text><text class="gray">婚姻状况：</text>{{info.marital ? info.marital : '-'}}</text>
                 </view>
                 <view class="item2">
-                    <text><text class="gray">有效日期至：</text>2021-06-08</text>
+                    <text><text class="gray">有效日期至：</text>{{info.edate ? info.edate : '-'}}</text>
                 </view>
                 <view class="item2">
-                    <text><text class="gray">职位类型：</text>高级</text>
+                    <text><text class="gray">职位类型：</text>{{info.jtype ? info.jtype : '-'}}</text>
                 </view>
                 <view class="item2">
-                    <text><text class="gray">从事行业：</text>自动化</text>
+                    <text><text class="gray">从事行业：</text>{{info.engaged ? info.engaged : '-'}}</text>
                 </view>
             </view>
         </view>
@@ -75,18 +75,7 @@
                 <view class="xian"></view>
             </view>
             <view class="content">
-                <view class="u-margin-top-30">
-                    一、职位职责：
-                    1.少时诵诗书所所所所所所
-                    2.哒哒哒哒哒哒多多多多多多多
-                    3.哒哒哒哒哒哒多多多多
-                </view>
-                <view>
-                    二、任职资格：
-                    1.少时诵诗书所所所所所所
-                    2.哒哒哒哒哒哒多多多多多多多
-                    3.哒哒哒哒哒哒多多多多
-                </view>
+                {{info.description ? info.description : '-'}}
             </view>
 
         </view>
@@ -106,7 +95,7 @@
                 <text class="u-margin-left-20">联系方式</text>
                 <view class="xian"></view>
             </view>
-            <view class="u-margin-left-20 u-margin-top-30">企业没有开放联系</view>
+            <view class="u-margin-left-20 u-margin-top-30">{{info.details ? info.details : '-'}}</view>
         </view>
         <view class="alike">
             <view class="title">
@@ -151,10 +140,25 @@
     export default {
         data() {
             return {
-
+                info:[]
             }
         },
+        onLoad(options){
+            this.list(options.id)
+        },
         methods: {
+            async list(id) {
+                const token=uni.getStorageSync('token')
+                const {data: res} = await this.$request({
+                    method: 'GET',
+                    url: 'applets/pledgesave',
+                    data: {
+                        id:id
+                    }
+                })
+                this.info = res
+                console.log(res)
+            },
             change(index) {
                 this.current = index;
             }

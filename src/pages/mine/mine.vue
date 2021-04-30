@@ -68,7 +68,7 @@
     </view>
     <text class="right cuIcon-right"></text>
   </view>
-  <view class="item u-border-bottom" @click="go('index/nearshop')">
+  <view class="item u-border-bottom" @click="kaifa">
     <view class="item-l">
       <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/wode/wode (5).png" width="40" height="40"></u-image>
       <text>附近公司</text>

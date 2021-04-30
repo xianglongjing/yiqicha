@@ -79,6 +79,15 @@
         methods:{
             newChange(index) {
                 this.newcurrent = index;
+                if(index===0){
+                    this.type=1
+                }
+                if(index===1){
+                    this.type=2
+                }
+                if(index===2){
+                    this.type=1
+                }
             },
             go (path) {
                 let name = path

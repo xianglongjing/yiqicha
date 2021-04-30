@@ -29,8 +29,8 @@
                     </view>
                 </view>
                 <view class="intro">
-                    <view class="title">简介：临沂市铭远企业管理服务有限公司临沂市铭远企业管理服务</view>
-                    <u-image mode="aspectFill" border-radius="10" height="80" width="80" src="https://img0.baidu.com/it/u=1643486358,2962398631&fm=26&fmt=auto&gp=0.jpg"></u-image>
+                    <view class="title">简介：暂无</view>
+<!--                    <u-image mode="aspectFill" border-radius="10" height="80" width="80" src="https://img0.baidu.com/it/u=1643486358,2962398631&fm=26&fmt=auto&gp=0.jpg"></u-image>-->
                 </view>
                 <view class="shop-bo">
                     <view class="bo-item u-border-right" style="margin-left:-40rpx">
@@ -47,7 +47,7 @@
                     </view>
                 </view>
                 <view class="last gray">
-                    <u-image mode="aspectFill" src="https://img0.baidu.com/it/u=1643486358,2962398631&fm=26&fmt=auto&gp=0.jpg" width="30" height="30"></u-image>
+                    <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/huanyipi.png" width="30" height="30"></u-image>
                     2小时前更新
                     <view class="button u-margin-left-30">
                         <view class="item">
@@ -69,16 +69,16 @@
                     </view>
                 </view>
             </view>
-            <view class="white">
+            <view class="white" v-if="newsList.partnercount!==0 || newsList.personnelcount!==0">
                 <view class="man">
-                    <text class="gudong red">股东4</text>
+                    <text class="gudong red">股东{{newsList.partnercount}}</text>
                     <view class="infor" v-for="item in partners" :key="item.id">
                         <view class="flex">
                             <u-image mode="aspectFill" border-radius="10"
                                      height="80" width="80"
                                      src="https://img0.baidu.com/it/u=1643486358,2962398631&fm=26&fmt=auto&gp=0.jpg"></u-image>
                             <view class="gray u-margin-left-10">
-                                <text class="red">{{item.name}}</text>
+                                <text class="red">{{item.name ? item.name : '股东'}}</text>
                                 <view class="gray">{{item.position ? item.position : '股东'}}</view>
                             </view>
                         </view>
@@ -97,8 +97,8 @@
                         </view>
                     </view>
                 </view>
-                <view class="man u-margin-top-20">
-                    <text class="gudong gao">高管4</text>
+                <view class="man u-margin-top-20" v-if="newsList.personnelcount!==0">
+                    <text class="gudong gao">高管{{newsList.personnelcount}}</text>
                     <view class="infor" v-for="item in partners" :key="item.id">
                         <view class="flex">
                             <u-image mode="aspectFill" border-radius="10"
@@ -272,17 +272,17 @@
                         <view class="grid-text">司法解析</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/kaiting?id='+newsList.id)">
-                        <view class="num"> {{newsList.opencourt}}</view>
+                        <view class="num2"> {{newsList.opencourt}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi15.png" width="50" height="50"></u-image>
                         <view class="grid-text">开庭公告</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/lawsus?id='+newsList.id)">
-                        <view class="num"> {{newsList.Proceedings}}</view>
+                        <view class="num2"> {{newsList.Proceedings}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi1.png" width="50" height="50"></u-image>
                         <view class="grid-text">法律诉讼</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/lawgongg?id='+newsList.id)">
-                        <view class="num"> {{newsList.court}}</view>
+                        <view class="num2"> {{newsList.court}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi16.png" width="50" height="50"></u-image>
                         <view class="grid-text">法院公告</view>
                     </u-grid-item>
@@ -339,7 +339,7 @@
                         <view class="grid-text">严重违法</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/guquanchuzhi?id='+newsList.id)">
-                        <view class="num"> {{newsList.pledge}}</view>
+                        <view class="num2"> {{newsList.pledge}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi17.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">股权出质</view>
@@ -355,30 +355,35 @@
                         <view class="grid-text">税收违法</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/dongchandiya?id='+newsList.id)">
-                        <view class="num"> {{newsList.mortgage}}</view>
+                        <view class="num2"> {{newsList.mortgage}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi13.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">动产抵押</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/huanbaochufa?id='+newsList.id)">
-                        <view class="num"> {{newsList.protection}}</view>
+                        <view class="num2"> {{newsList.protection}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi8.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">环保处罚</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/qianshuigonggao?id='+newsList.id)">
-                        <view class="num"> {{newsList.arrears}}</view>
+                        <view class="num2"> {{newsList.arrears}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi23.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">欠税公告</view>
                     </u-grid-item>
-                    <u-grid-item @click="go('company/sifapaimai?id='+newsList.id)">
+                    <u-grid-item>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/huise/fengxianxinxi3.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">司法拍卖</view>
                     </u-grid-item>
+<!--                    <u-grid-item @click="go('company/sifapaimai?id='+newsList.id)">-->
+<!--                        <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/huise/fengxianxinxi3.png" width="50"-->
+<!--                                 height="50"></u-image>-->
+<!--                        <view class="grid-text">司法拍卖</view>-->
+<!--                    </u-grid-item>-->
                     <u-grid-item @click="go('company/xunjiapinggu?id='+newsList.id)">
-                        <view class="num"> {{newsList.inquiry}}</view>
+                        <view class="num2"> {{newsList.inquiry}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi11.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">询价评估</view>
@@ -601,17 +606,17 @@
                         <view class="grid-text">历史股东</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/waitouzi?id='+newsList.id)">
-                        <view class="num"> {{newsList.foreign}}</view>
+                        <view class="num6"> {{newsList.foreign}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/qiyebeijing1.png" width="50" height="50"></u-image>
                         <view class="grid-text">对外投资</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/kaiting?id='+newsList.id)">
-                        <view class="num"> {{newsList.opencourt}}</view>
+                        <view class="num7"> {{newsList.opencourt}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi15.png" width="50" height="50"></u-image>
                         <view class="grid-text">开庭公告</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/lawsus?id='+newsList.id)">
-                        <view class="num"> {{newsList.Proceedings}}</view>
+                        <view class="num6"> {{newsList.Proceedings}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi1.png" width="50" height="50"></u-image>
                         <view class="grid-text">法律诉讼</view>
                     </u-grid-item>
@@ -624,27 +629,27 @@
                         <view class="grid-text">失信信息</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/beiman?id='+newsList.id)">
-                        <view class="num7">{{newsList.debtor}}</view>
+                        <view class="num6">{{newsList.debtor}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/fengxianxinxi14.png" width="50" height="50"></u-image>
                         <view class="grid-text">被执行人</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/xianzhixiaofeiling?id='+newsList.id)">
-                        <view class="num7">{{newsList.consumption}}</view>
+                        <view class="num6">{{newsList.consumption}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50" height="50"></u-image>
                         <view class="grid-text">限制消费令</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/zhongbenanjian?id='+newsList.id)">
-                        <view class="num7">{{newsList.cases}}</view>
+                        <view class="num6">{{newsList.cases}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50" height="50"></u-image>
                         <view class="grid-text">终本案件</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/sifaxiezhu?id='+newsList.id)">
-                        <view class="num7">{{newsList.assistance}}</view>
+                        <view class="num6">{{newsList.assistance}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50" height="50"></u-image>
                         <view class="grid-text">司法协助</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/jingyingyichang?id='+newsList.id)">
-                        <view class="num7"> {{newsList.business}}</view>
+                        <view class="num6"> {{newsList.business}}</view>
                         <u-image mode="aspectFit"
                                  src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"
                                  height="50"></u-image>
@@ -663,28 +668,28 @@
                         <view class="grid-text">股权出质</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/dongchandiya?id='+newsList.id)">
-                        <view class="num7">{{newsList.mortgage}}</view>
+                        <view class="num6">{{newsList.mortgage}}</view>
                         <u-image mode="aspectFit"
                                  src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">动产抵押</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/qianshuigonggao?id='+newsList.id)">
-                        <view class="num7"> {{newsList.arrears}}</view>
+                        <view class="num6"> {{newsList.arrears}}</view>
                         <u-image mode="aspectFit"
                                  src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">欠税公告</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/xingzhengxuke')">
-                        <view class="num">{{newsList.license}}</view>
+                        <view class="num6">{{newsList.license}}</view>
                         <u-image mode="aspectFit"
                                  src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">行政许可</view>
                     </u-grid-item>
                     <u-grid-item @click="go('company/shangbiaoxinxi?id='+newsList.id)">
-                        <view class="num">{{newsList.trademark}}</view>
+                        <view class="num6">{{newsList.trademark}}</view>
                         <u-image mode="aspectFit"
                                  src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"
                                  height="50"></u-image>
@@ -723,19 +728,20 @@
                                 </view>
                             </view>
 
-
                         </u-popup>
                     </view>关注
                 </view>
-                <view class="action shop" @click="showPhones">
+                <view class="action shop" @click="callPhone">
                     <view class="cuIcon-dianhua"></view>电话咨询
                 </view>
                 <view class="btn-group">
-                    <button class="ser-btn" open-type='contact' plain>在线客服</button>
+                    <button class="ser-btn" open-type='contact'>在线客服</button>
                 </view>
             </view>
         </view>
-
+        <view v-if="current==1">
+            <view style="text-align: center;margin:50rpx 0">暂无信息</view>
+        </view>
     </view>
 </template>
 
@@ -830,7 +836,7 @@
                 // })
             },
             // 关注服务商操作
-            async follow (spid) {
+            async follow (id) {
                 if (this.storage.token === '') {
                     uni.redirectTo({
                         url: '/pages/mine/login'
@@ -842,10 +848,10 @@
                     })
                 }
                 const { data: res } = await this.$request({
-                    url: 'myhome/addconcern',
+                    url: 'applets/focus',
                     data: {
                         token: this.storage.token,
-                        uid: this.storage.uid,
+                        attention:id,
                         spid: spid
                     }
                 })
@@ -880,6 +886,12 @@
                     delta: 1
                 });
             },
+            // 拨打客服电话
+            callPhone () {
+                uni.makePhoneCall({
+                    phoneNumber: '4000361717'
+                })
+            },
             go (path) {
                 let name = path
                 let nameArr = name.split('=')
@@ -905,6 +917,10 @@
     }
     .red{
         color:#E75D54;
+    }
+    .tabs{
+        text-align: center;
+        background: white;
     }
     .white{
         margin-bottom: 20rpx;

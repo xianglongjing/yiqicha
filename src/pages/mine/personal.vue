@@ -19,69 +19,57 @@
                 </view>
             </view>
         </view>
-        <view class="form">
-            <u-form :model="form" ref="uForm">11
-                <u-picker v-model="date" mode="time" @click="date = true" :params="params"></u-picker>
-            </u-form>
-            <u-form :model="form" ref="uForm">
-                <u-form-item label="毕业学校" label-width="200"><u-input v-model="form.school" placeholder="请输入学校名称"/></u-form-item>
-            </u-form>
-            <view class="u-border-bottom" style="line-height:100rpx">
-                <view class="flex">
-                    <text class="u-font-31" style="width:200rpx">学历</text>
-                    <u-input v-model="form.education" :type="types" @click="edu = true" placeholder="请选择所在行业"
-                             placeholder-style="color:#C0C4CC;margin-top: 30rpx"/>
+        <view>
+            <u-gap height="20" bg-color="#f8f8f8"></u-gap>
+            <u-cell-group>
+                <u-cell-item title="生日" :value="form.birthday" @click="showAddress"></u-cell-item>
+                <u-cell-item title="毕业学校" :value="form.school" @click="setCompanyName"></u-cell-item>
+                <u-cell-item title="学历" :value="form.education" @click="showIndustry"></u-cell-item>
+                <u-cell-item title="企业规模" :value="form.insize" @click="showInsize"></u-cell-item>
+                <u-cell-item title="所在职位" :value="form.position" @click="showPosition"></u-cell-item>
+            </u-cell-group>
+            <!-- 企业所在地 -->
+            <u-picker v-model="addressShow" mode="time" :params="params" @confirm="submitAddress"></u-picker>
+            <!-- 修改企业名称对话框 -->
+            <u-modal
+                    v-model="editCompanyShow"
+                    content
+                    title="学校名称"
+                    :title-style="{padding: '30rpx 0'}"
+                    show-cancel-button
+                    confirm-color="#fd5123"
+                    @confirm="submitpush('school')"
+                    @cancel="cancelCompanyName"
+            >
+                <view>
+                    <u-cell-group>
+                        <u-field v-model="newValue" label="名称" placeholder="请输入学校名称"></u-field>
+                    </u-cell-group>
                 </view>
-                <view class="flex">
-                    <u-action-sheet :list="eduList" v-model="edu" @click="Edu"></u-action-sheet>
-                </view>
-            </view>
-            <view class="u-border-bottom" style="line-height:100rpx">
-                <view class="flex">
-                    <text class="u-font-31" style="width:200rpx">毕业年份</text>
-                    <u-input v-model="form.year" :type="types" @click="years = true" placeholder="请选择毕业年份"
-                             placeholder-style="color:#C0C4CC;margin-top: 30rpx"/>
-                </view>
-                <view class="flex">
-                    <u-action-sheet :list="yearList" v-model="years" @click="nian"></u-action-sheet>
-                </view>
-            </view>
-        </view>
-        <view class="form">
-            <u-form :model="form" ref="uForm">
-                <u-form :model="form.unit" ref="uForm">
-                    <u-form-item label="公司/单位" label-width="200"><u-input v-model="form.shop" placeholder="请输入公司/单位名称"/></u-form-item>
-                </u-form>
-            </u-form>
-            <view class="u-border-bottom" style="line-height:100rpx">
-                <view class="flex">
-                    <text class="u-font-31" style="width:200rpx">所在行业</text>
-                    <u-input v-model="form.industry" :type="types" @click="shows = true" placeholder="请选择所在行业" placeholder-style="color:#C0C4CC;margin-top: 30rpx"/>
-                </view>
-                <view class="flex">
-                    <u-action-sheet :list="actionSheetList" v-model="shows" @click="actionSheetCallback"></u-action-sheet>
-                </view>
-            </view>
-            <view class="u-border-bottom" style="line-height:100rpx">
-                <view class="flex">
-                    <text class="u-font-31" style="width:200rpx">身份</text>
-                    <u-input v-model="form.identity" :type="types" @click="shens = true" placeholder="请选择身份"
-                             placeholder-style="color:#C0C4CC;margin-top: 30rpx"/>
-                </view>
-                <view class="flex">
-                    <u-action-sheet :list="shenfenlist" v-model="shens" @click="shenfen"></u-action-sheet>
-                </view>
-            </view>
-            <view class="u-border-bottom" style="line-height:100rpx">
-                <view class="flex">
-                    <text class="u-font-31" style="width:200rpx">工作年限</text>
-                    <u-input v-model="form.working" :type="types" @click="job = true" placeholder="请选择所在行业"
-                             placeholder-style="color:#C0C4CC;margin-top: 30rpx"/>
-                </view>
-                <view class="flex">
-                    <u-action-sheet :list="jobList" v-model="job" @click="Job"></u-action-sheet>
-                </view>
-            </view>
+            </u-modal>
+            <!-- 学历选择 -->
+            <u-select
+                    v-model="industryShow"
+                    mode="mutil-column-auto"
+                    :list="industryList"
+                    title="请选择所在行业"
+                    @confirm="confirmIndustry('education', $event)"
+            ></u-select>
+
+            <!-- 企业规模 -->
+            <u-select
+                    v-model="insizeShow"
+                    :list="insizeList"
+                    mode="single-column"
+                    @confirm="submitInfo('insize', $event)"
+            ></u-select>
+            <!-- 所在职位 -->
+            <u-select
+                    v-model="positionShow"
+                    :list="positionList"
+                    mode="single-column"
+                    @confirm="submitInfo('position', $event)"
+            ></u-select>
         </view>
         <u-button :customStyle="bao" @click="submit">保存</u-button>
     </view>
@@ -177,14 +165,40 @@
                        text: '3-5年'
                    },
                ],
-               types: 'select',
-               shows: false,
-               show: false,
-               edu: false,
-               shens: false,
-               job: false,
-               years: false,
-               date:false,
+               editCompanyShow: false,
+               newValue: '',
+               industryShow: false,
+               industryList: [
+                   { label: '小学' },
+                   { label: '初中' },
+                   { label: '高中' },
+                   { label: '成人专科'},
+                   { label: '网络教育'},
+                   { label: '开放教育'},
+                   { label: '自学考试'},
+                   { label: '普通专科'},
+                   { label: '成人本科'},
+                   { label: '普通本科'},
+                   { label: '硕士研究生'},
+                   { label: '博士研究生'}
+               ],
+               addressShow: false,
+               insizeShow: false,
+               positionShow: false,
+               insizeList: [
+                   { label: '大型企业（300人及以上）' },
+                   { label: '中型企业（100~299人）' },
+                   { label: '小型企业（10~99人）' },
+                   { label: '微型企业（10人以下）' }
+               ],
+               positionList: [
+                   { label: '暂不知道' },
+                   { label: '普通员工' },
+                   { label: '基层管理者' },
+                   { label: '中层管理者' },
+                   { label: '高层管理者' },
+                   { label: '企业负责人' }
+               ],
                params: {
                    year: true,
                    month: true,
@@ -196,8 +210,43 @@
                // mode: 'date'
            }
        },
+        onShow () {
+            this.getStorage()
+        },
         methods:{
+            // 获取本地存储
+            getStorage () {
+                this.storage.token = uni.getStorageSync('token')
+                this.storage.phone = uni.getStorageSync('phone')
+            },
             async submit() {
+             this.submitpush(val)
+            },
+            // 修改企业信息
+            setCompanyName () {
+                this.editCompanyShow = true
+                this.newValue = this.form.corporateName
+            },
+            // async submitCompany (val) {
+            //     this.company[val] = this.newValue
+            //     const { data: res } = await this.$request({
+            //         method: 'POST',
+            //         url: 'myhome/editcorporate',
+            //         data: {
+            //             token: this.storage.token,
+            //             uid: this.storage.uid,
+            //             corporateName: this.company.corporateName,
+            //             insize: this.company.insize,
+            //             position: this.company.position,
+            //             industry: this.company.industry,
+            //             address: this.company.address
+            //         }
+            //     })
+            //     this.newValue = ''
+            //     this.getCompany()
+            // },
+            async tijiao(val) {
+                this.form[val] = this.newValue
                 const token=uni.getStorageSync('token')
                 const {data: res} = await this.$request({
                     method: 'POST',
@@ -213,43 +262,76 @@
                         working: this.form.working
                     }
                 })
-                this.form = res
+                this.newValue = ''
+                // this.form = res
                 console.log(res)
-                // if (!res.list) {
-                //   this.followList = []
-                //   return this.emptyShow = true
-                // }
-                // this.followList = res.list.map((item) => {
-                //   return Object.assign({}, item, {show: false})
-                // })
             },
-            DateChange(e){
-                var key=e.currentTarget.dataset.target;
-                this.item[key]=e.detail.value;
+            async submitpush(val) {
+                this.form[val] = this.newValue
+                const token=uni.getStorageSync('token')
+                const {data: res} = await this.$request({
+                    method: 'POST',
+                    url: 'applets/personal',
+                    data: {
+                        token: uni.getStorageSync('token'),
+                        birthday:this.form.birthday,
+                        school:this.form.school,
+                        education:this.form.education,
+                        unit:this.form.unit,
+                        industry:this.form.industry,
+                        identity:this.form.identity,
+                        working: this.form.working
+                    }
+                })
+                this.newValue = ''
+                // this.form = res
+                console.log(res)
             },
-            open() {
-                this.show = true;
+            cancelCompanyName () {
+                this.newValue = ''
             },
-            actionSheetCallback(index) {
-                this.form.industry = this.actionSheetList[index].text;
-                this.form.type = this.actionSheetList[index].id;
+            // 行业
+            // async getIndustry () {
+            //     const { data: res } = await this.$request({
+            //         url: 'goods/navlist'
+            //     })
+            //     this.industryList = res.data.list
+            // },
+            showIndustry () {
+                this.industryShow = true
             },
-            shenfen(index) {
-                this.form.identity = this.shenfenlist[index].text;
-                this.form.type = this.shenfenlist[index].id;
+            //行业
+            confirmIndustry (val,e) {
+                this.newValue = e[0].label
+                this.submitpush(val)
+                this.newValue = ''
             },
-            Job(index) {
-                this.form.working = this.jobList[index].text;
-                this.form.type = this.jobList[index].id;
+            // 企业所在地
+            showAddress () {
+                this.addressShow = true
             },
-            Edu(index) {
-                this.form.education = this.eduList[index].text;
-                this.form.type = this.eduList[index].id;
+            submitAddress (e) {
+                const date = new Date();
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1;
+                let day = date.getDate();
+                this.newValue = e.year.label + '-' + e.month.label + '-' + e.day.label
+                // this.newValue = e.province.label + '-' + e.city.label + '-' + e.area.label
+                this.submitpush('birthday')
+                this.newValue = ''
             },
-            nian(index) {
-                this.form.year = this.yearList[index].text;
-                this.form.type = this.yearList[index].id;
+            // 企业规模和职位
+            showInsize () {
+                this.insizeShow = true
             },
+            showPosition () {
+                this.positionShow = true
+            },
+            submitInfo (val, e) {
+                this.newValue = e[0].label
+                // this.submitpush(val)
+                this.newValue = ''
+            }
         }
     }
 </script>

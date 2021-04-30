@@ -343,7 +343,7 @@
     {
       "path": "pages/ll/shixinshop",
       "style": {
-        "navigationBarTitleText": "失信详情",
+        "navigationBarTitleText": "失信被执行人详情",
         "navigationBarTextStyle": "black"
       }
     },

@@ -89,7 +89,9 @@
                     }
                 })
                 this.alertShow = true
-
+                // uni.navigateTo({
+                //     url: '/pages/ll/searchDetail?keyword=' + this.keyword
+                // })
             },
             async getSearchList () {
                 const res  = await this.$request({
@@ -112,13 +114,19 @@
                     }
                     if(this.type==true){
                         uni.navigateTo({
-                            url:'/pages/ll/llDetail?type=' + type
+                            url:'/pages/ll/searchDetail?type=' + type
                         })
                     }else{
                         uni.navigateTo({
-                            url:'/pages/ll/llshop?type=' + type
+                            url:'/pages/ll/searchDetail?type=' + type
                         })
                     }
+                    // if(this.keyword){
+                    //     uni.navigateTo({
+                    //         url: '/pages/ll/searchDetail?keyword=' + this.keyword
+                    //     })
+                    // }
+
 
                 }) .catch(function (error) {
                     console.log(error);

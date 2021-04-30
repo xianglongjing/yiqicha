@@ -17,34 +17,35 @@
             </uni-nav-bar>
             <view v-if="query==''">
             <view class="sou u-margin-top-50">
-                <text>最近搜索</text>
+                <text>热门搜索</text>
             </view>
             <view class="tips">
                 <text>北京锤子数码科技有限公司</text>
             </view>
             </view>
         </view>
-        <u-empty class="u-margin-30" text="暂无相关内容" mode="search" :show="emptyShow"></u-empty>
+        <u-empty src="http://images.yiqiwang360.com/yiqicha/wujilu.png" class="u-margin-30" :show="emptyShow">
+        </u-empty>
         <view class="con">
 <!--            <view class="num">搜到 <text class="red">123456</text>个网站备案</view>-->
-            <view class="desc" v-for="item in goodsList" :key="item.id">
+            <view class="desc" v-for="item in goodsList" :key="item.id" @click="shopDetail(item.id)">
                 <view class="top u-border-bottom">
-                    <view class="name">{{item.cpyname}}</view>
-                    <view v-for="item2 in item.record" :key="item2.id">
+                    <view class="name">{{item.corporate.cpyname}}</view>
+                    <view>
                         <view>
                             <text class="gray">网站首页：</text>
-                            <text>{{item2.address}}</text>
+                            <text>{{item.address}}</text>
                         </view>
                         <view>
                             <text class="gray">备案号：</text>
-                            <text>{{item2.number}}</text>
+                            <text>{{item.number}}</text>
                         </view>
                         <view>
                             <text class="gray">主办单位性质：</text>
-                            <text>{{item2.name}}</text>
+                            <text>{{item.name}}</text>
                         </view>
                         <view class="right">
-                            <view class="date">{{item2.date}}</view>
+                            <view class="date">{{item.date}}</view>
                             <u-icon name="arrow-right" size="40" color="#A9A9A9"></u-icon>
                         </view>
                     </view>
@@ -54,7 +55,7 @@
                     <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/lianjie.png" width="35" height="35"></u-image>
                     <view class="u-margin-left-10">
                         关联公司
-                        <text class="red u-margin-left-10">{{item.cpyname}}</text>
+                        <text class="red u-margin-left-10">{{item.corporate.cpyname}}</text>
                     </view>
                 </view>
             </view>
@@ -116,6 +117,11 @@
                     delta: 1
                 });
             },
+            shopDetail(id){
+                uni.navigateTo({
+                    url:'/pages/index/chashop?id='+id
+                })
+            }
         }
     }
 </script>

@@ -155,9 +155,9 @@
                 })
             },
             submit() {
-                if (this.code || this.password== '') {
-                    return this.$u.toast('请完整填写内容')
-                }
+                // if (this.form.code || this.form.password== '') {
+                //     return this.$u.toast('请完整填写内容')
+                // }
                 this.$refs.aForm.validate(valid => {
                     if (valid) {
                         this.$refs.uForm.validate(valid => {

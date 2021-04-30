@@ -17,39 +17,113 @@
                     bar-width="50" bar-height="4" font-size="30" height="50" gutter="50" :bold="false"
                     active-color="#ffffff" bg-color="none" inactive-color="#ffffff"
             ></u-tabs>
-            <view>
-                <view class="u-margin-top-30" >
-                    <u-search
-                            :action-style="search_btn"
-                            :animation="true" disabled
-                            @custom="goSearch"
-                            @click="goSearch"
-                            bg-color="#f8f8f8"
-                            input-align="left"
-                            placeholder="请输入企业名称 老板名称 工商注册号等" shape="square"
-                    ></u-search>
-                    <view class="hot u-margin-top-30">
-                        <view class="hot-title">
-                            热搜
-                        </view>
-                        <view class="hot-items">
-                            <u-notice-bar mode="vertical"
-                                          :volume-icon="false"
-                                          bg-color="none"
-                                          font-size="26"
-                                          padding="2rpx 20rpx"
-                                          color="#ffffff"
-                                          @click="hotNewsGo"
-                                          :is-circular="false" :list="hotList"></u-notice-bar>
-                        </view>
-                        <view class="hot-change" @click="reNews">
-                            <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/huanyipi.png"
-                                     width="24" height="24"></u-image>
-                            <text class="u-margin-left-10">换一批</text>
-                        </view>
-                    </view>
+          <view v-if="current===0">
+            <view class="inline-block" style="width: 100%;margin-top:20rpx">
+              <u-search
+                      :action-style="search_btn"
+                      :animation="true" disabled
+                      @custom="goSearch"
+                      @click="goSearch"
+                      bg-color="#f8f8f8"
+                      input-align="left"
+                      placeholder="请输入企业名称 老板名称 工商注册号等" shape="square"
+              ></u-search>
+              <view class="hot u-margin-top-30">
+                <view class="hot-title">
+                  热搜
                 </view>
+                <view class="hot-items">
+                  <u-notice-bar mode="vertical"
+                                :volume-icon="false"
+                                bg-color="none"
+                                font-size="26"
+                                padding="2rpx 20rpx"
+                                color="#ffffff"
+                                @click="hotNewsGo"
+                                :is-circular="false" :list="hotList"></u-notice-bar>
+                </view>
+                <view class="hot-change" @click="reNews">
+                  <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/huanyipi.png"
+                           width="24" height="24"></u-image>
+                  <text class="u-margin-left-10">换一批</text>
+                </view>
+              </view>
             </view>
+          </view>
+          <view v-if="current===1">
+            <view class="inline-block" style="width: 100%;margin-top:20rpx">
+              <u-search
+                      :action-style="search_btn"
+                      :animation="true" disabled
+                      @custom="goSearch"
+                      @click="souboss"
+                      bg-color="#f8f8f8"
+                      input-align="left"
+                      placeholder="请输入企业名称 老板名称 工商注册号等" shape="square"
+              ></u-search>
+              <view class="hot u-margin-top-30">
+                <view class="hot-title">
+                  热搜
+                </view>
+                <view class="hot-items">
+                  <u-notice-bar mode="vertical"
+                                :volume-icon="false"
+                                bg-color="none"
+                                font-size="26"
+                                padding="2rpx 20rpx"
+                                color="#ffffff"
+                                @click="hotNewsGo"
+                                :is-circular="false" :list="hotList"></u-notice-bar>
+                </view>
+                <view class="hot-change" @click="reNews">
+                  <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/huanyipi.png"
+                           width="24" height="24"></u-image>
+                  <text class="u-margin-left-10">换一批</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view v-if="current===2">
+            <view class="inline-block" style="width: 100%;margin-top:20rpx">
+<!--              <u-search-->
+<!--                      :action-style="search_btn"-->
+<!--                      :animation="true" disabled-->
+<!--                      @custom="goSearch"-->
+<!--                      @click="danger"-->
+<!--                      bg-color="#f8f8f8"-->
+<!--                      input-align="left"-->
+<!--                      placeholder="请输入企业名称 老板名称 工商注册号等" shape="square"-->
+<!--              ></u-search>-->
+              <u-search
+                      :action-style="search_btn"
+                      :animation="true" disabled
+                      @custom="goSearch"
+                      bg-color="#f8f8f8" @click="kaifa"
+                      input-align="left"
+                      placeholder="请输入企业名称 老板名称 工商注册号等" shape="square"
+              ></u-search>
+              <view class="hot u-margin-top-30">
+                <view class="hot-title">
+                  热搜
+                </view>
+                <view class="hot-items">
+                  <u-notice-bar mode="vertical"
+                                :volume-icon="false"
+                                bg-color="none"
+                                font-size="26"
+                                padding="2rpx 20rpx"
+                                color="#ffffff"
+                                @click="hotNewsGo"
+                                :is-circular="false" :list="hotList"></u-notice-bar>
+                </view>
+                <view class="hot-change" @click="reNews">
+                  <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/huanyipi.png"
+                           width="24" height="24"></u-image>
+                  <text class="u-margin-left-10">换一批</text>
+                </view>
+              </view>
+            </view>
+          </view>
 
         </view>
     </view>
@@ -67,7 +141,7 @@
         <u-image src="https://yiqiwang360.com/images/yiqicha/laoban.png" mode="aspectFill" height="80" width="80"></u-image>
         <text>身边老板</text>
       </view>
-      <view class="types-con" @click="go('index/nearshop')">
+      <view class="types-con" @click="kaifa">
         <u-image src="https://yiqiwang360.com/images/yiqicha/gongsi.png" mode="aspectFill" height="80" width="80"></u-image>
         <text>附近公司</text>
       </view>
@@ -85,7 +159,7 @@
           <u-image src="https://yiqiwang360.com/images/yiqicha/shangbiao.png" mode="aspectFill" height="80" width="80"></u-image>
           <text>查商标</text>
         </view>
-        <view class="types-con" @click="go('index/danger')">
+        <view class="types-con" @click="kaifa">
           <u-image src="https://yiqiwang360.com/images/yiqicha/fengxian.png" mode="aspectFill" height="80" width="80"></u-image>
           <text>查风险</text>
         </view>

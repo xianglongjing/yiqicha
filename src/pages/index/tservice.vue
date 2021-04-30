@@ -104,11 +104,11 @@
                 </view>
             </view>
             <view class="flex1">
-                <view class="item u-margin-left-30" @click="kaifa">
+                <view class="item" @click="kaifa">
                     <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(5).png"></u-image>
                     <text>司法拍卖</text>
                 </view>
-                <view class="item u-margin-left-50" @click="kaifa">
+                <view class="item" @click="kaifa">
                     <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(6).png"></u-image>
                     <text>开庭公告</text>
                 </view>
@@ -187,11 +187,18 @@
             font-size: 30rpx;
         }
         .services-items{
-
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
             .services-item{
                 display: inline-block;
                 text-align: center;
                 width: 25%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 margin:10rpx 0rpx;
                 height:140rpx;
                 .item-img{
@@ -210,20 +217,39 @@
                 }
             }
         }
-        .flex1{
-            display: flex;
-            flex-direction: row;
+
+
+    }
+    .main{
+        background: white;
+        .title{
+            padding:20rpx 20rpx;
+            font-weight: bold;
+            font-size: 30rpx;
+        }
+        .flex{
             align-items: center;
             .item{
-                flex-direction: column;
+                width:25%;
                 display: flex;
                 align-items: center;
-                text{
-                    padding:10rpx 15rpx;
-                    text-align: center;
-                }
+                flex-direction: column;
+                text-align: center;
             }
         }
     }
-
+    .flex1{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .item{
+            flex-direction: column;
+            display: flex;
+            align-items: center;width:25%;
+            text{
+                padding:10rpx 15rpx;
+                text-align: center;
+            }
+        }
+    }
 </style>

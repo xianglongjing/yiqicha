@@ -18,11 +18,24 @@
             ></u-tabs>
         </view>
         <view v-if="current==0" class="con" :key="item.id" v-for="item in shopList">
-            <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="80" height="80"></u-image>
+            <u-image mode="aspectFill" src="https://api.yiqiwang360.com/images/app/app_logo2.png" width="80" height="80"></u-image>
             <view class="con-r">
-                <view class="name">{{item.cpyname}}</view>
+                <view class="name">{{item.name}}</view>
                 <view class="u-margin-bottom-50">商务信息咨询；财务信息咨询</view>
                 <text class="status">{{item.revocation=1 ? '开业' :'吊销' }}</text>
+            </view>
+        </view>
+        <view v-if="current==1" class="con" :key="item.id" v-for="item in shopList">
+            <u-image mode="aspectFill" src="https://api.yiqiwang360.com/images/app/app_logo2.png" width="80" height="80"></u-image>
+            <view class="con-r">
+                <view class="name">{{item.name}}</view>
+            </view>
+        </view>
+        <view v-if="current==2" class="con" :key="item.id" v-for="item in shopList">
+            <u-image mode="aspectFill" src="https://api.yiqiwang360.com/images/app/app_logo2.png" width="80" height="80"></u-image>
+            <view class="con-r">
+                <view class="name">{{item.name}}</view>
+<!--                <text class="status">{{item.revocation=1 ? '开业' :'吊销' }}</text>-->
             </view>
         </view>
     </view>
@@ -40,6 +53,7 @@
                     name: '认证失败'
                 }],
                 current:0,
+                type:1,
                 shopList:{}
             }
         },
@@ -58,13 +72,24 @@
             // },
             Change(index) {
                 this.current = index;
+                if(index==0){
+                    this.type=1
+                }
+                if(index==1){
+                    this.type=2
+                }
+                if(index==2){
+                    this.type=3
+                }
+                console.log(this.type)
+                this.getNewList()
             },
             async getNewList () {
                 const token=uni.getStorageSync('token')
                 const res =await this.$request({
                     method: 'POST',
                     data: {
-                        type:2,
+                        type:this.type,
                         token:token
                     },
                     url: 'applets/manage'

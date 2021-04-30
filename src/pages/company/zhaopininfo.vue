@@ -1,21 +1,21 @@
 <template>
     <view class="page u-border-top">
-        <view class="con u-border-bottom" @click="detail">
+        <view class="con u-border-bottom" @click="detail(item.id)" v-for="item in info" :key="item.id">
             <view class="flex">
-                <text>物流跟单员</text>
-                <text class="red">500-8000</text>
+                <text>{{item.name ? item.name : '-'}}</text>
+                <text class="red">{{item.area ? item.area : '-'}}</text>
             </view>
             <view class="flex">
                 <view class="info">
-                    <text class="gray">临沂市</text>
+                    <text class="gray">{{item.name ? item.name : '-'}}</text>
                     <text class="shu">|</text>
-                    <text class="gray">一年以上</text>
+                    <text class="gray">{{item.years ? item.years : '-'}}</text>
                     <text class="shu">|</text>
-                    <text class="gray">初中</text>
+                    <text class="gray">{{item.education ? item.name : '-'}}</text>
                 </view>
                 <u-icon name="arrow-right" size="35" color="#777777"></u-icon>
             </view>
-            <view class="gray flex">2020-04-13</view>
+            <view class="gray flex">{{item.date ? item.date : '-'}}</view>
         </view>
     </view>
 </template>
@@ -28,16 +28,31 @@
                 }, {
                     name: '历史法律诉讼'
                 }],
-                current: 0
+                current: 0,
+                info:{}
             }
         },
+        onLoad(options){
+            this.lists(options.id)
+        },
         methods: {
+            async lists(id) {
+                const {data: res} = await this.$request({
+                    method: 'GET',
+                    url: 'applets/offers',
+                    data: {
+                        id:id
+                    }
+                })
+                this.info = res
+                console.log(res)
+            },
             change(index) {
                 this.current = index;
             },
-            detail(){
+            detail(id){
                 uni.navigateTo({
-                    url:'/pages/company/zhaopinDetail'
+                    url:'/pages/company/zhaopinDetail?id='+id
                 })
             }
         }

@@ -127,6 +127,7 @@ j<template>
                 //
                 // }
                 for (var i = 0;i < this.uploadList.length;i++) {
+                    // console.log(i)
                     uni.uploadFile({
                         url: 'http://192.168.8.39:8081/applets/legalize',
                         fileType: "image",
@@ -137,7 +138,7 @@ j<template>
                             index:i,
                             name:this.form.name,
                             add:this.form.add,
-                            image:this.uploadList
+                            image:this.uploadList[i]
                         },
                         success: (res) => {
                             console.log(res)

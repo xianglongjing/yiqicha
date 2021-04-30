@@ -6,15 +6,15 @@
                         :action-style="search_btn"
                         :animation="true"
                         @custom="goSearch"
-                        @search="goSearch"
+                        @search="goSearch" clearabled @clear="clear"
                         bg-color="#F6F6F6" border-color="#C6C6C6"
                         input-align="left" height="80"
                         placeholder="请输入企业名称（所在国语言）" shape="square"
-                        v-model="query"
+                        v-model="keyword"
                 ></u-search>
             </view>
         </view>
-        <view v-if="query==''">
+        <view v-if="keyword==''">
             <view class="enter">
                 <view class="title">及时查询入口</view>
                 <view class="nation">
@@ -65,7 +65,9 @@
                 </view>
             </view>
         </view>
-        <view class="white" v-for="item in goodsList" :key="item.id" @click="Detail(item.id)">
+        <u-empty src="http://images.yiqiwang360.com/yiqicha/wujilu.png" class="u-margin-30" :show="emptyShow">
+        </u-empty>
+        <view class="white" v-if="keyword!==''" v-for="item in goodsList" :key="item.id" @click="Detail(item.id)">
             <u-image mode="aspectFill" width="50" height="40"
                     src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic2.zhimg.com%2F50%2Fv2-99dbc76ccf938ba12e551f08860f438b_hd.jpg&refer=http%3A%2F%2Fpic2.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621737672&t=98697c77a3244d2eaade7d20ea88babe"
             ></u-image>
@@ -86,7 +88,7 @@
             </view>
         </view>
 
-        <u-empty class="u-margin-30" text="暂无相关内容" mode="search" :show="emptyShow"></u-empty>
+
     </view>
 </template>
 
@@ -97,7 +99,7 @@
                 search_btn:{
                     color:'#000000'
                 },
-                query:'',
+                keyword:'',
                 emptyShow:false,
                 goodsList:[]
             }
@@ -111,21 +113,13 @@
                     url: 'applets/foreign',
                     method:'POST',
                     data: {
-                        keyword: this.query,
+                        keyword: this.keyword,
                         page: 1
                     }
                 })
                 console.log(res)
                 this.goodsList = res
                 this.corporate = res.corporate
-                // this.qualityList = res.data.quality
-                // this.personList = res.data.person
-                // this.discussList = res.data.discuss
-                // if (res.data.content) {
-                //     this.newsList = res.data.content
-                // } else {
-                //     this.newsList = []
-                // }
                 // //判断全部为空的吸星大法
                 let dataNum = res.length
                 console.log(dataNum)
@@ -134,9 +128,18 @@
                 }else{
                     this.emptyShow = true
                 }
-                if(query==''){
+                if(res.keyword==''){
                     this.emptyShow = false
                 }
+            },
+            clear(){
+                this.emptyShow = false
+                uni.removeStorage({
+                    key: 'keyword',
+                    success() {
+                        console.log('删除成功')
+                    }
+                })
             },
             Detail(id){
                 uni.navigateTo({

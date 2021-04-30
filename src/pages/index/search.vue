@@ -10,8 +10,8 @@
                                 :animation="true"
                                 @custom="goSearch"
                                 @search="goSearch"
-                                bg-color="#f8f8f8"
-                                input-align="left"
+                                bg-color="#f8f8f8" @clear="clear"
+                                input-align="left" clearabled
                                 placeholder="搜索" shape="square"
                                 v-model="keyword"
                         ></u-search>
@@ -21,8 +21,9 @@
         </uni-nav-bar>
         <view class="company">
 <!--            <view>为您找到 <text class="red">123456</text>家公司</view>-->
-            <u-empty class="u-margin-30" text="暂无相关内容" mode="search" :show="emptyShow"></u-empty>
-            <view class="com-con" :key="item.id" v-for="item in goodsList" @click="shopDetail(item.id)">
+            <u-empty text="暂无相关内容" mode="list" src="http://images.yiqiwang360.com/yiqicha/wujilu.png" class="u-margin-30" :show="emptyShow">
+            </u-empty>
+            <view class="com-con" v-if="keyword&&!emptyShow" :key="item.id" v-for="item in goodsList" @click="shopDetail(item.id)">
             <view class="com-top u-line-1 u-border-bottom u-padding-bottom-30">
                 <u-image mode="aspectFit" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2F12365.ce.cn%2Fzlpd%2Fzly2014%2Fcy013%2Fcy2013%2Fgd%2F201409%2F19%2FW020140919558211329941.jpg&refer=http%3A%2F%2F12365.ce.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621216071&t=f8232ea8f655c0363c1a1cec0ffc7365" width="70" height="70"></u-image>
                 <view class="con-r">
@@ -47,13 +48,13 @@
                     </view>
                 </view>
             </view>
-                <view class="brand" v-for="(item,index) in trademark" :key="item.id">
-                    <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/lianjie.png" width="30" height="30"></u-image>
-                    <view class="u-margin-left-10">
-                        商标信息:
-                        <text class="red u-margin-left-10">铭远</text>
-                    </view>
-                </view>
+<!--                <view class="brand" v-for="(item2,index) in trademark" :key="item2.id">-->
+<!--                    <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/lianjie.png" width="30" height="30"></u-image>-->
+<!--                    <view class="u-margin-left-10">-->
+<!--                        商标信息:-->
+<!--                        <text class="red u-margin-left-10">铭远</text>-->
+<!--                    </view>-->
+<!--                </view>-->
         </view>
             <u-loadmore
                 color="#999999"
@@ -78,6 +79,7 @@
                 pageNum: 1,
                 loadStatus: 'more',
                 goodsList: [],
+                goodlist:[],
                 trademark:[],
                 partner:[],
                 emptyShow:false,
@@ -89,25 +91,28 @@
         },
         // 到底部
         onReachBottom () {
-            // if (this.goodsList.length < this.pageNum * 10) return this.loadStatus = 'more'
+            if (this.goodsList.length < this.pageNum * 10) return this.loadStatus = 'more'
             this.pageNum++
             this.getSearchList()
         },
         // 下拉刷新
         onPullDownRefresh () {
             this.pageNum = 1
-            this.goodsList = []
-            this.getSearchList(() => {
-                uni.stopPullDownRefresh()
-            })
+            // this.pageNum++
+            this.getSearchList()
+            // this.goodsList = []
+            // this.getSearchList(() => {
+            //     uni.stopPullDownRefresh()
+            // })
         },
+
         methods:{
             goSearch(){
                 if (this.keyword === '') return uni.showToast({
-                            title: '请输入关键词再搜索',
-                            icon: 'none',
-                            duration: 2000
-                          })
+                    title: '请输入关键词再搜索',
+                    icon: 'none',
+                    duration: 2000
+                })
                 if (this.keyword!=''){
                     this.getSearchList();
                 }
@@ -121,15 +126,16 @@
                         }
                     })
                     console.log(res)
-                    // this.goodsList = res
-                    this.goodsList = [...this.goodsList, ...res]
+                    this.goodsList = res
+                    // this.goodsList = [...this.goodsList, ...res]
+                    console.log([...this.goodsList, ...res])
+                    // this.goodsList = this.goodsList.concat(res)
                     this.partner = res.partner
-                    // this.trademark = res.trademark
-                    // if (this.goodsList.length < res.total) {
-                    //     this.loadStatus = 'more'
-                    // } else {
-                    //     this.loadStatus = 'noMore'
-                    // }
+                    if (this.goodsList.length < res.total) {
+                        this.loadStatus = 'loading'
+                    } else {
+                        this.loadStatus = 'nomore'
+                    }
                     // callBack && callBack()
                     // this.qualityList = res.data.quality
                     // this.personList = res.data.person
@@ -142,13 +148,26 @@
                     // //判断全部为空的吸星大法
                     let dataNum = res.length
                     console.log(dataNum)
+                    if(this.keyword==''){
+                        this.emptyShow = false
+                    }
                     if (dataNum>=1){
                         this.emptyShow = false
                     }else{
                         this.emptyShow = true
                     }
                 },
-
+            clear(){
+                this.emptyShow = false
+                uni.removeStorage({
+                    key: 'keyword',
+                    success() {
+                        console.log('删除成功')
+                    }
+                })
+                this.pageNum = 0
+                this.getSearchList()
+            },
             shopDetail(id){
                 uni.navigateTo({
                     url:'/pages/index/chashop?id='+id
