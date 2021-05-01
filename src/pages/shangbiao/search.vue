@@ -99,7 +99,7 @@
         methods:{
             detail(id){
                 uni.navigateTo({
-                    url:'/pages/shangbiao/sbDetail?id'+id
+                    url:'/pages/shangbiao/sbDetail?id='+id
                 })
             },
             goBack(){
@@ -117,7 +117,7 @@
                     }
                 })
                 this.goodsList = res
-                console.log(1)
+                console.log(res.id)
                 // }
                 // //判断全部为空的吸星大法
                 // let dataNum = res.length

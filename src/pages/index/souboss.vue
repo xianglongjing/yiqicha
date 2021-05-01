@@ -21,44 +21,24 @@
         <view v-if="keyword==''">
         <view class="hot">
             <view class="title u-margin-bottom-20 u-font-32">热门搜索</view>
-            <view class="con">
-                <view class="person">
-                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                    <text>马云</text>
-                </view>
-                <view class="person">
-                    <u-image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201705%2F28%2F20170528222839_i4vmf.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621149843&t=d6336de6daf48195379db1ccae09d2a2" width="60" height="60"></u-image>
-                    <text>董明珠</text>
-                </view>
-                <view class="person">
-                    <u-image src="https://img2.baidu.com/it/u=1004953359,2131419137&fm=11&fmt=auto&gp=0.jpg" width="60" height="60"></u-image>
-                    <text>任正非</text>
-                </view>
-                <view class="person">
-                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                    <text>雷军</text>
-                </view>
-                <view class="person">
-                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                    <text>马化腾</text>
-                </view>
-                <view class="person">
-                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                    <text>李亚鹏</text>
-                </view>
-                <view class="person">
-                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                    <text>王非</text>
-                </view>
-                <view class="person">
-                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                    <text>李彦宏</text>
-                </view>
-                <view class="person">
-                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                    <text>王健林</text>
-                </view>
+            <view class="hot-laolai">
+                <scroll-view class="scroll-view_H" scroll-x="true">
+                    <view class="u-margin-top-10">
+                        <view class="lai-item" @click="detail" v-for="item in hot" :key="item.id">
+                            <view class="lai-img">
+<!--                                <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>-->
+                            </view>
+                            <view class="lai-name">{{item.name}}</view>
+                        </view>
+                    </view>
+                </scroll-view>
             </view>
+<!--            <view class="con">-->
+<!--                <view class="person">-->
+<!--&lt;!&ndash;                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>&ndash;&gt;-->
+<!--                    <text>马云</text>-->
+<!--                </view>-->
+<!--            </view>-->
         </view>
         <view class="boss">
             <view class="u-margin-bottom-20 u-font-32">临沂热门老板</view>
@@ -152,6 +132,7 @@
                 search_btn:{
                     color:'#000'
                 },
+                hot:{},
                 keyword:'',
                 page:1,
                 pageNum: 1,
@@ -173,7 +154,21 @@
                 uni.stopPullDownRefresh()
             })
         },
+        onLoad(){
+            this.hotsearch()
+        },
         methods:{
+            async hotsearch () {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    url: 'applets/hotsearch',
+                    data: {
+                        type:'boss'
+                    }
+                })
+                this.hot =res
+                console.log(res)
+            },
             goSearch(){
                 this.getSearchList()
             },
@@ -249,6 +244,30 @@
             text{
                 width:auto;
                 margin-left: 20rpx;
+            }
+        }
+    }
+    .hot-laolai{
+        white-space: nowrap;
+        width: 100%;
+        .lai-item{
+            display: inline-block;
+            border-radius: 5rpx;
+            padding: 10rpx 20rpx;
+            margin-right: 20rpx;
+            background-color: rgba(0,0,0,0.1);
+            line-height: 30rpx;
+            .lai-img{
+                display: inline-block;
+                width: 60rpx;
+                height: 60rpx;
+                font-size: 0;
+                vertical-align: middle;
+            }
+            .lai-name{
+                display: inline-block;
+                margin-left:20rpx;
+                vertical-align: middle;
             }
         }
     }

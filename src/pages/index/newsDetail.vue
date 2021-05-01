@@ -22,7 +22,7 @@
         <view class="comment">
 <!--            <view class="title">热门评论(444)</view>-->
             <view class="comm-con u-border-bottom" :key="item.id" v-for="item in comment" v-if="storage.token !== ''">
-                <u-image :src="item.login.avatarUrl ||'https://img1.baidu.com/it/u=2796144188,439704386&fm=26&fmt=auto&gp=0.jpg'" width="80" height="80"
+                <u-image :src="item.login.avatarUrl ||'https://api.yiqiwang360.com/images/app/app_logo2.png'" width="80" height="80"
                          shape="circle"></u-image>
                 <view class="con-desc">
                     <view class="name">
@@ -30,10 +30,10 @@
                     </view>
                     <view>{{item.content}}</view>
                     <text class="date">{{item.comment_time}}</text>
-                    <view class="num" @click="heart" :data-id="item.id" :data-status="item.like">{{item.people}}
+                    <view class="num" @click="heart" :data-id="item.id" :data-like="item.like">{{item.people}}
                         <!--                        <u-icon name="heart" class="u-margin-left-20" @click="heart"></u-icon>-->
 
-                        <text :class="item.like.length != 0 ?'cuIcon-likefill text-red':'cuIcon-like'"></text>
+                        <text :class="item.like !='' ?'cuIcon-likefill text-red':'cuIcon-like'"></text>
                     </view>
                 </view>
             </view>
@@ -81,8 +81,7 @@
             getStorage () {
                 this.storage.token = uni.getStorageSync('token')
                 this.storage.id = uni.getStorageSync('id')
-                this.storage.nickName = uni.getStorageSync('nickName')
-                this.storage.avatarUrl = uni.getStorageSync('avatarUrl')
+                this.storage.nickName = uni.getStorageSync('phoonoe')
             },
             async getNavList (id) {
                 const lid=uni.getStorageSync('id')
@@ -104,11 +103,16 @@
             async heart (cid) {
                 const lid=uni.getStorageSync('id')
                 const token=uni.getStorageSync('token')
+                if(this.comment.like==''){
+                    cid.currentTarget.dataset.like=true
+                }else{
+                    cid.currentTarget.dataset.like=false
+                }
                 const { res } =await this.$request({
                     method: 'POST',
                     url: 'applets/like',
                     data:{
-                        type:cid.currentTarget.dataset.status,
+                        type:cid.currentTarget.dataset.like,
                         cid:cid.currentTarget.dataset.id,
                         lid:uni.getStorageSync('id'),
                         vid:this.shopList.id,
@@ -116,9 +120,9 @@
                     }
                 }).then(res=>{
                     if( cid.currentTarget.dataset.like==''){
-                        this.pivot.like=''
+                        this.comment.like!=false
                     }else{
-                        this.pivot.like!=''
+                        this.comment.like=false
                     }
                     this.getNavList(id);
                 })
@@ -128,6 +132,7 @@
                 //     reply_id.currentTarget.dataset.status==0
                 // }
                 // console.log( lid)
+                this.getNavList(id);
             },
             async write (id) {
                 const token=uni.getStorageSync('token')

@@ -46,10 +46,13 @@ j<template>
             </u-form>
         </view>
         <view class="last">
-            <u-radio-group v-model="value">
-                <u-radio shape="square">我已阅读并同意
-                    <text class="red">《企业实名认证服务协议》</text></u-radio>
-            </u-radio-group>
+<!--            <u-radio-group v-model="value">-->
+<!--                <u-radio shape="square">我已阅读并同意-->
+<!--                    <text class="red">《企业实名认证服务协议》</text></u-radio>-->
+<!--            </u-radio-group>-->
+            <u-checkbox-group>
+                <u-checkbox v-model="value" :disabled="false">我已阅读并同意<text class="red" @click="xieyi">《企业实名认证服务协议》</text></u-checkbox>
+            </u-checkbox-group>
         </view>
         <u-button :customStyle="submit" @click="uploadCards">提交</u-button>
     </view>
@@ -90,6 +93,11 @@ j<template>
         //     this.formData.name = this.form.name
         // },
         methods:{
+           xieyi(){
+               uni.navigateTo({
+                   url:'/pages/common/shopconfirmxieyi'
+               })
+           },
             /*submit() {
                 this.$refs.uUpload.upload();
             },*/

@@ -26,24 +26,19 @@
                         v-model="query"
                 ></u-search>
                 <view style="text-align: left;margin:40rpx 0 10rpx;">热门搜索</view>
-                <view class="shops">
-                    <view class="shop" @click="shop">
-                        <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>
-                        <text>北京锤子数码科技有限公司</text>
-                    </view>
-                    <view class="shop u-margin-left-25" @click="man">
-                        <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                        <text>贾跃亭</text>
-                    </view>
-                    <view class="shop" @click="shop">
-                        <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>
-                        <text>北京锤子数码科技有限公司</text>
-                    </view>
-                    <view class="shop u-margin-left-25" @click="man">
-                        <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                        <text>贾跃亭</text>
-                    </view>
+                <view class="hot-laolai">
+                    <scroll-view class="scroll-view_H" scroll-x="true">
+                        <view class="u-margin-top-10">
+                            <view class="lai-item" @click="detail">
+                                <view class="lai-img">
+                                    <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>
+                                </view>
+                                <view class="lai-name">北京锤子数码科技有限公司</view>
+                            </view>
+                        </view>
+                    </scroll-view>
                 </view>
+
             </view>
         </view>
         <view class="infor">
@@ -70,6 +65,21 @@
             }
         },
         methods:{
+            async hotsearch () {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    url: 'applets/hotsearch',
+                    data: {
+                        type:'brand'
+                    }
+                })
+                this.hot =res
+            },
+            detail(id){
+                uni.navigateTo({
+                    url:'/pages/shangbiao/sbDetail?id='+id
+                })
+            },
             go(){
                 uni.navigateTo({
                     url:'/pages/danger/search'
@@ -124,21 +134,28 @@
             left:35rpx;
             right:35rpx;
         }
-        .shops{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .shop{
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
+
+        .hot-laolai{
+            white-space: nowrap;
+            width: 100%;
+            .lai-item{
+                display: inline-block;
                 border-radius: 5rpx;
-                padding:10rpx 20rpx;
-                margin:10rpx 0 10rpx 0;
+                padding: 10rpx 20rpx;
+                margin-right: 20rpx;
                 background-color: rgba(255,255,255,0.2);
-                text{
-                    margin-left:10rpx;
+                line-height: 30rpx;
+                .lai-img{
+                    display: inline-block;
+                    width: 60rpx;
+                    height: 60rpx;
+                    font-size: 0;
+                    vertical-align: middle;
+                }
+                .lai-name{
+                    display: inline-block;
+                    margin-left:20rpx;
+                    vertical-align: middle;
                 }
             }
         }

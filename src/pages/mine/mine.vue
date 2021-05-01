@@ -6,16 +6,16 @@
           <image
             :src="storage.info.img || 'https://api.yiqiwang360.com/images/app/app_logo2.png'"
             mode="aspectFill"
-            @click="go('common/personal')"
+            @click="go('mine/personal')"
           />
         </view>
-        <view style="color:white;margin:10rpx 20rpx;font-size: 28rpx">
+        <view style="color:white;margin:0 20rpx;font-size: 28rpx">
           <u-icon name="edit-pen" size="30"></u-icon>
-          <text class="u-margin-left-10">编辑</text>
+          <text class="u-margin-left-10" @click="go('mine/personal')">编辑</text>
         </view>
         <view class="info-cont" v-if="storage.token !== ''" @click="go('common/personal')">
           <view class="username">{{storage.phone || '点击设置昵称'}}</view>
-          <view class="phone">临沂市铭远企业管理服务有限公司</view>
+<!--          <view class="phone">临沂市铭远企业管理服务有限公司</view>-->
         </view>
         <view class="info-cont" v-else @click="goLogin">
           <view class="username">登录/注册</view>
@@ -32,7 +32,7 @@
           <text class="u-font-25">众多VIP专享特权</text>
         </view>
       </view>
-      <u-button :customStyle="kai" shape="circle" @click="kaifa">立即开通</u-button>
+      <u-button :customStyle="kai" :ripple="true" ripple-bg-color="#909399" shape="circle" @click="kaifa">立即开通</u-button>
     </view>
     <view class="head-btn">
     <view class="head-btn-item" @click="go('confirm/confirm')">
@@ -495,7 +495,7 @@ page {
     border-radius: 20rpx;
     background:linear-gradient(90deg, #ffffff, #D1D1D1);
     position:absolute;
-    top:300rpx;
+    top:320rpx;
     left:4%;
     display: flex;
     flex-direction: row;

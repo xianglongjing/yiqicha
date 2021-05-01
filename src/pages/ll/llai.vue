@@ -27,61 +27,19 @@
                 <view class="hot-laolai">
                     <scroll-view class="scroll-view_H" scroll-x="true">
                         <view class="u-margin-top-10">
-                            <view class="lai-item" @click="llshop">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>
-                                </view>
-                                <view class="lai-name">北京锤子数码科技有限公司</view>
-                            </view>
-                            <view class="lai-item" @click="llshop">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>
-                                </view>
-                                <view class="lai-name">北京锤子数码科技有限公司</view>
-                            </view>
-                            <view class="lai-item" @click="llshop">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>
-                                </view>
-                                <view class="lai-name">北京锤子数码科技有限公司</view>
+                            <view class="lai-item" @click="llshop" v-for="item in enterprise" :key="item.id">
+<!--                                <view class="lai-img">-->
+<!--                                    <u-image src="http://images.yiqiwang360.com/yiqicha/gongsiming.png" width="60" height="60"></u-image>-->
+<!--                                </view>-->
+                                <view class="lai-name">{{item.cpyname}}</view>
                             </view>
                         </view>
                         <view class="u-margin-top-20">
-                            <view class="lai-item" @click="llDetail">
+                            <view class="lai-item" @click="llDetail" v-for="item in personal" :key="item.id">
                                 <view class="lai-img">
                                     <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
                                 </view>
-                                <text class="lai-name">赵立志</text>
-                            </view>
-                            <view class="lai-item" @click="llDetail">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                                </view>
-                                <text class="lai-name">赵立志</text>
-                            </view>
-                            <view class="lai-item" @click="llDetail">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                                </view>
-                                <text class="lai-name">赵立志</text>
-                            </view>
-                            <view class="lai-item" @click="llDetail">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                                </view>
-                                <text class="lai-name">赵立志</text>
-                            </view>
-                            <view class="lai-item" @click="llDetail">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                                </view>
-                                <text class="lai-name">赵立志</text>
-                            </view>
-                            <view class="lai-item" @click="llDetail">
-                                <view class="lai-img">
-                                    <u-image src="http://images.yiqiwang360.com/yiqicha/renwu.png" width="60" height="60"></u-image>
-                                </view>
-                                <text class="lai-name">赵立志</text>
+                                <text class="lai-name">{{item.name}}</text>
                             </view>
                         </view>
 
@@ -108,13 +66,26 @@
     export default {
         data(){
             return {
+                enterprise:{},
                 search_btn:{
                     color:'white'
                 },
                 query:''
             }
         },
+        onLoad(){
+            this.hotsearch()
+        },
         methods:{
+            async hotsearch () {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    url: 'applets/laolaisearch'
+                })
+                this.enterprise =res.enterprise
+                this.personal =res.personal
+                console.log(res)
+            },
             goSearch(){
               uni.navigateTo({
                   url:'/pages/ll/search'

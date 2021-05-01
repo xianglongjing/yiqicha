@@ -23,7 +23,8 @@
             </view>
           </u-form-item>
           <u-form-item left-icon="lock" style="color:#B4B5B5;font-size:40rpx" prop="password">
-            <u-input v-model="form.password"  placeholder-style="padding-left:20rpx;color:#B4B5B5" password="true" type="password" label="密码" :password-icon="passwordIcon"
+            <u-input v-model="form.password"  placeholder-style="padding-left:20rpx;color:#B4B5B5" password="true"
+                     type="password" label="密码" :password-icon="passwordIcon"
                      placeholder="请重置密码"/>
           </u-form-item>
         </u-form>
