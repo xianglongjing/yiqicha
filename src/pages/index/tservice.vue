@@ -34,108 +34,135 @@
                     <view class="item-title">全球企业</view>
                 </view>
                 <view class="services-item" @click="go('index/shangbiao')">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/shangbiao.png"></u-image>
-                    <text>查商标</text>
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/shangbiao.png"></image>
+                    </view>
+                    <view class="item-title">查商标</view>
                 </view>
                 <view class="services-item" @click="go('index/danger')">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/fengxian.png"></u-image>
-                    <text>查风险</text>
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/fengxian.png"></image>
+                    </view>
+                    <view class="item-title">查风险</view>
                 </view>
                 <view class="services-item" @click="go('index/beian')">
-                    <u-image mode="aspectFit" width="90" height="90" src="https://yiqiwang360.com/images/yiqicha/beian.png"></u-image>
-                    <text>查备案</text>
+                    <view class="item-img">
+                        <image mode="aspectFit" src="https://yiqiwang360.com/images/yiqicha/beian.png"></image>
+                    </view>
+                    <view class="item-title">查备案</view>
                 </view>
             </view>
-        </view>
-        <view class="main">
-            <view class="title u-margin-bottom-20">企业信息</view>
-            <view class="flex">
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(7).png"></u-image>
-                    <text>招聘</text>
+            <view class="services-title">企业信息</view>
+            <view class="services-items">
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(7).png"></image>
+                    </view>
+                    <view class="item-title">招聘</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(8).png"></u-image>
-                    <text>查网址</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(8).png"></image>
+                    </view>
+                    <view class="item-title">查网址</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(9).png"></u-image>
-                    <text>查税号</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(9).png"></image>
+                    </view>
+                    <view class="item-title">查税号</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(10).png"></u-image>
-                    <text>资质证书</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(10).png"></image>
+                    </view>
+                    <view class="item-title">资质证书</view>
                 </view>
-            </view>
-                <view class="flex1">
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(11).png"></u-image>
-                    <text>中国香港企业</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(11).png"></image>
+                    </view>
+                    <view class="item-title">中国香港企业</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(12).png"></u-image>
-                    <text>中国台湾企业</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(12).png"></image>
+                    </view>
+                    <view class="item-title">中国台湾企业</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(13).png"></u-image>
-                    <text>社会组织</text>
-                </view>
-                </view>
-
-        </view>
-        <view class="main">
-            <view class="title u-margin-bottom-20">风险信息</view>
-            <view class="flex">
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(7).png"></u-image>
-                    <text>诉讼</text>
-                </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(14).png"></u-image>
-                    <text>法院公告</text>
-                </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(3).png"></u-image>
-                    <text>税务评级</text>
-                </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(4).png"></u-image>
-                    <text>进出口信用</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(13).png"></image>
+                    </view>
+                    <view class="item-title">社会组织</view>
                 </view>
             </view>
-            <view class="flex1">
-                <view class="item u-margin-left-30" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(5).png"></u-image>
-                    <text>司法拍卖</text>
+            <view class="services-title">风险信息</view>
+            <view class="services-items">
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(7).png"></image>
+                    </view>
+                    <view class="item-title">诉讼</view>
                 </view>
-                <view class="item u-margin-left-50" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(6).png"></u-image>
-                    <text>开庭公告</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(14).png"></image>
+                    </view>
+                    <view class="item-title">法院公告</view>
+                </view>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(3).png"></image>
+                    </view>
+                    <view class="item-title">税务评级</view>
+                </view>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(4).png"></image>
+                    </view>
+                    <view class="item-title">进出口信用</view>
+                </view>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(5).png"></image>
+                    </view>
+                    <view class="item-title">司法拍卖</view>
+                </view>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(6).png"></image>
+                    </view>
+                    <view class="item-title">开庭公告</view>
                 </view>
             </view>
-
-        </view>
-        <view class="main">
-            <view class="title u-margin-bottom-20">知识产权</view>
-            <view class="flex">
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(15).png"></u-image>
-                    <text>图标</text>
+            <view class="services-title">知识产权</view>
+            <view class="services-items">
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(15).png"></image>
+                    </view>
+                    <view class="item-title">图标</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(16).png"></u-image>
-                    <text>专利</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(16).png"></image>
+                    </view>
+                    <view class="item-title">专利</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(17).png"></u-image>
-                    <text>著作权</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(17).png"></image>
+                    </view>
+                    <view class="item-title">著作权</view>
                 </view>
-                <view class="item" @click="kaifa">
-                    <u-image mode="aspectFit" width="90" height="90" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(8).png"></u-image>
-                    <text>网址</text>
+                <view class="services-item" @click="go('ll/llai')">
+                    <view class="item-img">
+                        <image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/quanbu/quanbu(8).png"></image>
+                    </view>
+                    <view class="item-title">网址</view>
                 </view>
             </view>
-
         </view>
     </view>
 </template>
@@ -178,7 +205,7 @@
 </style>
 <style lang="scss" scoped>
     .services-all{
-        margin-bottom:20rpx;
+        padding-bottom:80rpx;
         background: #ffffff;
 
         .services-title{
