@@ -110,6 +110,7 @@
         padding:25rpx;
     }
     .white{
+        line-height: 50rpx;
         background: white;
         padding:30rpx 25rpx;
         display: flex;

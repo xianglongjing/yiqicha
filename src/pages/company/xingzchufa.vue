@@ -1,7 +1,13 @@
 <template>
     <view class="page u-border-top">
         <view class="tabs u-border-bottom">
-            <u-tabs :list="list" gutter="120" :current="current" @change="change"></u-tabs>
+            <u-tabs
+                    :list="list"
+                    :current="current"
+                    @change="change" gutter="90"
+                    bar-width="50" font-size="30"
+                    active-color="#E12216" bg-color="none" inactive-color="#000000"
+            ></u-tabs>
         </view>
         <view class="con u-border-bottom" @click="detail">
             <view>

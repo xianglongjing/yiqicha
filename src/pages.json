@@ -761,6 +761,22 @@
       }
     },
     {
+      "path": "pages/company/xianzhixiaofeiDetail",
+      "style": {
+        "navigationBarTitleText": "限制消费令详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/xianzhixiaofeiDlishi",
+      "style": {
+        "navigationBarTitleText": "历史限制消费令",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/company/zhongbenanjian",
       "style": {
         "navigationBarTitleText": "终本案件",
@@ -889,6 +905,14 @@
       }
     },
     {
+      "path": "pages/company/qiyeyewuD",
+      "style": {
+        "navigationBarTitleText": "品牌详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/company/jingpinxinxi",
       "style": {
         "navigationBarTitleText": "竞品信息",
@@ -921,6 +945,14 @@
       }
     },
     {
+      "path": "pages/company/newsyuqingD",
+      "style": {
+        "navigationBarTitleText": "新闻详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/company/chouchajiancha",
       "style": {
         "navigationBarTitleText": "抽查检查",
@@ -939,7 +971,7 @@
     {
       "path": "pages/company/zhaotoubiao",
       "style": {
-        "navigationBarTitleText": "zhaotoubiao",
+        "navigationBarTitleText": "招投标",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }
@@ -1084,6 +1116,14 @@
       "path": "pages/company/shixinbeizhixingren",
       "style": {
         "navigationBarTitleText": "失信被执行人",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/shixinbeizhixingD",
+      "style": {
+        "navigationBarTitleText": "失信被执行人详情",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }

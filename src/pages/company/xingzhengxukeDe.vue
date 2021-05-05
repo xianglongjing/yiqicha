@@ -3,29 +3,29 @@
         <view class="first">
             <view>
                 <text class="gray">许可文件编号</text>
-                <view>3221333</view>
+                <view>{{law.number ? law.number : '-'}}</view>
             </view>
-            <view>
+            <view v-if="law.name">
                 <text class="gray">许可文件名称</text>
-                <view>许可证</view>
+                <view>{{law.name ? law.name : ''}}</view>
             </view>
             <view class="flex u-margin-top-20 u-padding-bottom-30">
                 <view class="item">
                     <text class="gray">有效期自</text>
-                    <view>2018-03-12</view>
+                    <view>{{law.from ? law.from : ''}}</view>
                 </view>
                 <view class="item u-border-left u-padding-left-20">
                     <text class="gray">有效期至</text>
-                    <view>-</view>
+                    <view>{{law.until ? law.until : ''}}</view>
                 </view>
             </view>
             <view class="items">
                 <text class="gray">许可机关</text>
-                <view class="red">南京市</view>
+                <view class="red">{{law.authority ? law.authority : ''}}</view>
             </view>
             <view class="items">
                 <text class="gray">许可内容</text>
-                <view>-</view>
+                <view>{{law.content ? law.content : ''}}</view>
             </view>
         </view>
     </view>
@@ -38,12 +38,14 @@
                 law:[]
             }
         },
+        onLoad (options) {
+            this.list(options.id)
+        },
         methods:{
             async list(id) {
-                const token=uni.getStorageSync('token')
                 const {data: res} = await this.$request({
                     method: 'GET',
-                    url: 'applets/pledgesave',
+                    url: 'applets/licensesave',
                     data: {
                         id:id
                     }

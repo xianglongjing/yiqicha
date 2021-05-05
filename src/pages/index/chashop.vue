@@ -468,7 +468,7 @@
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/jingyingxinxi14.png" width="50" height="50"></u-image>
                         <view class="grid-text">新闻舆情</view>
                     </u-grid-item>
-                    <u-grid-item @click="go('company/xingzhengxuke')">
+                    <u-grid-item @click="go('company/xingzhengxuke?id='+newsList.id)">
                         <view class="num4">{{newsList.license}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/jingyingxinxi15.png" width="50" height="50"></u-image>
                         <view class="grid-text">行政许可</view>
@@ -681,7 +681,7 @@
                                  height="50"></u-image>
                         <view class="grid-text">欠税公告</view>
                     </u-grid-item>
-                    <u-grid-item @click="go('company/xingzhengxuke')">
+                    <u-grid-item @click="go('company/xingzhengxuke?id='+newsList.id)">
                         <view class="num6">{{newsList.license}}</view>
                         <u-image mode="aspectFit"
                                  src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"

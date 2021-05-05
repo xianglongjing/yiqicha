@@ -34,27 +34,6 @@
             </view>
            <u-icon name="arrow-right" size="30" color="#777777"></u-icon>
         </view>
-        <view class="con u-border-bottom">
-            <view>
-                <view>
-                    <text class="gray">案号：</text>
-                    <text>1222888</text>
-                </view>
-                <view>
-                    <text class="gray">执行法院：</text>
-                    <text>1222888</text>
-                </view>
-                <view>
-                    <text class="gray">执行标的：</text>
-                    <text>2888元</text>
-                </view>
-                <view>
-                    <text class="gray">立案日期：</text>
-                    <text>2020-12-12</text>
-                </view>
-            </view>
-            <u-icon name="arrow-right" size="30" color="#777777"></u-icon>
-        </view>
     </view>
 </template>
 

@@ -9,35 +9,35 @@
                     active-color="#E12216" bg-color="none" inactive-color="#000000"
             ></u-tabs>
         </view>
-        <view class="flex u-border-bottom" @click="detail">
+        <view class="flex u-border-bottom" v-for="item in con" :key="item.id" @click="detail(item.id)">
             <view>
-                <view>
+                <view v-if="item.name">
                     <text>许可文件名称：</text>
-                    <text>派去好好</text>
+                    <text>{{item.name ? item.name : ''}}</text>
                 </view>
                 <view>
                     <text>许可文件编号：</text>
-                    <text>12222388</text>
+                    <text>{{item.number ? item.number : '-'}}</text>
                 </view>
                 <view>
                     <text>有效期自：</text>
-                    <text>-</text>
+                    <text>{{item.from ? item.from : '-'}}</text>
                 </view>
                 <view>
                     <text>有效期至：</text>
-                    <text>-</text>
+                    <text>{{item.until ? item.until : '-'}}</text>
                 </view>
                 <view>
                     <text>许可机关：</text>
-                    <text>派去好好</text>
+                    <text>{{item.authority ? item.authority : '-'}}</text>
                 </view>
                 <view>
                     <text>数据来源：</text>
-                    <text>派去好好</text>
+                    <text>{{item.sources ? item.sources : '-'}}</text>
                 </view>
                 <view>
                     <text>许可内容：</text>
-                    <text>派去好好</text>
+                    <text>{{item.content ? item.content : '-'}}</text>
                 </view>
             </view>
             <u-icon name="arrow-right" color="#959595" size="40"></u-icon>
@@ -55,15 +55,31 @@
                     name: '历史行政许可'
                 }],
                 current:0,
+                con:{}
             }
         },
+        onLoad (options) {
+            this.list(options.id)
+        },
         methods:{
+            async list (id) {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    data:{
+                        id:id
+                    },
+                    url: 'applets/license',
+                })
+                console.log(res)
+                this.con=res
+
+            },
             Change(index) {
                 this.current = index;
             },
-            detail(){
+            detail(id){
                 uni.navigateTo({
-                    url:'/pages/company/xingzhengxukeDe'
+                    url:'/pages/company/xingzhengxukeDe?id='+id
                 })
             }
         }

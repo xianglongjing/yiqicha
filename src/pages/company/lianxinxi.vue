@@ -73,7 +73,11 @@
     .gray{
         color:#959595;
     }
+    .down{
+        background: white;
+    }
     .con{
+        background: white;
         display: flex;
         align-items: center;
         justify-content: space-between;
