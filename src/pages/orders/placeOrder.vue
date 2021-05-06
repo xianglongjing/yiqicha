@@ -3,33 +3,11 @@
       <view v-if="!addressInfo">
           <u-notice-bar mode="vertical" :autoplay="false" play-state="paused" :list="tipsList"></u-notice-bar>
       </view>
-      <view class="no-adds" @click="goAddAddress(gid)" v-if="!addressInfo">+ 请添加联系地址</view>
-      <view v-else @click="goManageAddress(gid)">
-          <view class="order-adds u-line-2">
-              <u-icon :custom-style="{marginRight:'10rpx'}" name="map" color="#666666" size="36"></u-icon>
-              {{address}}
-          </view>
-      </view>
-      <view class="adds-line">
-          <image src="/static/image/banma.png" mode="aspectFill" />
-      </view>
-   <view class="page-title">
-     <text class="title-name">{{goodDetail.corporateName}}</text>将为你提供服务
-   </view>
-    <view class="no-adds" @click="goAddAddress(gid)" v-if="!addressInfo">+ 请添加联系地址</view>
-
-
-    <view class="order-info" v-if="addressInfo">
+    <view class="order-info">
       <view>
         <u-form :model="orderForm" ref="orderRef">
           <u-form-item label="你想要做" label-width="140">
             <u-input v-model="goodDetail.name" placeholder=" " />
-          </u-form-item>
-          <u-form-item label="服务单价" label-width="140">
-            <u-input type="number" v-model="goodDetail.price" disabled placeholder=" " />
-              <view class="number">
-                  <u-number-box v-model="numberValue" @change="numberChange"></u-number-box>
-              </view>
           </u-form-item>
           <u-form-item label="联系手机" label-width="140">
             <u-input v-model="orderForm.phone" placeholder=" " />
@@ -63,22 +41,6 @@
       <u-image mode="aspectFit" src="https://yiqiwang360.com/images/app/yiqibao.png" width="120rpx" style="width:80rpx"></u-image>
       <text class="u-padding-left-10">全程保障交易安全</text>
     </u-divider>
-    <view class="yiqibao">
-      <view class="bao-items">
-        <view class="item">
-          <image mode="aspectFit" src="/static/image/bao.png"></image>
-          <text>资金安全</text>
-        </view>
-        <view class="item">
-          <image mode="aspectFit" src="/static/image/zheng.png"></image>
-          <text>商家实名</text>
-        </view>
-        <view class="item">
-          <image mode="aspectFit" src="/static/image/guan.png"></image>
-          <text>全程监管</text>
-        </view>
-      </view>
-    </view>
     </view>
   </view>
 </template>
@@ -125,7 +87,7 @@ export default {
   },
   onShow () {
     this.getStorage()
-    this.getPlaceOrder(this.gid)
+    this.getPlaceOrder()
   },
   methods: {
     // 获取本地存储
@@ -137,24 +99,64 @@ export default {
     numberChange (e) {
       this.goodNum = e.value
     },
-    async getPlaceOrder (id) {
+  //   async getPlaceOrders(){
+  //
+  //   uni.login({
+  //     provider: 'weixin',
+  //     success: function (res) {
+  //       console.log(res)
+  //       let appid = ''
+  //       let secret = ''
+  //       let url = ' https://docs.apipost.cn/view/c4b0b53e6e4d07f1?appid=' + appid + '&secret=' + secret + '&js_code=' +
+  //               res.code + '&grant_type=authorization_code';
+  //       uni.request({
+  //         url: 'https://docs.apipost.cn/view/c4b0b53e6e4d07f1',
+  //         methods: 'POST',// 请求路径
+  //         data: {
+  //           pay_type:'微信',
+  //           order_number:'111',
+  //           out_trade_no:'111',
+  //           buyer_phone:'110',
+  //           product_name:'萝卜',
+  //           recipient:'王二狗',
+  //           pay_total:'12',
+  //           pay_real:'12',
+  //           trade_type:'JSAPI',
+  //           pay_status:'0',
+  //           buyer_id:'oRvQ859xuQo-VXB9fcR_hfyoPgd8'
+  //         },
+  //         success: result => {
+  //           console.info("result.data==>", result.data);
+  //           let openId = result.data.openid;
+  //           console.info("openId==>", openId);
+  //           uni.switchTab({
+  //             url: '/pages/mine/mine'
+  //           })
+  //         },
+  //       });
+  //     }
+  //   })
+  // },
+    async getPlaceOrder () {
       const { data: res } = await this.$request({
         method: 'POST',
-        url: 'order',
+        url: 'api/pay/createOrder',
         data: {
-          uid: this.storage.uid,
-          token: this.storage.token,
-          gid: this.gid
+            pay_type:'wx',
+            order_number:'111',
+            out_trade_no:'111',
+            buyer_phone:'110',
+            product_name:'萝卜',
+            recipient:'王二狗',
+            pay_total:'12',
+            pay_real:'12',
+            trade_type:'APP',
+            pay_status:'0',
+            buyer_id:'oRvQ859xuQo-VXB9fcR_hfyoPgd8'
         }
       })
       this.goodDetail = res.data.sp
       this.addressInfo = res.data.site
-      if (this.addressInfo) {
-        this.address = this.addressInfo.province + ' ' + this.addressInfo.city + ' ' + this.addressInfo.area + ' ' + this.addressInfo.site
-        this.orderForm.name = this.addressInfo.name
-        this.orderForm.phone = this.addressInfo.phone
-        this.orderForm.weChat = this.addressInfo.weChat
-      }
     },
     goAddAddress (val) {
       uni.redirectTo({

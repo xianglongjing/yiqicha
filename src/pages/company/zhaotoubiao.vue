@@ -13,24 +13,24 @@
         <view class="num">
             <text>为你找到 <text class="red">24</text>条该公司的招投标信息</text>
         </view>
-        <view class="con u-border-bottom">
+        <view class="con u-border-bottom" v-for="item in con" :key="item.id" @click="detail(item.id)">
             <view>
-                <view>11111111111111111111</view>
+                <view>{{item.title}}</view>
                 <view>
                     <text class="gray">招标类型：</text>
-                    <text>招标类型：</text>
+                    <text>{{item.type ? item.type : '-'}}</text>
                 </view>
                 <view>
                     <text class="gray">采购人：</text>
-                    <text>招标类型：</text>
+                    <text>{{item.staff ? item.staff : '-'}}</text>
                 </view>
                 <view>
                     <text class="gray">地区：</text>
-                    <text>招标类型：</text>
+                    <text>{{item.area ? item.area : '-'}}</text>
                 </view>
                 <view>
                     <text class="gray">发布日期：</text>
-                    <text>招标类型：</text>
+                    <text>{{item.date ? item.date : '-'}}</text>
                 </view>
             </view>
             <u-icon name="arrow-right" color="#959595" size="35"></u-icon>
@@ -45,7 +45,30 @@
                 keyword:'',
                 year:'',
                 area:'',
-                type:''
+                type:'',
+                con:{}
+            }
+        },
+        onLoad (options) {
+            this.list(options.id)
+        },
+        methods:{
+            async list (id) {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    data:{
+                        id:id
+                    },
+                    url: 'applets/bidding',
+                })
+                console.log(res)
+                this.con=res
+
+            },
+            detail(id){
+                uni.navigateTo({
+                    url:'/pages/company/zhaotoubiaoD?id='+id
+                })
             }
         }
     }

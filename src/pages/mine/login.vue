@@ -35,6 +35,7 @@
 <!--							<span @click="goForget">忘记密码？</span>-->
 <!--						</view>-->
 					</view>
+					<view @click="wx">微信登录</view>
 				</view>
 			</view>
 		</view>

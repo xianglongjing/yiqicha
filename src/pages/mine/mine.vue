@@ -23,7 +23,7 @@
         </view>
       </view>
     </view>
-    <view class="member">
+    <view class="member" @click="go('orders/placeOrder')">
       <view class="flex">
         <u-image mode="aspectFill" src="http://images.yiqiwang360.com/yiqicha/wode/wode (14).png" width="45" height="45"></u-image>
         <view class="u-margin-left-20">
@@ -32,7 +32,7 @@
           <text class="u-font-25">众多VIP专享特权</text>
         </view>
       </view>
-      <u-button :customStyle="kai" :ripple="true" ripple-bg-color="#909399" shape="circle" @click="kaifa">立即开通</u-button>
+      <u-button :customStyle="kai" :ripple="true" ripple-bg-color="#909399" shape="circle">立即开通</u-button>
     </view>
     <view class="head-btn">
     <view class="head-btn-item" @click="go('confirm/confirm')">

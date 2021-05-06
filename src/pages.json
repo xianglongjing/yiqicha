@@ -15,6 +15,14 @@
       }
     },
     {
+      "path": "pages/orders/placeOrder",
+      "style": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "下单",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
       "path": "pages/common/account",
       "style": {
         "navigationBarTitleText": "账号管理",
@@ -569,6 +577,14 @@
       }
     },
     {
+      "path": "pages/company/shuiwupingD",
+      "style": {
+        "navigationBarTitleText": "税务评级详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/company/zizhizhengshu",
       "style": {
         "navigationBarTitleText": "资质证书",
@@ -969,9 +985,25 @@
       }
     },
     {
+      "path": "pages/company/shuangsuijiD",
+      "style": {
+        "navigationBarTitleText": "双随机抽查详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/company/zhaotoubiao",
       "style": {
         "navigationBarTitleText": "招投标",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/zhaotoubiaoD",
+      "style": {
+        "navigationBarTitleText": "招投标详情",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }

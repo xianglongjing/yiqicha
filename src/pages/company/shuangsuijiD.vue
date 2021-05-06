@@ -2,34 +2,34 @@
     <view class="page u-border-top">
         <view class="first">
             <view>
-                <text class="gray">许可文件编号</text>
-                <view>{{law.number ? law.number : '-'}}</view>
+                <text class="gray">抽查计划编号</text>
+                <view>{{law.plannumber ? law.plannumber : '-'}}</view>
             </view>
-            <view v-if="law.name">
-                <text class="gray">许可文件名称</text>
-                <view>{{law.name ? law.name : ''}}</view>
+            <view>
+                <text class="gray">抽查计划名称</text>
+                <view>{{law.planname ? law.planname : '-'}}</view>
+            </view>
+            <view>
+                <text class="gray">抽查任务名称</text>
+                <view>{{law.taskname ? law.taskname : '-'}}</view>
             </view>
             <view class="flex u-margin-top-20 u-padding-bottom-30">
                 <view class="item">
-                    <text class="gray">有效期自</text>
-                    <view>{{law.from ? law.from : ''}}</view>
+                    <text class="gray">抽查类型</text>
+                    <view>{{law.type ? law.type : ''}}</view>
                 </view>
                 <view class="item u-border-left u-padding-left-20">
-                    <text class="gray">有效期至</text>
-                    <view>{{law.until ? law.until : ''}}</view>
+                    <text class="gray">抽查机关</text>
+                    <view>{{law.organ ? law.organ : ''}}</view>
                 </view>
             </view>
             <view class="items">
-                <text class="gray">许可机关</text>
-                <view class="red">{{law.authority ? law.authority : ''}}</view>
-            </view>
-            <view class="items u-border-bottom">
-                <text class="gray">许可内容</text>
-                <view>{{law.content ? law.content : ''}}</view>
+                <text class="gray">抽查完成日期</text>
+                <view class="red">{{law.date ? law.date : ''}}</view>
             </view>
             <view class="items">
-                <text class="gray">数据更新时间</text>
-                <view>{{law.datatime ? law.datatime : ''}}</view>
+                <text class="gray">检查情况</text>
+                <view>{{law.content ? law.content : ''}}</view>
             </view>
         </view>
     </view>
@@ -49,7 +49,7 @@
             async list(id) {
                 const {data: res} = await this.$request({
                     method: 'GET',
-                    url: 'applets/licensesave',
+                    url: 'applets/stochasticsave',
                     data: {
                         id:id
                     }
