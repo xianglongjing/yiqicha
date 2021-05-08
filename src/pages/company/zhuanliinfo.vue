@@ -11,29 +11,29 @@
                 <u-dropdown-item v-model="value4" title="专利状态" :options="options2"></u-dropdown-item>
             </u-dropdown>
         </view>
-        <view class="con u-border-bottom" @click="detail">
+        <view class="con u-border-bottom" v-for="item in con" :key="item.id" @click="detail(item.id)">
             <view>
-                <view class="title">还会对哦</view>
+                <view class="title">{{item.name}}</view>
                 <text>公开</text>
                 <view>
                     <text class="gray">申请日：</text>
-                    <text>209033</text>
+                    <text>{{item.doa ? item.doa : '-'}}</text>
                 </view>
                 <view>
                     <text class="gray">申请号：</text>
-                    <text>209033</text>
+                    <text>{{item.apn ? item.apn : '-'}}</text>
                 </view>
                 <view>
                     <text class="gray">公开(公告)日：</text>
-                    <text>209033</text>
+                    <text>{{item.date ? item.date : '-'}}</text>
                 </view>
                 <view>
                     <text class="gray">公开(公告)号：</text>
-                    <text>209033</text>
+                    <text>{{item.pubnumber ? item.pubnumber : '-'}}</text>
                 </view>
                 <view>
                     <text class="gray">发明人</text>
-                    <text>基调</text>
+                    <text>{{item.inventor ? item.inventor : '-'}}</text>
                 </view>
             </view>
             <u-icon name="arrow-right" size="40" color="#777777"></u-icon>
@@ -61,15 +61,30 @@
                         value: 3,
                     }
                 ],
+                con:{}
             }
         },
+        onLoad (options) {
+            this.list(options.id)
+        },
         methods: {
+            async list (id) {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    data:{
+                        id:id
+                    },
+                    url: 'applets/patent',
+                })
+                console.log(res)
+                this.con=res
+            },
             change(index) {
                 this.current = index;
             },
-            detail(){
+            detail(id){
                 uni.navigateTo({
-                    url:'/pages/company/zhuanliinfoDe'
+                    url:'/pages/company/zhuanliinfoDe?id='+id
                 })
             }
         }

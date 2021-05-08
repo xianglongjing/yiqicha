@@ -34,7 +34,6 @@
       :custom-style="customStyle"
       ripple-bg-color="#ff8c6d"
       @click="submitOrder"
-      v-if="addressInfo"
     >提交</u-button>
     <view class="page-footer">
     <u-divider bg-color="#f8f8f8" color="#FE6902">
@@ -83,11 +82,11 @@ export default {
     }
   },
   onLoad (options) {
-    this.gid = options.id
+    // this.gid = options.id
   },
   onShow () {
     this.getStorage()
-    this.getPlaceOrder()
+    this.submitOrder()
   },
   methods: {
     // 获取本地存储
@@ -137,7 +136,7 @@ export default {
   //     }
   //   })
   // },
-    async getPlaceOrder () {
+    async submitOrder () {
       const { data: res } = await this.$request({
         method: 'POST',
         url: 'api/pay/createOrder',
@@ -155,8 +154,28 @@ export default {
             buyer_id:'oRvQ859xuQo-VXB9fcR_hfyoPgd8'
         }
       })
-      this.goodDetail = res.data.sp
-      this.addressInfo = res.data.site
+      console.log(res)
+      uni.requestPayment({
+        "provider": "wxpay",
+        "orderInfo": {
+          "appid": res.appid,  // 微信开放平台 - 应用 - AppId，注意和微信小程序、公众号 AppId 可能不一致
+          "noncestr": res.noncestr, // 随机字符串
+          "package": 'prepay_id=res.package',       // 固定值
+          "partnerid": res.partnerid,      // 微信支付商户号
+          "prepayid": res.prepayid, // 统一下单订单号
+          "timestamp": res.timestamp,        // 时间戳（单位：秒）
+          "sign": res.sign // 签名，这里用的 MD5 签名
+        },
+        success(res) {
+          console.log(111)
+        },
+        fail(e) {
+          console.log(e)
+          console.log('fail:' + JSON.stringify(err));
+        }
+      })
+      // this.goodDetail = res.data.sp
+      // this.addressInfo = res.data.site
     },
     goAddAddress (val) {
       uni.redirectTo({
@@ -175,24 +194,24 @@ export default {
         this.invoice = 0
       }
     },
-    async submitOrder () {
-      const { data: res } = await this.$request({
-        url: 'order/createOrder',
-        data: {
-          siteid: this.addressInfo.id,
-          gid: this.gid,
-          uid: this.storage.uid,
-          token: this.storage.token,
-          sketch: this.orderForm.sketch,
-          invoice: this.invoice,
-          num: this.goodNum
-        }
-      })
-      uni.redirectTo({
-        url: '/pages/orders/orderSubmit?oid=' + res.data.orderNumber
-        // url: '/pages/orders/orderSubmit?oid=' + res.data.orderNumber
-      })
-    }
+    // async submitOrder () {
+    //   const { data: res } = await this.$request({
+    //     url: 'order/createOrder',
+    //     data: {
+    //       siteid: this.addressInfo.id,
+    //       gid: this.gid,
+    //       uid: this.storage.uid,
+    //       token: this.storage.token,
+    //       sketch: this.orderForm.sketch,
+    //       invoice: this.invoice,
+    //       num: this.goodNum
+    //     }
+    //   })
+    //   uni.redirectTo({
+    //     url: '/pages/orders/orderSubmit?oid=' + res.data.orderNumber
+    //     // url: '/pages/orders/orderSubmit?oid=' + res.data.orderNumber
+    //   })
+    // }
   }
 }
 </script>

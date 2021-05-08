@@ -1049,9 +1049,25 @@
       }
     },
     {
+      "path": "pages/company/dikuaigongshiD",
+      "style": {
+        "navigationBarTitleText": "地块公示详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/company/tudizhuanrang",
       "style": {
         "navigationBarTitleText": "土地转让",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/tudizhuanrangD",
+      "style": {
+        "navigationBarTitleText": "土地转让详情",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }
@@ -1081,9 +1097,33 @@
       }
     },
     {
+      "path": "pages/company/goudixinxiD",
+      "style": {
+        "navigationBarTitleText": "购地信息详情",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/yibannashui",
+      "style": {
+        "navigationBarTitleText": "一般纳税人",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
       "path": "pages/company/dianxinxuke",
       "style": {
         "navigationBarTitleText": "电信许可",
+        "enablePullDownRefresh": true,
+        "backgroundColor": "#FD5123"
+      }
+    },
+    {
+      "path": "pages/company/dianxinxukeD",
+      "style": {
+        "navigationBarTitleText": "电信许可详情",
         "enablePullDownRefresh": true,
         "backgroundColor": "#FD5123"
       }

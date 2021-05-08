@@ -582,7 +582,7 @@
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan4.png" width="50" height="50"></u-image>
                         <view class="grid-text">专利信息</view>
                     </u-grid-item>
-                    <u-grid-item @click="go('company/zhuzuoquan')">
+                    <u-grid-item @click="go('company/zhuzuoquan?id='+newsList.id)">
                         <view class="num6">{{newsList.copyright}}</view>
                         <u-image mode="aspectFit" src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan1.png" width="50" height="50"></u-image>
                         <view class="grid-text">著作权</view>
@@ -701,6 +701,13 @@
                                  src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"
                                  height="50"></u-image>
                         <view class="grid-text">网站备案</view>
+                    </u-grid-item>
+                    <u-grid-item @click="go('company/yibannashui?id='+newsList.id)">
+                        <view class="num6">{{newsList.record}}</view>
+                        <u-image mode="aspectFit"
+                                 src="http://images.yiqiwang360.com/yiqicha/qyxq/caise/zhishichanquan2.png" width="50"
+                                 height="50"></u-image>
+                        <view class="grid-text">一般纳税人</view>
                     </u-grid-item>
                 </u-grid>
             </view>
@@ -910,7 +917,7 @@
 </style>
 <style lang="scss" scoped>
     page{
-        padding-bottom: 100rpx;
+        padding-bottom: 200rpx;
     }
     .gray{
         color:#888888;

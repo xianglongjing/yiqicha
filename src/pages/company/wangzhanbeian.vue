@@ -9,23 +9,23 @@
                     active-color="#E12216" bg-color="none" inactive-color="#000000"
             ></u-tabs>
         </view>
-        <view class="con">
-            <view class="name">www.baidu.com</view>
+        <view class="con u-border-bottom" v-for="item in con" :key="item.id">
+            <view class="name">{{item.address}}</view>
             <view>
                 <text class="gray">网站名称：</text>
-                <text>111111</text>
+                <text>{{item.name ? item.name : '-'}}</text>
             </view>
             <view>
                 <text class="gray">域名：</text>
-                <text>111111</text>
+                <text>{{item.domain ? item.domain : '-'}}</text>
             </view>
             <view>
                 <text class="gray">审核日期：</text>
-                <text>111111</text>
+                <text>{{item.date ? item.date : '-'}}</text>
             </view>
             <view>
                 <text class="gray">网站备案/许可证号：</text>
-                <text>111111</text>
+                <text>{{item.number ? item.number : '-'}}</text>
             </view>
         </view>
     </view>
@@ -41,9 +41,24 @@
                     name: '历史网站备案'
                 }],
                 current:0,
+                con:{}
             }
         },
+        onLoad (options) {
+            this.list(options.id)
+        },
         methods:{
+            async list (id) {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    data:{
+                        id:id
+                    },
+                    url: 'applets/record',
+                })
+                console.log(res)
+                this.con=res
+            },
             Change(index) {
                 this.current = index;
             },

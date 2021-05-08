@@ -9,20 +9,20 @@
                     active-color="#E12216" bg-color="none" inactive-color="#000000"
             ></u-tabs>
         </view>
-        <view class="con u-border-bottom" @click="detail">
+        <view class="con u-border-bottom" v-for="item in ruan" :key="item.id" @click="detail(item.id)">
             <view>
-                <view class="name">哈哈哈哈或</view>
+                <view class="name">{{item.name}}</view>
                 <view class="item">
                     <text class="gray">软件简称：</text>
-                    <text class="gray">-</text>
+                    <text class="gray">{{item.abbreviation ? item.abbreviation : '-'}}</text>
                 </view>
                 <view class="item">
                     <text class="gray">登记号：</text>
-                    <text class="gray">-</text>
+                    <text class="gray">{{item.register ? item.register : '-'}}</text>
                 </view>
                 <view class="item">
                 <text class="gray">登记批准日期：</text>
-                <text class="gray">2021-12-21</text>
+                <text class="gray">{{item.registerdate ? item.registerdate : '-'}}</text>
             </view>
             </view>
             <u-icon name="arrow-right" size="35" color="#777777"></u-icon>
@@ -40,15 +40,30 @@
                     name: '作品著作权'
                 }],
                 current:0,
+                ruan:{}
             }
         },
+        onLoad (options) {
+            this.list(options.id)
+        },
         methods:{
+            async list (id) {
+                const { data: res } = await this.$request({
+                    method: 'GET',
+                    data:{
+                        id:id
+                    },
+                    url: 'applets/copyrights',
+                })
+                console.log(res)
+                this.ruan=res
+            },
             Change(index) {
                 this.current = index;
             },
-            detail(){
+            detail(id){
                 uni.navigateTo({
-                    url:'/pages/company/zhuzuoquanDe'
+                    url:'/pages/company/zhuzuoquanDe?id='+id
                 })
             }
         }
